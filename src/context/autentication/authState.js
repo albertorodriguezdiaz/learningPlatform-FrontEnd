@@ -31,7 +31,7 @@ const AuthState = props => {
 
     const registrarUsuario = async datos => {
         try {
-            const respuesta = await clienteAxios.post('/api/usuarios', datos);
+            const respuesta = await clienteAxios.post('/api/users', datos);
             console.log(respuesta.data);
 
             dispatch({
