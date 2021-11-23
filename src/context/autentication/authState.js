@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useState, useReducer } from 'react';
 import AuthContext from './authContext';
 import AuthReducer from './authReducer';
 
@@ -26,21 +26,22 @@ const AuthState = props => {
 
     }
 
-    const [state, dispatch] = useReducer(AuthReducer, initialState);
+    const [usertipo, getUsertipo] = useState();
 
+    const [state, dispatch] = useReducer(AuthReducer, initialState);
 
     const registrarUsuario = async datos => {
         try {
             const respuesta = await clienteAxios.post('/api/users', datos);
-            console.log(respuesta.data);
+            // console.log(`Respuesta.Data ${respuesta.data}`);
 
             dispatch({
                 type: REGISTRO_EXITOSO,
                 payload: respuesta.data
             });
-
             // Obtener usuario
             usuarioAutenticado();
+            
 
         } catch (error) {
             // console.log(error.response.data.msg);
@@ -61,22 +62,25 @@ const AuthState = props => {
         if (token) {
             // funcion para enviar el token por header
             tokenAuth(token);
+            
         }
 
         try {
             const respuesta = await clienteAxios.get('/api/auth');
-
-            // console.log(respuesta);
             dispatch({
                 type: OBTENER_USUARIO,
                 payload: respuesta.data.usuario
             });
+
+            getUsertipo(respuesta.data.usuario.tipo);
+            
 
         } catch (error) {
             dispatch({
                 type: LOGIN_ERROR
             });
         }
+        
     }
 
 
@@ -84,7 +88,7 @@ const AuthState = props => {
     const iniciarSesion = async datos => {
         try {
             const respuesta = await clienteAxios.post('/api/auth', datos);
-            console.log(respuesta);
+            console.log(`Respuesta.Data ${respuesta}`);
 
             dispatch({
                 type: LOGIN_EXITOSO,
@@ -93,10 +97,11 @@ const AuthState = props => {
 
             // Obtener usuario
             usuarioAutenticado();
+            
 
         } catch (error) {
 
-            console.log(error.response.data.msg);
+            // console.log(error.response.data.msg);
             const alerta = {
                 msg: error.response.data.msg,
                 categoria: 'alerta-error'
@@ -127,6 +132,7 @@ const AuthState = props => {
                 usuario: state.usuario,
                 mensaje: state.mensaje,
                 cargando: state.cargando,
+                usertipo: usertipo,
                 registrarUsuario,
                 usuarioAutenticado,
                 iniciarSesion,

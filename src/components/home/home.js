@@ -3,20 +3,26 @@ import Sidebar from '../layout/SideBar';
 import TopBar from '../layout/TopBar';
 import AuthContext from '../../context/autentication/authContext';
 
-const Home = () => {
+const Home = (props) => {
 
 
     // Extraer la informacion de autenticacion
     const authContext = useContext(AuthContext);
-    const { usuarioAutenticado } = authContext;
+    const { usertipo, usuarioAutenticado } = authContext;
 
     useEffect(() => {
-        usuarioAutenticado();
+        usuarioAutenticado();        
      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-
     return ( 
         <div className="contenedor-app">
+            {
+                usertipo === 'user'
+                    ? <div>{usertipo}</div>
+                    : null
+            }
+
+            
             <Sidebar />
 
             <div className="seccion-principal">

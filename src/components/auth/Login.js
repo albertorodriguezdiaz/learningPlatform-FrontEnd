@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import AlertaContext from '../../context/alerts/alertContext';
 import AuthContext from '../../context/autentication/authContext';
 
+
+
 const Login = (props) => {
 
     // Extraer los valores del context
@@ -12,11 +14,9 @@ const Login = (props) => {
 
     const authContext = useContext(AuthContext);
     const { mensaje, autenticado, iniciarSesion } = authContext;
-
-
     // en caso de que el usuario o password no existan
     useEffect( () =>{
-        if (autenticado) {
+        if (autenticado) {            
             props.history.push('/home');
         }
         if (mensaje) {
@@ -28,17 +28,17 @@ const Login = (props) => {
 
 
     // State para iniciar Sesion
-    const [usuario, guardarUsuario] = useState({
+    const [user, guardarUsuario] = useState({
         email: '',
         password: ''
     });
 
     // Extraer de usuario
-    const {email, password} = usuario;
+    const {email, password} = user;
 
     const onChange = (e) =>{
         guardarUsuario({
-            ...usuario,
+            ...user,
             [e.target.name] : e.target.value
         });
     }
