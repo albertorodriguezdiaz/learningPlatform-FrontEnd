@@ -1,10 +1,10 @@
 import React, { useContext, useEffect } from 'react';
-import Sidebar from '../layout/SideBar';
-import TopBar from '../layout/TopBar';
 import AuthContext from '../../context/autentication/authContext';
 import HomeDocente from '../docentes/HomeDocente';
 import HomeAdmin from '../admin/HomeAdmin';
 import HomeAlumno from '../alumnos/HomeAlumno';
+import { Container } from 'react-bootstrap';
+
 
 const Home = (props) => {
 
@@ -24,20 +24,13 @@ const Home = (props) => {
     return ( 
         <div className="contenedor-app">
 
-            { usertipo==='user' && <HomeAlumno />}
-            { usertipo==='admin' && <HomeAdmin /> }
-            { usertipo==='editor' && <HomeDocente /> }
-            
-            <Sidebar />
+            <Container>
+                { usertipo==='user' && <HomeAlumno />}
+                { usertipo==='admin' && <HomeAdmin /> }
+                { usertipo==='editor' && <HomeDocente /> }
+                    
+            </Container>
 
-            <div className="seccion-principal">
-                <TopBar />
-                <main>
-                    <div className="contenedor-tareas">
-                        <h1>Home</h1>
-                    </div>
-                </main>
-            </div>
         </div>
      );
 }
