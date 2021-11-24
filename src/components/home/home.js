@@ -2,6 +2,9 @@ import React, { useContext, useEffect } from 'react';
 import Sidebar from '../layout/SideBar';
 import TopBar from '../layout/TopBar';
 import AuthContext from '../../context/autentication/authContext';
+import HomeDocente from '../docentes/HomeDocente';
+import HomeAdmin from '../admin/HomeAdmin';
+import HomeAlumno from '../alumnos/HomeAlumno';
 
 const Home = (props) => {
 
@@ -10,18 +13,20 @@ const Home = (props) => {
     const authContext = useContext(AuthContext);
     const { usertipo, usuarioAutenticado } = authContext;
 
+
     useEffect(() => {
         usuarioAutenticado();        
      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
+    console.log(usertipo);
+
     return ( 
         <div className="contenedor-app">
-            {
-                usertipo === 'user'
-                    ? <div>{usertipo}</div>
-                    : null
-            }
 
+            { usertipo==='user' && <HomeAlumno />}
+            { usertipo==='admin' && <HomeAdmin /> }
+            { usertipo==='editor' && <HomeDocente /> }
             
             <Sidebar />
 

@@ -25,7 +25,7 @@ function App() {
               <Switch>
                 <Route exact path="/" component={Login} />
                 <Route exact path="/nueva-cuenta" component={NuevaCuenta} />
-                <PrivateRoutes exact path="/home" component={Home} />
+                <PrivateRoutes userLevel={'admin'} exact path="/home" component={Home} />
               </Switch>
             </Router>
           </AuthState>
