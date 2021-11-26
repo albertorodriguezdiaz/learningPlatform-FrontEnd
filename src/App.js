@@ -4,7 +4,6 @@ import AlertState from './context/alerts/alertState';
 import AuthState from './context/autentication/authState';
 import tokenAuth from './config/token';
 import PrivateRoutes from './components/routes/PrivateRoutes';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 // General
 import Login from './components/auth/Login';
@@ -16,6 +15,7 @@ import NotFound from './components/layout/NotFound';
 
 // Admin
 import AlumnosAdmin from './components/admin/AlumnosAdmin';
+import ColegiosAdmin from './components/admin/colegios/ColegiosAdmin';
 
 
 
@@ -37,6 +37,7 @@ function App() {
                 <Route exact path="/nueva-cuenta" component={NuevaCuenta} />
                 <PrivateRoutes userLevel={'admin'} exact path="/home" component={Home} />
                 <PrivateRoutes userLevel={'admin'} exact path="/alumnos" component={AlumnosAdmin} />
+                <PrivateRoutes userLevel={'admin'} exact path="/colegios" component={ColegiosAdmin} />
                 <Route path="*" component={NotFound} />
               </Switch>
             </Router>

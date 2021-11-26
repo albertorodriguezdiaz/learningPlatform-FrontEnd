@@ -28,7 +28,7 @@ const AlumnosAdmin = () => {
             const resultado = await clienteAxios.get('/api/users');
             getUsuarios(resultado.data.alumnos);
         } catch (error) {
-            console.log(`Error Aqui: ${error}`);
+            console.log(`Error: ${error}`);
         }
                         
     }   
