@@ -58,7 +58,6 @@ a {
   font-size: 1.4rem;
   font-weight: 400;
   border-radius: .5rem;
-  border: none;
   transition: background-color .3s ease;
 }
 .btn:hover {

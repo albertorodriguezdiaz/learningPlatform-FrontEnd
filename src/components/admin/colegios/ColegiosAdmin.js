@@ -1,14 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import ClienteAxios from 'axios';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Table, Button } from 'react-bootstrap';
 
 const ColegiosAdmin = () => {
-
-    useEffect(() => {
-
-        obtenerColegios();   
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    
+    // Seleccion Colegio Para editar
+    const [selectcol, guardarSelectcol] = useState(false);
 
     // state para colegio
     const [colegio, guardarColegio] = useState({
@@ -20,6 +17,13 @@ const ColegiosAdmin = () => {
 
     // Extraer nombre de colegio
     const {nombre} = colegio;
+
+
+    useEffect(() => {
+
+        obtenerColegios();
+           
+    }, []);
 
 
     // Lee los contenidos del input
@@ -35,17 +39,21 @@ const ColegiosAdmin = () => {
    const onSubmitcolegio = e => {
     e.preventDefault();
 
-    // agregar al state
-    agregarColegio(colegio);
-
+    // Validar si es edicion o es tarea nueva
+    if (selectcol === false) {
+        // agregar el nuevo colegio
+        agregarColegio(colegio);
+    } else {
+        // actualizar colegio existente
+        actualizarColegio(colegio);
+        guardarSelectcol(false);
+    }
     
-
     // Reiniciar el form
     guardarColegio({
         nombre: ''
     })
 
-    obtenerColegios();
     
 }
 
@@ -58,7 +66,10 @@ const agregarColegio = async colegio => {
     } catch (error) {
         console.log(error);
     }
+
+    obtenerColegios();
 }
+
 
 
 
@@ -66,12 +77,47 @@ const obtenerColegios = async () => {
     try {
         const resultado = await ClienteAxios.get('/api/schools');
         guardarColegios(resultado.data.colegios);
-        console.log(colegios);
     } catch (error) {
         console.log(`Error: ${error}`);
     }
                     
-}   
+}
+
+
+    // Eliminar proyecto
+    const eliminarColegio = async colegioId =>{
+        try {
+            await ClienteAxios.delete(`/api/schools/${colegioId}`);
+            obtenerColegios();
+            
+        } catch (error) {
+            console.log(`Error: ${error}`);
+        }
+
+    }
+
+
+
+    // Seleccionar colegio para editar
+    const seleccionarColegio = colegio =>{
+        guardarSelectcol(true);
+
+        guardarColegio({
+            ...colegio
+        })
+
+    }
+
+    // Editar o modificar Colegio
+    const actualizarColegio = async colegio => {
+        try {
+            await ClienteAxios.put(`/api/schools/${colegio._id}`, colegio);
+            obtenerColegios();
+        } catch (error) {
+            console.log(`Error: ${error}`);
+        }
+    }
+
 
 
     return ( 
@@ -87,16 +133,17 @@ const obtenerColegios = async () => {
                         <input 
                             type="text" 
                             className="input-text"
-                            placeholder="Nombre colegio"
+                            placeholder="Nombre colegio..."
                             name="nombre"
-                            value={nombre}
+                            value={nombre || ''}
                             onChange={onChangecolegio}
+                            
                         />
 
                     <input
                         type="submit"
                         className="btn btn-block btn-primario"
-                        value="Agregar colegio"
+                        value={ selectcol ? 'Editar Colegio' : 'Agregar Colegio' }
                     />
                     
                     
@@ -108,15 +155,46 @@ const obtenerColegios = async () => {
 
             <Row>
                 <h2>Colegios</h2>
-                <ul>
+                <Table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nombre</th>
+                            <th>Editar</th>
+                            <th>Eliminar</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
                 {
                     colegios.map( (colegio, key) => 
-                        <li key={key}>
-                            {colegio.nombre}
-                        </li>
+                        <tr key={key}>
+                            <td>{key+1}</td>
+                            <td>{colegio.nombre}</td>
+                            <td>
+                                <Button 
+                                    variant="outline-primary"
+                                    type="button"
+                                    onClick={ () => seleccionarColegio(colegio)}
+                                    >Editar
+                                </Button>
+                            </td>
+                            <td>
+                                <Button 
+                                    variant="danger"
+                                    type="button"
+                                    onClick={ () => eliminarColegio(colegio._id)}
+                                    >Eliminar
+                                </Button>
+
+                            </td>
+                        </tr>                            
                     )
                 }
-                </ul>
+
+                    </tbody>
+                </Table>
             </Row>
         </Container>
 
