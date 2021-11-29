@@ -139,12 +139,13 @@ const obtenerColegios = async () => {
                             onChange={onChangecolegio}
                             
                         />
-
-                    <input
-                        type="submit"
-                        className="btn btn-block btn-primario"
-                        value={ selectcol ? 'Editar Colegio' : 'Agregar Colegio' }
-                    />
+                    <div className="d-grid gap-2">
+                    <Button 
+                        as="input" variant="primary" size="lg" 
+                        type="submit" 
+                        value={ selectcol ? 'Editar Colegio' : 'Agregar Colegio' }>
+                    </Button>     
+                    </div>                    
                     
                     
                     </form>

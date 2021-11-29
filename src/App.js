@@ -34,9 +34,9 @@ function App() {
             <Router>
               <Switch>
                 <Route exact path="/" component={Login} />
-                <Route exact path="/nueva-cuenta" component={NuevaCuenta} />
                 <PrivateRoutes userLevel={'admin'} exact path="/home" component={Home} />
-                <PrivateRoutes userLevel={'admin'} exact path="/alumnos" component={AlumnosAdmin} />
+                <PrivateRoutes userLevel={'admin'} exact path="/usuarios" component={AlumnosAdmin} />
+                <PrivateRoutes exact path="/nueva-cuenta" component={NuevaCuenta} />
                 <PrivateRoutes userLevel={'admin'} exact path="/colegios" component={ColegiosAdmin} />
                 <Route path="*" component={NotFound} />
               </Switch>

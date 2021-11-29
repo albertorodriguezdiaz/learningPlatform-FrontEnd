@@ -10,7 +10,7 @@ const LinksHome = () => {
     return ( 
         <CardGroup>
             <Card>
-            <Link to='/alumnos'>
+            <Link to='/usuarios'>
                     <Card.Img variant="top" src="holder.js/100px160" />
                     <Card.Body>
                     <Card.Title>Alumnos</Card.Title>

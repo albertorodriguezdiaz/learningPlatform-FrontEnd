@@ -1,5 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
+import { Table, Col, Container, Row, Button, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import ClienteAxios from 'axios';
 import AlertaContext from '../../context/alerts/alertContext';
 import AuthContext from '../../context/autentication/authContext';
 
@@ -12,27 +14,43 @@ const NuevaCuenta = (props) => {
     const authContext = useContext(AuthContext);
     const { mensaje, autenticado, registrarUsuario } = authContext;
 
-    // en caso de que el usuario se haya autenticado o registrado o sea un registr duplicado
-    useEffect( () =>{
-        if (autenticado) {
-            props.history.push('/home');
-        }
-        if (mensaje) {
-            mostrarAlerta(mensaje.msg, mensaje.categoria)
-        }
-   // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[mensaje, autenticado, props.history])
+    const [usuarios, getUsuarios] = useState([]);
+
+    const [colegios, guardarColegios] = useState([]);
+
+    // Seleccion Usuario Para editar
+    const [selectUser, guardarSelectUser] = useState(false);
+
+
 
     // State para iniciar Sesion
     const [usuario, guardarUsuario] = useState({
         nombre: '',
         email: '',
+        colegio: '',
+        tipo: '',
         password: '',
         confirmarpassword: ''
     });
 
     // Extraer de usuario
-    const {nombre, email, password, confirmarpassword} = usuario;
+    const {nombre, email, colegio, tipo, password, confirmarpassword, colegioFiltro} = usuario;
+
+
+    // en caso de que el usuario se haya autenticado o registrado o sea un registr duplicado
+    useEffect( () =>{
+        if (mensaje) {
+            mostrarAlerta(mensaje.msg, mensaje.categoria)
+        }
+        
+        obtenerUsuariosByColegio(colegioFiltro);
+                
+        obtenerColegios();
+
+        
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[mensaje, autenticado, colegioFiltro])
+
 
     const onChange = (e) =>{
         guardarUsuario({
@@ -40,6 +58,7 @@ const NuevaCuenta = (props) => {
             [e.target.name] : e.target.value
         });
     }
+
 
     // Cuando el usuarip quiera iniciar session
     const onSubmit = (e) =>{
@@ -65,28 +84,133 @@ const NuevaCuenta = (props) => {
             return;
         }
 
-        // Pasarlo al action
-        registrarUsuario({
-            nombre,
-            email,
-            password
-        })
+        
+
+        // Validar si es edicion o es tarea nueva
+        if (selectUser === false) {
+            // agregar el nuevo usuario
+            registrarUsuario({
+                nombre,
+                email,
+                password,
+                colegio,
+                tipo
+            });
+
+        } else {
+            // actualizar usuario existente
+            actualizarUsuario(usuario);
+            guardarSelectUser(false);
+        }
+
+
+
+        
     }
 
 
 
+    // const obtenerUsuarios = async () => {
+    //     try {
+    //         const resultado = await ClienteAxios.get('/api/users');
+    //         getUsuarios(resultado.data.alumnos);
+    //     } catch (error) {
+    //         console.log(`Error: ${error}`);
+    //     }
+                        
+    // }
+    
+    
+    
+    const obtenerUsuariosByColegio = async (colegio) => {
+        try {
+        
+            const resultado = await ClienteAxios.get('/api/users', { params: { colegio }});
+            getUsuarios(resultado.data.alumnos);
+            
+        } catch (error) {
+            console.log(`Error: ${error}`);
+        }
+                        
+    }
+
+    const obtenerColegios = async () => {
+        try {
+            const resultado = await ClienteAxios.get('/api/schools');
+            guardarColegios(resultado.data.colegios);
+        } catch (error) {
+            console.log(`Error: ${error}`);
+        }
+    }
+
+
+
+    // Seleccionar usuario para editar
+    const seleccionarUsuario = usuario =>{
+        guardarSelectUser(true);
+
+        guardarUsuario({
+            ...usuario
+        })
+
+    }
+
+    // Editar o modificar usuario
+    const actualizarUsuario = async usuario => {
+        
+        try {
+            await ClienteAxios.put(`/api/users/${usuario._id}`, usuario);
+            obtenerUsuariosByColegio();
+        } catch (error) {
+            console.log(`Error: ${error}`);
+        }
+    }
+
+        
+
+    // Eliminar proyecto
+    const eliminarUsuario = async usuarioId =>{
+        try {
+            await ClienteAxios.delete(`/api/users/${usuarioId}`);
+            obtenerUsuariosByColegio(colegioFiltro);
+            
+        } catch (error) {
+            console.log(`Error: ${error}`);
+        }
+
+    }
+
+
+    // Buscar nombre de ID de colegio
+    const buscarIdColegio = () =>{
+
+        colegio.map((col)=>{
+            if(col._id===usuario._id){
+                console.log(usuario._id);
+            }
+         }                                    
+        )
+    }
+
+
+
+
     return ( 
-        <div className="form-usuario">
+        <div className="">
             { alerta 
                     ? (
                         <div className={`alerta ${alerta.categoria}`}>{alerta.msg}</div>
                       )
                     : null
             }
-            <div className="contenedor-form sombra-dark">
-                <h1>Crear nueva cuenta</h1>
 
-                <form
+            <Container>
+                <Row>
+                    <Col lg="12">
+                    
+                <h1>Crear cuenta de usuario</h1>
+
+                <Form
                     onSubmit={onSubmit}
                 >
 
@@ -102,6 +226,7 @@ const NuevaCuenta = (props) => {
                         />
                     </div>
 
+ 
                     <div className="campo-form">
                         <label htmlFor="email">Email</label>
                         <input 
@@ -112,6 +237,39 @@ const NuevaCuenta = (props) => {
                             value={email}
                             onChange={onChange}
                         />
+                    </div>
+
+                    <div className="campo-form">
+                        <label htmlFor="colegio">Colegio</label>
+                        <select
+                            defaultValue={colegio}
+                            id="colegio"
+                            name="colegio"
+                            onChange={onChange}
+                        >
+                            <option>Seleccionar un Colegio</option>                            
+                            {
+                                colegios.map((colegio, key)=>
+                                    usuario.colegio===colegio._id
+                                       ? <option selected="selected" key={key} value={colegio._id}>{colegio.nombre}</option>
+                                       : <option key={key} value={colegio._id}>{colegio.nombre}</option>
+                                )
+                            }
+                        </select>
+                    </div>
+
+                    <div className="campo-form">
+                        <label htmlFor="tipo">Tipo</label>
+                        <select
+                            defaultValue={tipo}
+                            id="tipo"
+                            name="tipo"
+                            onChange={onChange}
+                        >
+                            <option>Tipo de usuario</option>
+                            <option value="user">Alumno</option>
+                            <option value="editor">Docente</option>
+                        </select>
                     </div>
 
                     <div className="campo-form">
@@ -142,16 +300,113 @@ const NuevaCuenta = (props) => {
                         <input
                             type="submit"
                             className="btn btn-primario btn-block"
-                            value="Registrarme"
+                            value={ selectUser ? 'Editar Usuario' : 'Agregar Usuario' }
                         />
                     </div>
 
-                </form>
+                </Form>
 
-                <Link to={'/'}  className="enlace-cuenta text-center">
-                    Volver a iniciar sesión
+                <Link to={'/usuarios'}  className="enlace-cuenta text-center">
+                    Volver a lista de usuarios
                 </Link>
-            </div>
+
+                </Col>
+                </Row>
+
+                
+
+
+
+                {/* Formulario Filtro por Colegio */}
+                <Form >
+                
+                <Row>
+                <Col lg="6">
+                    <div className="campo-form">
+                        <select
+                            defaultValue={colegio}
+                            id="colegioFiltro"
+                            name="colegioFiltro"
+                            onChange={onChange}
+                        >
+                            <option value="">Seleccionar un Colegio</option>
+                            {
+                                colegios.map((colegio, key)=>
+                                    <option key={key} value={colegio._id}>{colegio.nombre}</option>
+                                )
+                            }
+                        </select>
+                    </div>
+                </Col>
+                <Col lg="6">
+                    <div className="campo-form">
+                        <select
+                            defaultValue={tipo}
+                            id="tipoFiltro"
+                            name="tipoFiltro"
+                            onChange={onChange}
+                        >
+                            <option>Tipo de usuario</option>
+                            <option value="user">Alumno</option>
+                            <option value="editor">Docente</option>
+                        </select>
+                    </div>
+                </Col>
+                
+                </Row>
+                </Form>
+
+
+
+                
+                
+
+                <Table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nombre</th>
+                            <th>Correo</th>
+                            <th>Colegio</th>
+                            <th>Tipo</th>
+                            <th>Editar</th>
+                            <th>Eliminar</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {
+                            usuarios.map( (alumno, key) => 
+                            <tr key={key}>
+                                    <td>{key+1}</td>
+                                    <td>{alumno.nombre}</td>
+                                    <td>{alumno.email}</td>
+                                    <td>{alumno.colegio}</td>
+                                    <td>{alumno.tipo}</td>
+                                    <td>
+                                        <Button 
+                                            variant="outline-primary"
+                                            type="button"
+                                            onClick={ () => seleccionarUsuario(alumno)}
+                                            >Editar
+                                        </Button>
+                                    </td>
+                                    <td>
+                                        <Button 
+                                            variant="danger"
+                                            type="button"
+                                            onClick={ () => eliminarUsuario(alumno._id)}
+                                            >Eliminar
+                                        </Button>
+
+                                    </td>
+                            </tr>  
+                            )
+                        }
+                    </tbody>
+                </Table>
+
+            </Container>
         </div>
      );
 }
