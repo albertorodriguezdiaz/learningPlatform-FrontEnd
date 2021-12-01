@@ -1,0 +1,207 @@
+import React, {useState, useEffect} from 'react';
+import ClienteAxios from 'axios';
+import { Container, Row, Col, Table, Button } from 'react-bootstrap';
+
+const BookSoyVidaAdmin = () => {
+    
+    // Seleccion BookSoyvida Para editar
+    const [selectbook, guardarSelectBook] = useState(false);
+
+    // state para BookSoyvida
+    const [booksoyvida, guardarBooksoyvida] = useState({
+        nombre: '',
+    });
+
+    // state buscar BookSoyvida
+    const [books, guardarBooks] = useState([]);
+
+    // Extraer nombre de book BookSoyvida
+    const {nombre} = booksoyvida;
+
+
+    useEffect(() => {
+
+        obtenerBooksSoyVida();
+           
+    }, []);
+
+
+    // Lee los contenidos del input
+    const onChangeBookSoyVida = (e) =>{
+        guardarBooksoyvida({
+            ...booksoyvida,
+            [e.target.name] : e.target.value
+        })
+    }
+
+    
+   // Cuando el admin envia un BookSoyvida
+   const onSubmitBook = e => {
+    e.preventDefault();
+
+    // Validar si es edicion o es tarea nueva
+    if (selectbook === false) {
+        // agregar el nuevo booksoyvida
+        agregarBook(booksoyvida);
+    } else {
+        // actualizar booksoyvida existente
+        actualizarBook(booksoyvida);
+        guardarSelectBook(false);
+    }
+    
+    // Reiniciar el form
+    guardarBooksoyvida({
+        nombre: ''
+    })
+
+    
+}
+
+
+const agregarBook = async booksoyvida => {
+    try {
+        const resultado = await ClienteAxios.post('/api/booksoyvida', booksoyvida);
+        guardarBooksoyvida(resultado.data);
+
+    } catch (error) {
+        console.log(error);
+    }
+
+    obtenerBooksSoyVida();
+}
+
+
+
+
+const obtenerBooksSoyVida = async () => {
+    try {
+        const resultado = await ClienteAxios.get('/api/booksoyvida');
+        guardarBooks(resultado.data.booksoyvida);
+    } catch (error) {
+        console.log(`Error: ${error}`);
+    }
+                    
+}
+
+
+    // Eliminar proyecto
+    const eliminarBook = async booksoyvidaId =>{
+        try {
+            await ClienteAxios.delete(`/api/booksoyvida/${booksoyvidaId}`);
+            obtenerBooksSoyVida();
+            
+        } catch (error) {
+            console.log(`Error: ${error}`);
+        }
+
+    }
+
+
+
+    // Seleccionar booksoyvida para editar
+    const seleccionarBook = booksoyvida =>{
+        guardarSelectBook(true);
+
+        guardarBooksoyvida({
+            ...booksoyvida
+        })
+
+    }
+
+    // Editar o modificar booksoyvida
+    const actualizarBook = async booksoyvida => {
+        try {
+            await ClienteAxios.put(`/api/booksoyvida/${booksoyvida._id}`, booksoyvida);
+            obtenerBooksSoyVida();
+        } catch (error) {
+            console.log(`Error: ${error}`);
+        }
+    }
+
+
+
+    return ( 
+        <Container>
+            <Row>
+                <Col lg="12">
+
+                    <h2>Agregar Book SoyVida</h2>
+                    <form
+                        onSubmit={onSubmitBook}
+                    >
+                        <input 
+                            type="text" 
+                            className="input-text"
+                            placeholder="Nombre Book Soy vida..."
+                            name="nombre"
+                            value={nombre || ''}
+                            onChange={onChangeBookSoyVida}
+                            
+                        />
+                    <div className="d-grid gap-2">
+                    <Button 
+                        as="input" variant="primary" size="lg" 
+                        type="submit" 
+                        value={ selectbook ? 'Editar Book SoyVida' : 'Agregar Book SoyVida' }>
+                    </Button>     
+                    </div>                    
+                    
+                    
+                    </form>
+                </Col>
+                
+            </Row>
+
+
+            <Row>
+                <h2>books</h2>
+                <Table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nombre</th>
+                            <th>Editar</th>
+                            <th>Eliminar</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                {
+                    books.map( (book, key) => 
+                        <tr key={key}>
+                            <td>{key+1}</td>
+                            <td>{book.nombre}</td>
+                            <td>
+                                <Button 
+                                    variant="outline-primary"
+                                    type="button"
+                                    onClick={ () => seleccionarBook(book)}
+                                    >Editar
+                                </Button>
+                            </td>
+                            <td>
+                                <Button 
+                                    variant="danger"
+                                    type="button"
+                                    onClick={ () => eliminarBook(book._id)}
+                                    >Eliminar
+                                </Button>
+
+                            </td>
+                        </tr>                            
+                    )
+                }
+
+                    </tbody>
+                </Table>
+            </Row>
+        </Container>
+
+
+
+
+     );
+}
+ 
+export default BookSoyVidaAdmin;
