@@ -52,7 +52,21 @@ const LinksHome = () => {
                     <small className="text-muted">Ingresar</small>
                     </Card.Footer>
             </Link>
-               </Card>
+            </Card>
+            <Card>
+            <Link to='/usuariolibro'>
+                    <Card.Img variant="top" src="holder.js/100px160" />
+                    <Card.Body>
+                    <Card.Title>Libros Usuario</Card.Title>
+                    <Card.Text>
+                        Añadir libros a los alumnos de soyvida
+                    </Card.Text>
+                    </Card.Body>
+                    <Card.Footer>
+                    <small className="text-muted">Ingresar</small>
+                    </Card.Footer>
+            </Link>
+            </Card>
 
             </CardGroup>
      );

@@ -181,6 +181,18 @@ const NuevaCuenta = (props) => {
     }
 
 
+    // // Buscar nombre de ID de colegio
+    // const buscarIdColegio = () =>{
+
+    //     colegio.map((col)=>{
+    //         if(col._id===usuario._id){
+    //             console.log(usuario._id);
+    //         }
+    //      }                                    
+    //     )
+    // }
+
+
 
 
     return ( 
