@@ -258,11 +258,6 @@ const obtenerBooksSoyVida = async () => {
 
                 {
 
-                // colegios.map((colegio, key)=>
-                // usuario.colegio===colegio._id
-                // ? <option selected="selected" key={key} value={colegio._id}>{colegio.nombre}</option>
-                // : <option key={key} value={colegio._id}>{colegio.nombre}</option>
-                // )
 
                     bookuserGet.map( (bookus, key) => 
                         <tr key={key}>

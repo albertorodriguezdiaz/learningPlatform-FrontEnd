@@ -9,7 +9,7 @@ import { Col, Row } from 'react-bootstrap';
 const HomeAdmin = () => {
     return (
 
-        <div className="contenedor-app">
+    <div className="contenedor-app">
         <Row>
             <Col lg="2">
                 <Sidebar />

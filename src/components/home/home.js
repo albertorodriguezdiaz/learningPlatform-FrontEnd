@@ -19,18 +19,11 @@ const Home = (props) => {
      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    console.log(usertipo);
-
     return ( 
-        <div className="contenedor-app">
-
-            <Container>
+        <div>
                 { usertipo==='user' && <HomeAlumno />}
                 { usertipo==='admin' && <HomeAdmin /> }
                 { usertipo==='editor' && <HomeDocente /> }
-                    
-            </Container>
-
         </div>
      );
 }
