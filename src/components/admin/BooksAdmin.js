@@ -105,7 +105,6 @@ const obtenerBooksSoyVida = async () => {
     } catch (error) {
         console.log(`Error: ${error}`);
     }
-                    
 }
 
 

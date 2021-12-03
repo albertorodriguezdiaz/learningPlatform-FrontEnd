@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import AuthContext from '../../context/autentication/authContext';
 import TopBar from '../layout/TopBar';
 import ClienteAxios from 'axios';
+import { Link } from 'react-router-dom';
 import { Container, Row, Col, Table, Button } from 'react-bootstrap';
 
 const HomeAlumno = () => {
@@ -58,12 +59,14 @@ const HomeAlumno = () => {
 
                 {
                     bookuserGet.map((book, key) =>
+                    // Comparamos el id del libro con el id del usuario
                         book.usuario===usuario._id
                         && 
                         books.map( (e) =>
                         // Compara el Id de libros con el id de libros de usuarios
                             e._id===book.libro
-                            && <p>{e.nombre}</p>
+                            // Mostramos el link con el nombre del libro
+                            && <Link to={"/" + e.nombre.toLowerCase()}><p>{e.nombre}</p></Link>
                         )
                                 
                     )

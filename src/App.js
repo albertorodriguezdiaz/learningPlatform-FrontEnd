@@ -12,6 +12,8 @@ import Home from './components/home/home';
 import NotFound from './components/layout/NotFound';
 
 // Alumnos
+import HomeBook1 from './components/books/book_1/HomeBook1';
+
 
 // Admin
 import AlumnosAdmin from './components/admin/AlumnosAdmin';
@@ -36,12 +38,16 @@ function App() {
             <Router>
               <Switch>
                 <Route exact path="/" component={Login} />
+                
                 <PrivateRoutes userLevel={'admin'} exact path="/home" component={Home} />
                 <PrivateRoutes userLevel={'admin'} exact path="/usuarios" component={AlumnosAdmin} />
                 <PrivateRoutes exact path="/nueva-cuenta" component={NuevaCuenta} />
                 <PrivateRoutes userLevel={'admin'} exact path="/colegios" component={ColegiosAdmin} />
                 <PrivateRoutes userLevel={'admin'} exact path="/libros" component={BookSoyVidaAdmin} />
                 <PrivateRoutes userLevel={'admin'} exact path="/usuariolibro" component={BooksAdmin} />
+
+                <PrivateRoutes userLevel={'user'} exact path="/primero" component={HomeBook1} />
+
                 <Route path="*" component={NotFound} />
               </Switch>
             </Router>
