@@ -11,12 +11,12 @@ import {
 export default (state, action) => {
     switch(action.type){
         case REGISTRO_EXITOSO:
-            localStorage.setItem('token', action.payload.token);
+            // localStorage.setItem('token', action.payload.token);
             return{
                 ...state,
-                autenticado: true,
-                mensaje: null,
-                cargando: false
+                // autenticado: true,
+                // mensaje: null,
+                // cargando: false
             }
         case REGISTRO_ERROR:
             return{

@@ -36,11 +36,11 @@ const AuthState = props => {
             // console.log(`Respuesta.Data ${respuesta.data}`);
 
             dispatch({
-                type: REGISTRO_EXITOSO,
+                // type: REGISTRO_EXITOSO,
                 payload: respuesta.data
             });
             // Obtener usuario
-            usuarioAutenticado();
+            // usuarioAutenticado();
             
 
         } catch (error) {

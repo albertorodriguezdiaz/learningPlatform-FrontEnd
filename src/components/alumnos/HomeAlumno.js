@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import AuthContext from '../../context/autentication/authContext';
+import BookContext from '../../context/books/bookContex';
 import TopBar from '../layout/TopBar';
 import ClienteAxios from 'axios';
 import { Link } from 'react-router-dom';
@@ -10,6 +11,10 @@ const HomeAlumno = () => {
     // Extraer la informacion de autenticacion
     const authContext = useContext(AuthContext);
     const {usuario, usuarioAutenticado } = authContext;
+
+    // Extraer la informacion de autenticacion
+    const bookContext = useContext(BookContext);
+    const {bookUsuario } = bookContext;
 
     // state buscar bookuser
     const [books, guardarBooks] = useState([]);
@@ -23,6 +28,7 @@ const HomeAlumno = () => {
         usuarioAutenticado();  
         obtenerBookUser();
         obtenerBooksSoyVida();
+        console.log(bookUsuario);
      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 

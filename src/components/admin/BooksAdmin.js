@@ -50,10 +50,12 @@ const BooksAdmin = () => {
    const onSubmitBook = e => {
     e.preventDefault();
 
-    // Validar si es edicion o es tarea nueva
+    // Validar si es edicion o es nuevo
     if (selectbook === false) {
         // agregar el nuevo libro al usuario
         agregarBookUser(bookuser);
+        agregarActivity(bookuser);
+
     } else {
         // actualizar bookuser existente
         actualizarBook(bookuser);
@@ -84,6 +86,20 @@ const agregarBookUser = async bookuser => {
 
     obtenerBookUser();
 }
+
+
+const agregarActivity = async bookuser => {
+    try {
+        const resultado = await ClienteAxios.post('/api/activity', bookuser);
+        guardarBookUser(resultado.data);
+        console.log(resultado.data);
+
+    } catch (error) {
+        console.log(error);
+    }
+
+}
+
 
 const obtenerBookUser = async () => {
     try {
