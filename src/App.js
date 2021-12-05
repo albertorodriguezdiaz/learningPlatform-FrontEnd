@@ -39,11 +39,12 @@ function App() {
         <AlertState>
           <AuthState>
             <BookState>
+
               <Router>
                 <Switch>
                   <Route exact path="/" component={Login} />
                   
-                  <PrivateRoutes userLevel={'admin'} exact path="/home" component={Home} />
+                  <PrivateRoutes exact path="/home" component={Home} />
                   <PrivateRoutes userLevel={'admin'} exact path="/usuarios" component={AlumnosAdmin} />
                   <PrivateRoutes exact path="/nueva-cuenta" component={NuevaCuenta} />
                   <PrivateRoutes userLevel={'admin'} exact path="/colegios" component={ColegiosAdmin} />
@@ -55,6 +56,7 @@ function App() {
                   <Route path="*" component={NotFound} />
                 </Switch>
               </Router>
+
             </BookState>
           </AuthState>
         </AlertState>

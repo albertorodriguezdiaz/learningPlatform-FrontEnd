@@ -10,3 +10,4 @@ export const LOGIN_ERROR = 'LOGIN_ERROR';
 export const CERRAR_SESION = 'CERRAR_SESION';
 
 export const LIBRO_ACTUAL = 'LIBRO_ACTUAL';
+export const ACTIVIDAD_LIBRO = 'ACTIVIDAD_LIBRO';

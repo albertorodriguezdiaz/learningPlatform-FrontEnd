@@ -1,18 +1,30 @@
-import React,{useContext, useEffect} from 'react';
+import React,{useContext, useEffect, useState} from 'react';
 import ClienteAxios from 'axios';
+import BookContext from '../../../../context/books/bookContex';
 import AuthContext from '../../../../context/autentication/authContext';
 import { Form, Button } from 'react-bootstrap';
-    
 
 
-const Activity1 = () => {
+const Activity1 = (props) => {
+
+    // // Extraer la informacion de books
+    const bookContext = useContext(BookContext);
+    const { bookuser, actividades, obtenerLibros, obtenerActivity } = bookContext;
 
     // Extraer la informacion de autenticacion
     const authContext = useContext(AuthContext);
     const {usuario } = authContext;
 
+
+    const [ idlibro, guardarIdLibro] = useState([]);
+
+
     useEffect(() => {
         console.log(usuario);
+        obtenerLibros();
+        obtenerActivity();
+        
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const actualizarActivity = async booksoyvida => {
@@ -23,15 +35,31 @@ const Activity1 = () => {
         }
     }
 
+    const seleccionarActividadUser = () =>{
+ 
+        actividades.map((act)=>
+            act.usuario===usuario._id
+            && guardarIdLibro({
+                _id: act._id,
+                usuario: act.usuario,
+                actividad1: true
+            })
+        );
+        console.log(idlibro);
+        actualizarActivity(idlibro);
+    }
+
 
     const onSubmitBook = (e)=>{
         e.preventDefault();
+        console.log(bookuser);
+        seleccionarActividadUser();
 
-        actualizarActivity(
-            {
+        // actualizarActivity(
+        //     {
                 
-            }
-        );
+        //     }
+        // );
     }
 
     return ( 
@@ -47,6 +75,12 @@ const Activity1 = () => {
                     value="Finalizar">
                 </Button> 
             </Form>
+
+            {
+                bookuser.map((book) =>
+                    <p>{book._id}</p>
+                )
+            }
                 
         </div>
      );

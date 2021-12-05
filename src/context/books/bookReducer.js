@@ -1,5 +1,6 @@
 import { 
-    LIBRO_ACTUAL
+    LIBRO_ACTUAL,
+    ACTIVIDAD_LIBRO
 } from '../../types';
 
 /* eslint import/no-anonymous-default-export: [2, {"allowArrowFunction": true}] */
@@ -8,7 +9,12 @@ export default (state, action) => {
         case LIBRO_ACTUAL:
             return{
                 ...state,
-                bookUser: action.payload
+                bookuser: action.payload
+            }
+        case ACTIVIDAD_LIBRO:
+            return{
+                ...state,
+                actividades: action.payload
             }
         default:
             return state;
