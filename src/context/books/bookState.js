@@ -1,8 +1,7 @@
 import React, { useState, useReducer, useContext } from 'react';
 import BookReducer from './bookReducer';
 import BookContext from './bookContex';
-import clienteAxios from '../../config/axios';
-import AuthContext from '../autentication/authContext';
+import ClienteAxios from '../../config/axios';
 
 import { 
     LIBRO_ACTUAL
@@ -11,24 +10,39 @@ import {
 const BookState = props => {
 
     const initialState = {
-
+        bookUser: null
     }
-
-    // Extraer la informacion de autenticacion
-    const authContext = useContext(AuthContext);
-    const {usuario } = authContext;
 
     const [state, dispatch] = useReducer(BookReducer, initialState);
 
 
+    // Retornar el usuario autenticado
+    const obtenerLibros = async () =>{
+
+        try {
+            const respuesta = await ClienteAxios.get('/api/books');
+            dispatch({
+                type: LIBRO_ACTUAL,
+                payload: respuesta.data.bookuser
+            });
+
+        } catch (error) {
+            
+        }
+        
+    }
+
+
+
     return ( 
-        <AuthContext.Provider
+        <BookContext.Provider
             value={{
-                bookUsuario: usuario,
+                bookUser: state.bookUser,
+                obtenerLibros              
             }}
         >
             {props.children}
-        </AuthContext.Provider>
+        </BookContext.Provider>
      );
 }
  

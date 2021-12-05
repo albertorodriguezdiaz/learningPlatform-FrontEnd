@@ -12,9 +12,9 @@ const HomeAlumno = () => {
     const authContext = useContext(AuthContext);
     const {usuario, usuarioAutenticado } = authContext;
 
-    // Extraer la informacion de autenticacion
+    // Extraer la informacion de books
     const bookContext = useContext(BookContext);
-    const {bookUsuario } = bookContext;
+    const { bookUser, obtenerLibros } = bookContext;
 
     // state buscar bookuser
     const [books, guardarBooks] = useState([]);
@@ -25,10 +25,10 @@ const HomeAlumno = () => {
 
 
     useEffect(() => {
+        obtenerLibros();
         usuarioAutenticado();  
         obtenerBookUser();
         obtenerBooksSoyVida();
-        console.log(bookUsuario);
      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
@@ -75,6 +75,12 @@ const HomeAlumno = () => {
                             && <Link to={"/" + e.nombre.toLowerCase()}><p>{e.nombre}</p></Link>
                         )
                                 
+                    )
+                }
+
+                {
+                    bookUser.map((book) =>
+                        <p>{book._id}</p>
                     )
                 }
             

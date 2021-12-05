@@ -8,7 +8,7 @@ export default (state, action) => {
         case LIBRO_ACTUAL:
             return{
                 ...state,
-                book: action.payload
+                bookUser: action.payload
             }
         default:
             return state;

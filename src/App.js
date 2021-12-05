@@ -1,7 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import AlertState from './context/alerts/alertState';
+
 import AuthState from './context/autentication/authState';
+import BookState from './context/books/bookState';
+
 import tokenAuth from './config/token';
 import PrivateRoutes from './components/routes/PrivateRoutes';
 
@@ -35,22 +38,24 @@ function App() {
   return (
         <AlertState>
           <AuthState>
-            <Router>
-              <Switch>
-                <Route exact path="/" component={Login} />
-                
-                <PrivateRoutes userLevel={'admin'} exact path="/home" component={Home} />
-                <PrivateRoutes userLevel={'admin'} exact path="/usuarios" component={AlumnosAdmin} />
-                <PrivateRoutes exact path="/nueva-cuenta" component={NuevaCuenta} />
-                <PrivateRoutes userLevel={'admin'} exact path="/colegios" component={ColegiosAdmin} />
-                <PrivateRoutes userLevel={'admin'} exact path="/libros" component={BookSoyVidaAdmin} />
-                <PrivateRoutes userLevel={'admin'} exact path="/usuariolibro" component={BooksAdmin} />
+            <BookState>
+              <Router>
+                <Switch>
+                  <Route exact path="/" component={Login} />
+                  
+                  <PrivateRoutes userLevel={'admin'} exact path="/home" component={Home} />
+                  <PrivateRoutes userLevel={'admin'} exact path="/usuarios" component={AlumnosAdmin} />
+                  <PrivateRoutes exact path="/nueva-cuenta" component={NuevaCuenta} />
+                  <PrivateRoutes userLevel={'admin'} exact path="/colegios" component={ColegiosAdmin} />
+                  <PrivateRoutes userLevel={'admin'} exact path="/libros" component={BookSoyVidaAdmin} />
+                  <PrivateRoutes userLevel={'admin'} exact path="/usuariolibro" component={BooksAdmin} />
 
-                <PrivateRoutes userLevel={'user'} exact path="/primero" component={HomeBook1} />
+                  <PrivateRoutes userLevel={'user'} exact path="/primero" component={HomeBook1} />
 
-                <Route path="*" component={NotFound} />
-              </Switch>
-            </Router>
+                  <Route path="*" component={NotFound} />
+                </Switch>
+              </Router>
+            </BookState>
           </AuthState>
         </AlertState>
   );
