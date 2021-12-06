@@ -1,6 +1,7 @@
 import { 
     LIBRO_ACTUAL,
-    ACTIVIDAD_LIBRO
+    ACTIVIDAD_LIBRO,
+    VISIBLE_BOOKMAIN
 } from '../../types';
 
 /* eslint import/no-anonymous-default-export: [2, {"allowArrowFunction": true}] */
@@ -15,6 +16,11 @@ export default (state, action) => {
             return{
                 ...state,
                 actividades: action.payload
+            }
+        case VISIBLE_BOOKMAIN:
+            return{
+                ...state,
+                bookmain: action.payload
             }
         default:
             return state;

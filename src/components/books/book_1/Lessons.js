@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useEffect, useContext} from 'react';
 import { withRouter } from 'react-router-dom';
+import BookContext from '../../../context/books/bookContex';
 import Lesson1 from './lesson/Lesson1';
 import Lesson2 from './lesson/Lesson2';
 import Lesson3 from './lesson/Lesson3';
@@ -16,14 +17,25 @@ import Lesson13 from './lesson/Lesson13';
 import Lesson14 from './lesson/Lesson14';
 import Lesson15 from './lesson/Lesson15';
 import Lesson16 from './lesson/Lesson16';
+import Button from '@restart/ui/esm/Button';
 
 
 const ActivityBook1 = (props) => {
 
+    // Extraer la informacion de books
+    const bookContext = useContext(BookContext);
+    const {bookmain, cambiarMainLesson} = bookContext;
 
     let idPage = props.match.params.id;
 
-    console.log(`Hola: ${idPage}`);
+
+    useEffect(() => {
+        cambiarMainLesson(false);
+        console.log(bookmain);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [bookmain])
+
+
 
 
     const seleccionarLeccion = (id)=>{
@@ -51,9 +63,10 @@ const ActivityBook1 = (props) => {
 
     }
 
-
     return ( 
         <div>
+            <a href="/primero">Voler a las lecciones</a>
+            
             {
                 seleccionarLeccion(idPage)
             }

@@ -1,10 +1,11 @@
 import React from 'react';
+import ButtonUpdate from '../ButtonUpdate';
 
 const Activity46 = () => {
     return ( 
-        <div>
-            <h1>ACT #46</h1>
-        </div>
+        <ButtonUpdate
+            actividad={{actividad46: true}}
+        />
      );
 }
  

@@ -1,5 +1,5 @@
 import React from 'react';
-import LessonHome from './LessonHome';
+import LessonHome from '../LessonHome';
 
 const Lesson8 = () => {
 

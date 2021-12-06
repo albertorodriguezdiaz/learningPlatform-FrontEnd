@@ -1,5 +1,7 @@
-import React,{useState, useEffect} from 'react';
+import React, {useContext} from 'react';
+import { Container } from 'react-bootstrap';
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
+import BookContext from '../../../context/books/bookContex';
 import Lesson from './Lessons';
 
 
@@ -17,6 +19,10 @@ const HomeBook1 = (props) => {
     //     console.log(url);
     //     guardarDisplay(url);
     // }
+
+    // Extraer la informacion de books
+    const bookContext = useContext(BookContext);
+    const {bookmain} = bookContext;
 
     const lecciones = [
         {name: 'Lección 1', id: 1},
@@ -39,22 +45,33 @@ const HomeBook1 = (props) => {
 
     return ( 
         <div>
-        <h1>Libro #1</h1>
+            
+        <Container>
+            <Router>
+                {
+                    bookmain===true &&
+                    
+                    <ul className="lessonBook">
+                    <h1>Libro #1</h1>
+                    {
+                        lecciones.map((act, key)=>
+                        <li key={key}>
+                        <Link to={"/primero/leccion/" + act.id}>
+                                {act.name}
+                            </Link>
+                        </li>
+                            
+                        )
+                    }
+                    </ul>
+                }
 
-        <Router>
-        {
-            lecciones.map((act)=>
-            <Link to={"/primero/leccion/" + act.id}>
-                <p>{act.name}</p>
-            </Link>
-                
-            )
-        }
-
-            <Route path="/primero/leccion/:id">
-             <Lesson/>
-            </Route>
-        </Router>
+                <Route path="/primero/leccion/:id">
+                <Lesson/>
+                </Route>
+            </Router>
+        </Container>
+        
 
         </div>
 

@@ -3,7 +3,6 @@ import AuthContext from '../../context/autentication/authContext';
 import HomeDocente from '../docentes/HomeDocente';
 import HomeAdmin from '../admin/HomeAdmin';
 import HomeAlumno from '../alumnos/HomeAlumno';
-import { Container } from 'react-bootstrap';
 
 
 const Home = (props) => {

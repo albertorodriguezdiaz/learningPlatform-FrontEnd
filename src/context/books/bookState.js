@@ -6,7 +6,8 @@ import ClienteAxios from '../../config/axios';
 
 import { 
     LIBRO_ACTUAL,
-    ACTIVIDAD_LIBRO
+    ACTIVIDAD_LIBRO,
+    VISIBLE_BOOKMAIN
     
  } from '../../types';
 
@@ -14,7 +15,8 @@ const BookState = props => {
 
     const initialState = {
         bookuser: [],
-        actividades: []
+        actividades: [],
+        bookmain: true
     }
 
     // Extraer la informacion de autenticacion
@@ -30,7 +32,6 @@ const BookState = props => {
     useEffect(() => {
         obtenerLibros();
         obtenerActivity();
-        seleccionarActividadUser();
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
@@ -103,15 +104,26 @@ const BookState = props => {
     }
 
 
+    const cambiarMainLesson = (visble) =>{
+        dispatch({
+            type: VISIBLE_BOOKMAIN,
+            payload: visble
+        });
+    }
+
+
+
     return ( 
         <BookContext.Provider
             value={{
                 bookuser: state.bookuser,
                 actividades: state.actividades,
+                bookmain: state.bookmain,
                 usuario,
                 obtenerLibros,
                 obtenerActivity,
-                seleccionarActividadUser
+                seleccionarActividadUser,
+                cambiarMainLesson
             }}
         >
             {props.children}

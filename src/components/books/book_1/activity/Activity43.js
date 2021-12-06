@@ -1,11 +1,12 @@
 import React from 'react';
+import ButtonUpdate from '../ButtonUpdate';
 
-const Activity43 = () => {
+const Activity42 = () => {
     return ( 
-        <div>
-            <h1>ACT #43</h1>
-        </div>
+        <ButtonUpdate
+            actividad={{actividad42: true}}
+        />
      );
 }
  
-export default Activity43;
+export default Activity42;

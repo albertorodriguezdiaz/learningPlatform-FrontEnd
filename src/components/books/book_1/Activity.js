@@ -131,6 +131,7 @@ const ActivityBook1 = (props) => {
 
 
     return ( 
+        
         <div>
             {
                 seleccionarActividad(idPage, idLeccion)
