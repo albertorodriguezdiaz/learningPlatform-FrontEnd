@@ -6,7 +6,8 @@ import AuthContext from '../../context/autentication/authContext';
 const TopBar = () => {
         // Extraer la informacion de autenticacion
         const authContext = useContext(AuthContext);
-        const { usuario, usertipo, cerrarSesion } = authContext;
+        const { usuario, usertipo } = authContext;
+
 
     return ( 
         <div>
@@ -37,11 +38,11 @@ const TopBar = () => {
                           </NavDropdown.Item>
                         </NavDropdown>
                       </Nav>
-                      <Button
+                      {/* <Button
                           className=""
                           onClick={ () => cerrarSesion() }
                       >Cerrar Sesión
-                      </Button>
+                      </Button> */}
 
                     </Offcanvas.Body>
                   </Navbar.Offcanvas>

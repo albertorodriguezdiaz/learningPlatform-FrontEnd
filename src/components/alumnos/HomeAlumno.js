@@ -6,7 +6,7 @@ import BookContext from '../../context/books/bookContex';
 import { Link } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 
-const HomeAlumno = () => {
+const HomeAlumno = (props) => {
 
     // Extraer la informacion de books
     const bookContext = useContext(BookContext);
@@ -14,7 +14,7 @@ const HomeAlumno = () => {
 
     // Extraer la informacion de autenticacion
     const authContext = useContext(AuthContext);
-    const { usuario } = authContext;
+    const { usuario, usuarioAutenticado } = authContext;
 
 
     // state buscar bookuser
@@ -22,10 +22,15 @@ const HomeAlumno = () => {
 
 
     useEffect(() => {
+        usuarioAutenticado();
+     // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+    useEffect(() => {
         obtenerBooksSoyVida();
         obtenerLibros();
      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [usuario])
 
 
  
@@ -55,8 +60,7 @@ const HomeAlumno = () => {
                 {
                     bookuser.map( (r, key) => 
                     // Comparamos el id del libro con el id del usuario
-                        r.usuario===usuario._id
-                        && 
+                        r.usuario===usuario._id && 
                         books.map( (e) =>
                         // Compara el Id de libros con el id de libros de usuarios
                             e._id===r.libro
@@ -65,9 +69,7 @@ const HomeAlumno = () => {
                         )
                                 
                     )
-                }
-
-                
+                }                
                 
         </Container>
      </div>

@@ -20,9 +20,9 @@ const Home = (props) => {
 
     return ( 
         <div>
-                { usertipo==='user' && <HomeAlumno />}
-                { usertipo==='admin' && <HomeAdmin /> }
-                { usertipo==='editor' && <HomeDocente /> }
+                { usertipo==='user' && <HomeAlumno {...props} />}
+                { usertipo==='admin' && <HomeAdmin {...props} /> }
+                { usertipo==='editor' && <HomeDocente {...props} /> }
         </div>
      );
 }

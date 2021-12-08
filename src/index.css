@@ -326,3 +326,34 @@ a {
 .iconsActivity{
   position: absolute;
 }
+
+.iconsActivity li{
+  position: absolute;
+  font-size: 30px;  
+  left: 0;
+  top: 0;
+
+}
+
+.iconsActivity li i{
+  color: #fff !important;
+}
+
+
+.actividadIcon1{  margin: 620px 140px; }
+.actividadIcon2{  margin: 450px 210px; }
+.actividadIcon3{  margin: 355px 80px; }
+.actividadIcon4{  margin: 200px 250px; }
+.actividadIcon5{  margin: 200px 590px; }
+.actividadIcon6{  margin: 365px 525px;}
+.actividadIcon7{  margin: 575px 585px; }
+.actividadIcon8{  margin: 460px 770px; }
+.actividadIcon9{  margin: 630px 1100px; }
+.actividadIcon10{  margin: 485px 1080px; }
+.actividadIcon11{  margin: 300px 1070px;}
+.actividadIcon12{  margin: 110px 995px; }
+.actividadIcon13{  margin: 80px 1360px; }
+.actividadIcon14{  margin: 245px 1490px;}
+.actividadIcon15{  margin: 375px 1360px; }
+.actividadIcon16{  margin: 580px 1500px; }
+

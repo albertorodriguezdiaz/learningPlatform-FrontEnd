@@ -36,9 +36,9 @@ if (token) {
 
 function App() {
   return (
-      <BookState>
-        <AlertState>
-          <AuthState>
+        <AuthState>
+          <BookState>
+            <AlertState>
 
               <Router>
                 <Switch>
@@ -57,9 +57,9 @@ function App() {
                 </Switch>
               </Router>
 
-          </AuthState>
-        </AlertState>
-      </BookState>
+            </AlertState>
+          </BookState>
+        </AuthState>
   );
 }
 

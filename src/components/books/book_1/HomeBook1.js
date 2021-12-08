@@ -13,6 +13,7 @@ import { gsap } from "gsap";
 const HomeBook1 = (props) => {
 
 
+
   // Extraer la informacion de autenticacion
   const authContext = useContext(AuthContext);
   const {usuario, usuarioAutenticado } = authContext;
@@ -22,18 +23,22 @@ const HomeBook1 = (props) => {
 
   const [actividadeslibro, guardarActividadeslibro] = useState([]);
 
+  
+
   useEffect(() => {
       obtenerActivity();
       usuarioAutenticado();
-      
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
 
     useEffect(() => {
-      activityRealizadas();        
+      activityRealizadas(); 
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [usuario]) 
+
+  
+
 
 
   let scrl = useRef(null);
@@ -77,88 +82,38 @@ const HomeBook1 = (props) => {
         }
       };
 
-         
-      const lecciones = [ 
-        {name: 'Lección 1', id: 1},
-        {name: 'Lección 2', id: 2},
-        {name: 'Lección 3', id: 3},
-        {name: 'Lección 4', id: 4},
-        {name: 'Lección 5', id: 5},
-        {name: 'Lección 6', id: 6},
-        {name: 'Lección 7', id: 7},
-        {name: 'Lección 8', id: 8},
-        {name: 'Lección 9', id: 9},
-        {name: 'Lección 10', id: 10},
-        {name: 'Lección 11', id: 11},
-        {name: 'Lección 12', id: 12},
-        {name: 'Lección 13', id: 13},
-        {name: 'Lección 14', id: 14},
-        {name: 'Lección 15', id: 15},
-        {name: 'Lección 16', id: 16}
-      ]
-
-
 
       const activityRealizadas = ()=>{
 
-          actividades.map(act =>
-            act.usuario===usuario._id &&
-              guardarActividadeslibro([
-                {id: 1, name: 'Actividad 1', realizado: act.actividad1 },
-                {id: 2, name: 'Actividad 2', realizado: act.actividad2 },
-                {id: 3, name: 'Actividad 3', realizado: act.actividad3 },
-                {id: 4, name: 'Actividad 4', realizado: act.actividad4 },
-                {id: 5, name: 'Actividad 5', realizado: act.actividad5 },
-                {id: 6, name: 'Actividad 6', realizado: act.actividad6 },
-                {id: 7, name: 'Actividad 7', realizado: act.actividad7 },
-                {id: 8, name: 'Actividad 8', realizado: act.actividad8 },
-                {id: 9, name: 'Actividad 9', realizado: act.actividad9 },
-                {id: 10, name: 'Actividad 10', realizado: act.actividad10 },
-                {id: 11, name: 'Actividad 11', realizado: act.actividad11 },
-                {id: 12, name: 'Actividad 12', realizado: act.actividad12 },
-                {id: 13, name: 'Actividad 13', realizado: act.actividad13 },
-                {id: 14, name: 'Actividad 14', realizado: act.actividad14 },
-                {id: 15, name: 'Actividad 15', realizado: act.actividad15 },
-                {id: 16, name: 'Actividad 16', realizado: act.actividad16 },
-                {id: 17, name: 'Actividad 17', realizado: act.actividad17 },
-                {id: 18, name: 'Actividad 18', realizado: act.actividad18 },
-                {id: 19, name: 'Actividad 19', realizado: act.actividad19 },
-                {id: 20, name: 'Actividad 20', realizado: act.actividad20 },
-                {id: 21, name: 'Actividad 21', realizado: act.actividad21 },
-                {id: 22, name: 'Actividad 22', realizado: act.actividad22 },
-                {id: 23, name: 'Actividad 23', realizado: act.actividad23 },
-                {id: 24, name: 'Actividad 24', realizado: act.actividad24 },
-                {id: 25, name: 'Actividad 25', realizado: act.actividad25 },
-                {id: 26, name: 'Actividad 26', realizado: act.actividad26 },
-                {id: 27, name: 'Actividad 27', realizado: act.actividad27 },
-                {id: 28, name: 'Actividad 28', realizado: act.actividad28 },
-                {id: 29, name: 'Actividad 29', realizado: act.actividad29 },
-                {id: 30, name: 'Actividad 30', realizado: act.actividad30 },
-                {id: 31, name: 'Actividad 31', realizado: act.actividad31 },
-                {id: 32, name: 'Actividad 32', realizado: act.actividad32 },
-                {id: 33, name: 'Actividad 33', realizado: act.actividad33 },
-                {id: 34, name: 'Actividad 34', realizado: act.actividad34 },
-                {id: 35, name: 'Actividad 35', realizado: act.actividad35 },
-                {id: 36, name: 'Actividad 36', realizado: act.actividad36 },
-                {id: 37, name: 'Actividad 37', realizado: act.actividad37 },
-                {id: 38, name: 'Actividad 38', realizado: act.actividad38 },
-                {id: 39, name: 'Actividad 39', realizado: act.actividad39 },
-                {id: 40, name: 'Actividad 40', realizado: act.actividad40 },
-                {id: 41, name: 'Actividad 41', realizado: act.actividad41 },
-                {id: 42, name: 'Actividad 42', realizado: act.actividad42 },
-                {id: 43, name: 'Actividad 43', realizado: act.actividad43 },
-                {id: 44, name: 'Actividad 44', realizado: act.actividad44 },
-                {id: 45, name: 'Actividad 45', realizado: act.actividad45 },
-                {id: 46, name: 'Actividad 46', realizado: act.actividad46 },
-                {id: 47, name: 'Actividad 47', realizado: act.actividad47 },
-                {id: 48, name: 'Actividad 48', realizado: act.actividad48 }
-              ])       
-             
-          )
+        actividades.map(act =>
+          act.usuario===usuario._id &&
+            guardarActividadeslibro([
+              ...actividadeslibro,
+              {id: 1, name: 'Lección 1', act1: act.actividad1, act2: act.actividad2, act3: act.actividad3 },
+              {id: 2, name: 'Lección 2', act1: act.actividad4, act2: act.actividad5, act3: act.actividad6 },
+              {id: 3, name: 'Lección 3', act1: act.actividad7, act2: act.actividad8, act3: act.actividad9 },
+              {id: 4, name: 'Lección 4', act1: act.actividad10, act2: act.actividad11, act3: act.actividad12 },
+              {id: 5, name: 'Lección 5', act1: act.actividad13, act2: act.actividad14, act3: act.actividad15 },
+              {id: 6, name: 'Lección 6', act1: act.actividad16, act2: act.actividad17, act3: act.actividad18 },
+              {id: 7, name: 'Lección 7', act1: act.actividad19, act2: act.actividad20, act3: act.actividad21 },
+              {id: 8, name: 'Lección 8', act1: act.actividad22, act2: act.actividad23, act3: act.actividad24 },
+              {id: 9, name: 'Lección 9', act1: act.actividad25, act2: act.actividad26, act3: act.actividad27 },
+              {id: 10, name: 'Lección 10', act1: act.actividad28, act2: act.actividad29, act3: act.actividad30 },
+              {id: 11, name: 'Lección 11', act1: act.actividad31, act2: act.actividad32, act3: act.actividad33 },
+              {id: 12, name: 'Lección 12', act1: act.actividad34, act2: act.actividad35, act3: act.actividad36 },
+              {id: 13, name: 'Lección 13', act1: act.actividad37, act2: act.actividad38, act3: act.actividad39 },
+              {id: 14, name: 'Lección 14', act1: act.actividad40, act2: act.actividad41, act3: act.actividad42 },
+              {id: 15, name: 'Lección 15', act1: act.actividad43, act2: act.actividad44, act3: act.actividad45 },
+              {id: 16, name: 'Lección 16', act1: act.actividad46, act2: act.actividad47, act3: act.actividad48 }
+              
+            ])       
+           
+        )
+        
+    }
 
-      }
+    
 
-      
 
     return ( 
       
@@ -190,13 +145,13 @@ const HomeBook1 = (props) => {
                           {
                             actividadeslibro.map((actividad, key) =>
                             // Muestra los iconos segun las actividades completadas y no completadas
-                                actividad.realizado===true
+                                actividad.act1===true && actividad.act2===true && actividad.act3===true
                                 ? (
                                     <li key={key} className={`actividadIcon${actividad.id}`}>
                                       <Link to={"/primero/leccion/" + actividad.id}>
                                         <i className="fas fa-star"></i>
                                       </Link>
-                                    </li>
+                                    </li> 
                                   )
                                 
                                 : (
@@ -237,19 +192,6 @@ const HomeBook1 = (props) => {
                     )}
 
                     
-                    
-
-                   {   
-                        lecciones.map((act, key)=>
-                        <li key={key}>
-                            <Link to={"/primero/leccion/" + act.id}>
-                                {act.name}
-                            </Link>
-                        </li>
-                            
-                        )
-                    }
-                
                   
                     </ul>
 
