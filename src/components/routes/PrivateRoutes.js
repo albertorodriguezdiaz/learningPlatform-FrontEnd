@@ -4,7 +4,7 @@ import {Route, Redirect} from 'react-router-dom';
 
 import AuthContext from '../../context/autentication/authContext';
 
-const RutaPrivada = ({ component: Component, userLevel, ...props}) => {
+const RutaPrivada = ({ component: Component, ...props}) => {
 
 
     const authContext = useContext(AuthContext);

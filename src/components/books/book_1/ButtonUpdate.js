@@ -1,5 +1,6 @@
 import React,{useContext} from 'react';
 import BookContext from '../../../context/books/bookContex';
+import AuthContext from '../../../context/autentication/authContext';
 import { Form, Button } from 'react-bootstrap';
 
 
@@ -11,9 +12,14 @@ const ButtonUpdate = ({actividad}) => {
     const {seleccionarActividadUser } = bookContext;
 
 
+     // Extraer la informacion de autenticacion
+    const authContext = useContext(AuthContext);
+    const {usuario } = authContext;
+
+
     const onSubmitBook = (e)=>{
         e.preventDefault();
-        seleccionarActividadUser(actividad);
+        seleccionarActividadUser(actividad, usuario);
     }
 
 

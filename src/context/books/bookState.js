@@ -1,14 +1,13 @@
-import React, { useReducer, useState, useContext, useEffect } from 'react';
-import AuthContext from '../autentication/authContext';
+import React, { useState, useReducer, useEffect } from 'react';
+// import AuthContext from '../autentication/authContext';
+import ClienteAxios from '../../config/axios';
 import BookReducer from './bookReducer';
 import BookContext from './bookContex';
-import ClienteAxios from '../../config/axios';
 
 import { 
     LIBRO_ACTUAL,
     ACTIVIDAD_LIBRO,
-    VISIBLE_BOOKMAIN
-    
+    VISIBLE_BOOKMAIN,    
  } from '../../types';
 
 const BookState = props => {
@@ -16,22 +15,21 @@ const BookState = props => {
     const initialState = {
         bookuser: [],
         actividades: [],
-        bookmain: true
+        bookmain: true,
+        libroid: []
     }
 
-    // Extraer la informacion de autenticacion
-    const authContext = useContext(AuthContext);
-    const {usuario } = authContext;
-    
+    // // Extraer la informacion de autenticacion
+    // const authContext = useContext(AuthContext);
+    // const {usuario } = authContext;
+
 
     const [state, dispatch] = useReducer(BookReducer, initialState);
 
-    const [ idlibro, guardarIdLibro] = useState([]);
-
 
     useEffect(() => {
-        obtenerLibros();
-        obtenerActivity();
+
+        // obtenerLibros();
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
@@ -40,7 +38,7 @@ const BookState = props => {
     const obtenerLibros = async () =>{
 
         try {
-            const respuesta = await ClienteAxios.get('/api/books');
+            const respuesta = await ClienteAxios.get('/api/books/');
             dispatch({
                 type: LIBRO_ACTUAL,
                 payload: respuesta.data.bookuser
@@ -49,7 +47,7 @@ const BookState = props => {
         } catch (error) {
             console.log(`Error al obtener libros`);
             console.log(error);
-
+ 
         }
         
     }
@@ -57,10 +55,11 @@ const BookState = props => {
 
 
     const obtenerActivity = async () =>{
-
+        
         try {
-            const respuesta = await ClienteAxios.get('/api/activity');
-            dispatch({
+            const respuesta = await ClienteAxios.get(`/api/activity`);
+            // console.log(`actividades: ${JSON.stringify(respuesta)}`);
+            dispatch({ 
                 type: ACTIVIDAD_LIBRO,
                 payload: respuesta.data.activity
             });
@@ -76,6 +75,7 @@ const BookState = props => {
 
 
     const actualizarActivity = async booksoyvida => {
+        console.log(`booksoyvida: ${JSON.stringify(booksoyvida)}`);
         try {
             await ClienteAxios.put(`/api/activity/${booksoyvida._id}`, booksoyvida);
         } catch (error) {
@@ -85,19 +85,23 @@ const BookState = props => {
 
 
     
-    const seleccionarActividadUser = (actividadBook) =>{
+    const seleccionarActividadUser = (actividadBook, usuario) =>{
+        // console.log(`actividadBook: ${JSON.stringify(actividadBook)}`);
         
-        state.actividades.map((act)=>
-            act.usuario===usuario._id
-            && guardarIdLibro({
-                _id: act._id, 
-                usuario: act.usuario
-            })
-        );
+        let obj = {};
+
+        state.actividades.forEach((act) =>{
+        if (act.usuario===usuario._id) {
+                obj={
+                    _id: act._id, 
+                    usuario: act.usuario
+                }
+            }
+        });
+
 
         // Fusionamos los dos objetos para formar uno y enviar actualizar la actividad
-        const objActBook = Object.assign(idlibro, actividadBook);
-
+        const objActBook = Object.assign(obj, actividadBook);
 
         actualizarActivity(objActBook);             
 
@@ -119,7 +123,6 @@ const BookState = props => {
                 bookuser: state.bookuser,
                 actividades: state.actividades,
                 bookmain: state.bookmain,
-                usuario,
                 obtenerLibros,
                 obtenerActivity,
                 seleccionarActividadUser,

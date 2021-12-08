@@ -1,7 +1,7 @@
 import { 
     LIBRO_ACTUAL,
     ACTIVIDAD_LIBRO,
-    VISIBLE_BOOKMAIN
+    VISIBLE_BOOKMAIN,
 } from '../../types';
 
 /* eslint import/no-anonymous-default-export: [2, {"allowArrowFunction": true}] */

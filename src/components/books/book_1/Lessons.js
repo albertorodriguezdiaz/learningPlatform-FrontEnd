@@ -17,7 +17,6 @@ import Lesson13 from './lesson/Lesson13';
 import Lesson14 from './lesson/Lesson14';
 import Lesson15 from './lesson/Lesson15';
 import Lesson16 from './lesson/Lesson16';
-import Button from '@restart/ui/esm/Button';
 
 
 const ActivityBook1 = (props) => {
