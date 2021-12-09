@@ -19,7 +19,7 @@ import Lesson15 from './lesson/Lesson15';
 import Lesson16 from './lesson/Lesson16';
 
 
-const ActivityBook1 = (props) => {
+const Lessons = (props) => {
 
     // Extraer la informacion de books
     const bookContext = useContext(BookContext);
@@ -35,27 +35,32 @@ const ActivityBook1 = (props) => {
     }, [bookmain])
 
 
+    const lecciones = [
+        {name: 'Actividad 1', id: 1},
+        {name: 'Actividad 2', id: 2},
+        {name: 'Actividad 3', id: 3}
+    ]
 
 
     const seleccionarLeccion = (id)=>{
 
         switch (id) {
-            case '1': return <Lesson1 />
-            case '2': return <Lesson2 />
-            case '3': return <Lesson3 />
-            case '4': return <Lesson4 />
-            case '5': return <Lesson5 />
-            case '6': return <Lesson6 />
-            case '7': return <Lesson7 />
-            case '8': return <Lesson8 />
-            case '9': return <Lesson9 />
-            case '10': return <Lesson10 />
-            case '11': return <Lesson11 />
-            case '12': return <Lesson12 />
-            case '13': return <Lesson13 />
-            case '14': return <Lesson14 />
-            case '15': return <Lesson15 />
-            case '16': return <Lesson16 />
+            case '1': return <Lesson1 {...props} lecciones={lecciones} />
+            case '2': return <Lesson2 {...props} lecciones={lecciones} />
+            case '3': return <Lesson3 {...props} lecciones={lecciones} />
+            case '4': return <Lesson4 {...props} lecciones={lecciones} />
+            case '5': return <Lesson5 {...props} lecciones={lecciones} />
+            case '6': return <Lesson6 {...props} lecciones={lecciones} />
+            case '7': return <Lesson7 {...props} lecciones={lecciones} />
+            case '8': return <Lesson8 {...props} lecciones={lecciones} />
+            case '9': return <Lesson9 {...props} lecciones={lecciones} />
+            case '10': return <Lesson10 {...props} lecciones={lecciones} />
+            case '11': return <Lesson11 {...props} lecciones={lecciones} />
+            case '12': return <Lesson12 {...props} lecciones={lecciones} />
+            case '13': return <Lesson13 {...props} lecciones={lecciones} />
+            case '14': return <Lesson14 {...props} lecciones={lecciones} />
+            case '15': return <Lesson15 {...props} lecciones={lecciones} />
+            case '16': return <Lesson16 {...props} lecciones={lecciones} />
 
             default: break;
         }
@@ -73,4 +78,4 @@ const ActivityBook1 = (props) => {
      );
 }
  
-export default withRouter(ActivityBook1);
+export default withRouter(Lessons);

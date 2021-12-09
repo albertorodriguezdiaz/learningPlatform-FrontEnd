@@ -13,7 +13,7 @@ const HomeAlumno = (props) => {
 
     // Extraer la informacion de autenticacion
     const authContext = useContext(AuthContext);
-    const { usuario, usuarioAutenticado } = authContext;
+    const { usuario, userdata, usuarioAutenticado } = authContext;
 
 
     // state buscar bookuser
@@ -60,7 +60,7 @@ const HomeAlumno = (props) => {
                 {
                     bookuser.map( (r, key) => 
                     // Comparamos el id del libro con el id del usuario
-                        r.usuario===usuario._id && 
+                        r.usuario===userdata._id && 
                         books.map( (e) =>
                         // Compara el Id de libros con el id de libros de usuarios
                             e._id===r.libro

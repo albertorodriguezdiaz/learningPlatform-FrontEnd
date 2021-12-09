@@ -25,8 +25,9 @@ const AuthState = props => {
 
     }
 
-    const [usertipo, getUsertipo] = useState();
-    const [userdata_id, getUserdata_id] = useState();
+    const [usertipo, getUsertipo] = useState([]);
+    const [userdata, getUserdata] = useState([]);
+    const [userdata_id, getUserdata_id] = useState('');
 
     const [state, dispatch] = useReducer(AuthReducer, initialState);
 
@@ -67,13 +68,14 @@ const AuthState = props => {
 
         try {
             const respuesta = await clienteAxios.get('/api/auth');
-            // console.log(`USUARIO DATA ${JSON.stringify(respuesta.data.usuario._id)}`);
+            // console.log(`USUARIO DATA ${JSON.stringify(respuesta.data.usuario.)}`);
             dispatch({
                 type: OBTENER_USUARIO,
                 payload: respuesta.data.usuario
             });
 
-            getUserdata_id(respuesta.data.usuario.tipo._id);
+            getUserdata_id(respuesta.data.usuario._id);
+            getUserdata(respuesta.data.usuario);
             getUsertipo(respuesta.data.usuario.tipo);
             
 
@@ -135,6 +137,7 @@ const AuthState = props => {
                 mensaje: state.mensaje,
                 cargando: state.cargando,
                 usertipo: usertipo,
+                userdata: userdata,
                 userdata_id: userdata_id,
                 registrarUsuario,
                 usuarioAutenticado,

@@ -14,18 +14,18 @@ const ButtonUpdate = ({actividad}) => {
 
      // Extraer la informacion de autenticacion
     const authContext = useContext(AuthContext);
-    const {usuario } = authContext;
+    const {userdata } = authContext;
 
 
     const onSubmitBook = (e)=>{
         e.preventDefault();
-        seleccionarActividadUser(actividad, usuario);
+        seleccionarActividadUser(actividad, userdata);
     }
 
 
     return ( 
         <div>
-            <h1>Actividad #</h1>
+            {/* <h1>Actividad #{idActividad}</h1> */}
             <Form
                 onSubmit={onSubmitBook}
             >

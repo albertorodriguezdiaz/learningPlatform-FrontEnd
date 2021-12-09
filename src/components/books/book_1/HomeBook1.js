@@ -1,6 +1,6 @@
 import React, {useState, useContext, useRef, useEffect} from 'react';
 import { Container } from 'react-bootstrap';
-import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Link, Route, RouteComponentProps } from 'react-router-dom';
 import BookContext from '../../../context/books/bookContex';
 import AuthContext from '../../../context/autentication/authContext';
 import TopBar from '../../layout/TopBar';
@@ -12,39 +12,35 @@ import { gsap } from "gsap";
 
 const HomeBook1 = (props) => {
 
-
-
   // Extraer la informacion de autenticacion
   const authContext = useContext(AuthContext);
-  const {userdata_id, usuarioAutenticado } = authContext;
+  const {userdata, usuario, usuarioAutenticado } = authContext;
 
   const [render, setRender] = useState(false);
 
   const bookContext = useContext(BookContext);
-  const {bookmain, actividades, obtenerActivity} = bookContext;
+  const {bookmain, actividades, obtenerActivity, activityRealizadas, actividadeslibro} = bookContext;
 
-  const [actividadeslibro, guardarActividadeslibro] = useState([]);
   
 
   useEffect(() => {
-    setRender(true)
-    obtenerActivity(userdata_id);
+    usuarioAutenticado();
+    setRender(true);
     
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
-
-
-    useEffect(() => {
-      // obtenerActivity(usuario._id);
-      
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [render]) 
-
+  }, [])
+  
+  
+  useEffect(() => {  
+    obtenerActivity(userdata._id);  
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [render, usuario]) 
+ 
     
     useEffect(() => {
+      
       activityRealizadas(); 
-      console.log(`ACTIVIDADES ${JSON.stringify(actividades)}`);
+      // console.log(`ACTIVIDADES ${JSON.stringify(actividades)}`);
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [actividades]) 
 
@@ -94,32 +90,7 @@ const HomeBook1 = (props) => {
       };
 
 
-      const activityRealizadas = ()=>{
-
-        actividades.map(act =>
-            guardarActividadeslibro([
-              {id: 1, name: 'Lección 1', act1: act.actividad1, act2: act.actividad2, act3: act.actividad3 },
-              {id: 2, name: 'Lección 2', act1: act.actividad4, act2: act.actividad5, act3: act.actividad6 },
-              {id: 3, name: 'Lección 3', act1: act.actividad7, act2: act.actividad8, act3: act.actividad9 },
-              {id: 4, name: 'Lección 4', act1: act.actividad10, act2: act.actividad11, act3: act.actividad12 },
-              {id: 5, name: 'Lección 5', act1: act.actividad13, act2: act.actividad14, act3: act.actividad15 },
-              {id: 6, name: 'Lección 6', act1: act.actividad16, act2: act.actividad17, act3: act.actividad18 },
-              {id: 7, name: 'Lección 7', act1: act.actividad19, act2: act.actividad20, act3: act.actividad21 },
-              {id: 8, name: 'Lección 8', act1: act.actividad22, act2: act.actividad23, act3: act.actividad24 },
-              {id: 9, name: 'Lección 9', act1: act.actividad25, act2: act.actividad26, act3: act.actividad27 },
-              {id: 10, name: 'Lección 10', act1: act.actividad28, act2: act.actividad29, act3: act.actividad30 },
-              {id: 11, name: 'Lección 11', act1: act.actividad31, act2: act.actividad32, act3: act.actividad33 },
-              {id: 12, name: 'Lección 12', act1: act.actividad34, act2: act.actividad35, act3: act.actividad36 },
-              {id: 13, name: 'Lección 13', act1: act.actividad37, act2: act.actividad38, act3: act.actividad39 },
-              {id: 14, name: 'Lección 14', act1: act.actividad40, act2: act.actividad41, act3: act.actividad42 },
-              {id: 15, name: 'Lección 15', act1: act.actividad43, act2: act.actividad44, act3: act.actividad45 },
-              {id: 16, name: 'Lección 16', act1: act.actividad46, act2: act.actividad47, act3: act.actividad48 }
-              
-            ])       
-           
-        )
-        
-    }
+  
 
     
 
@@ -129,11 +100,8 @@ const HomeBook1 = (props) => {
         <div>
         <TopBar />    
         <Container>
-            <Router>
-
-                
-
-            
+            <Router >
+                           
                 {
                     bookmain===true &&
                     <ul className="lessonBook">
@@ -157,7 +125,12 @@ const HomeBook1 = (props) => {
                                 actividad.act1===true && actividad.act2===true && actividad.act3===true
                                 ? (
                                     <li key={key} className={`actividadIcon${actividad.id}`}>
-                                      <Link to={"/primero/leccion/" + actividad.id}>
+                                      <Link 
+                                        to={{
+                                          pathname:`/primero/leccion/${actividad.id}`,
+                                          state: actividadeslibro
+                                        }}
+                                      >
                                         <i className="fas fa-star"></i>
                                       </Link>
                                     </li> 
@@ -165,7 +138,12 @@ const HomeBook1 = (props) => {
                                 
                                 : (
                                     <li key={key} className={`actividadIcon${actividad.id}`}>
-                                      <Link to={"/primero/leccion/" + actividad.id}>
+                                      <Link 
+                                        to={{
+                                          pathname:`/primero/leccion/${actividad.id}`,
+                                          state: actividadeslibro
+                                        }}
+                                      >
                                         <i className="fas fa-lock"></i>
                                       </Link>
                                     </li>
@@ -204,14 +182,13 @@ const HomeBook1 = (props) => {
                   
                     </ul>
 
-                   
                 }
 
                 <Route path="/primero/leccion/:id">
-                <Lesson/>
+                  <Lesson/>
                 </Route>
-
             </Router>
+            
         </Container>
         
 

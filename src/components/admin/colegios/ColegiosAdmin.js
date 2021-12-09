@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import ClienteAxios from 'axios';
 import { Container, Row, Col, Table, Button } from 'react-bootstrap';
+import TopBar from '../../layout/TopBar';
 
 const ColegiosAdmin = () => {
     
@@ -121,6 +122,9 @@ const obtenerColegios = async () => {
 
 
     return ( 
+        <div>
+            <TopBar />
+        
         <Container>
             <Row>
                 <Col lg="12">
@@ -198,7 +202,7 @@ const obtenerColegios = async () => {
                 </Table>
             </Row>
         </Container>
-
+        </div>
 
 
 

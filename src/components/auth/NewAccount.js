@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import ClienteAxios from 'axios';
 import AlertaContext from '../../context/alerts/alertContext';
 import AuthContext from '../../context/autentication/authContext';
+import TopBar from '../layout/TopBar';
 
 const NuevaCuenta = (props) => {
 
@@ -196,7 +197,8 @@ const NuevaCuenta = (props) => {
 
 
     return ( 
-        <div className="">
+        <div>
+            <TopBar />
             { alerta 
                     ? (
                         <div className={`alerta ${alerta.categoria}`}>{alerta.msg}</div>

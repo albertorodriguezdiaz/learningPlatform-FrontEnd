@@ -3,6 +3,7 @@ import clienteAxios from 'axios';
 import { Link } from 'react-router-dom';
 import { Container, Row, Table } from 'react-bootstrap';
 import Button from '@restart/ui/esm/Button';
+import TopBar from '../layout/TopBar';
 
 const AlumnosAdmin = () => {
 
@@ -38,6 +39,8 @@ const AlumnosAdmin = () => {
 
 
     return ( 
+        <div>
+            <TopBar />
         <Container>
             <Row>            
 
@@ -92,6 +95,7 @@ const AlumnosAdmin = () => {
                 </Table>
             </Row>
         </Container>
+        </div>
      );
 }
  

@@ -16,6 +16,7 @@ import NotFound from './components/layout/NotFound';
 
 // Alumnos
 import HomeBook1 from './components/books/book_1/HomeBook1';
+import Notas from './components/alumnos/Notas';
 
 
 // Admin
@@ -52,7 +53,8 @@ function App() {
                   <PrivateRoutes userLevel={'admin'} exact path="/usuariolibro" component={BooksAdmin} />
 
                   <PrivateRoutes userLevel={'user'} exact path="/primero" component={HomeBook1} />
-
+                  <PrivateRoutes userLevel={'user'} exact path="/notas" component={Notas} />
+                  
                   <Route path="*" component={NotFound} />
                 </Switch>
               </Router>

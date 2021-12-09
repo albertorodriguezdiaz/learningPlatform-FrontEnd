@@ -50,81 +50,81 @@ import Activity47 from './activity/Activity47';
 import Activity48 from './activity/Activity48';
 
 
-const ActivityBook1 = (props) => {
+const Activity = (props) => {
 
 
     const idPage = props.match.params.id;
-    const idLeccion = props.match.params.leccion;
+    const idActivity = props.match.params.leccion;
 
-    console.log(`ID: ${idPage}`);
-    console.log(`Props: ${props.match.params.leccion}`);
+    // console.log(`ID: ${idPage}`);
+    // console.log(`Props: ${props.match.params.leccion}`);
 
 
-    const seleccionarActividad = (idPage, idLeccion)=>{
+    const seleccionarActividad = (idPage, idActivity)=>{
 
-        if(idPage==='1'&&idLeccion==='1') return <Activity1 />
-        if(idPage==='2'&&idLeccion==='1') return <Activity2 />
-        if(idPage==='3'&&idLeccion==='1') return <Activity3 />
+        if(idPage==='1'&&idActivity==='1') return <Activity1 idActivity={idActivity} {...props} />
+        if(idPage==='2'&&idActivity==='1') return <Activity2 idActivity={idActivity} {...props} />
+        if(idPage==='3'&&idActivity==='1') return <Activity3 idActivity={idActivity} {...props} />
 
-        if(idPage==='1'&&idLeccion==='2') return <Activity4 />
-        if(idPage==='2'&&idLeccion==='2') return <Activity5 />
-        if(idPage==='3'&&idLeccion==='2') return <Activity6 />
+        if(idPage==='1'&&idActivity==='2') return <Activity4 idActivity={idActivity} {...props} />
+        if(idPage==='2'&&idActivity==='2') return <Activity5 idActivity={idActivity} {...props} />
+        if(idPage==='3'&&idActivity==='2') return <Activity6 idActivity={idActivity} {...props} />
 
-        if(idPage==='1'&&idLeccion==='3') return <Activity7 />
-        if(idPage==='2'&&idLeccion==='3') return <Activity8 />
-        if(idPage==='3'&&idLeccion==='3') return <Activity9 />
+        if(idPage==='1'&&idActivity==='3') return <Activity7 idActivity={idActivity} {...props} />
+        if(idPage==='2'&&idActivity==='3') return <Activity8 idActivity={idActivity} {...props} />
+        if(idPage==='3'&&idActivity==='3') return <Activity9 idActivity={idActivity} {...props} />
 
-        if(idPage==='1'&&idLeccion==='4') return <Activity10 />
-        if(idPage==='2'&&idLeccion==='4') return <Activity11 />
-        if(idPage==='3'&&idLeccion==='4') return <Activity12 />
+        if(idPage==='1'&&idActivity==='4') return <Activity10 idActivity={idActivity} {...props} />
+        if(idPage==='2'&&idActivity==='4') return <Activity11 idActivity={idActivity} {...props} />
+        if(idPage==='3'&&idActivity==='4') return <Activity12 idActivity={idActivity} {...props} />
 
-        if(idPage==='1'&&idLeccion==='5') return <Activity13 />
-        if(idPage==='2'&&idLeccion==='5') return <Activity14 />
-        if(idPage==='3'&&idLeccion==='5') return <Activity15 />
+        if(idPage==='1'&&idActivity==='5') return <Activity13 idActivity={idActivity} {...props} />
+        if(idPage==='2'&&idActivity==='5') return <Activity14 idActivity={idActivity} {...props} />
+        if(idPage==='3'&&idActivity==='5') return <Activity15 idActivity={idActivity} {...props} />
 
-        if(idPage==='1'&&idLeccion==='6') return <Activity16 />
-        if(idPage==='2'&&idLeccion==='6') return <Activity17 />
-        if(idPage==='3'&&idLeccion==='6') return <Activity18 />
+        if(idPage==='1'&&idActivity==='6') return <Activity16 idActivity={idActivity} {...props} />
+        if(idPage==='2'&&idActivity==='6') return <Activity17 idActivity={idActivity} {...props} />
+        if(idPage==='3'&&idActivity==='6') return <Activity18 idActivity={idActivity} {...props} />
 
-        if(idPage==='1'&&idLeccion==='7') return <Activity19 />
-        if(idPage==='2'&&idLeccion==='7') return <Activity20 />
-        if(idPage==='3'&&idLeccion==='7') return <Activity21 />
+        if(idPage==='1'&&idActivity==='7') return <Activity19 idActivity={idActivity} {...props} />
+        if(idPage==='2'&&idActivity==='7') return <Activity20 idActivity={idActivity} {...props} />
+        if(idPage==='3'&&idActivity==='7') return <Activity21 idActivity={idActivity} {...props} />
 
-        if(idPage==='1'&&idLeccion==='8') return <Activity22 />
-        if(idPage==='2'&&idLeccion==='8') return <Activity23 />
-        if(idPage==='3'&&idLeccion==='8') return <Activity24 />
+        if(idPage==='1'&&idActivity==='8') return <Activity22 idActivity={idActivity} {...props} />
+        if(idPage==='2'&&idActivity==='8') return <Activity23 idActivity={idActivity} {...props} />
+        if(idPage==='3'&&idActivity==='8') return <Activity24 idActivity={idActivity} {...props} />
 
-        if(idPage==='1'&&idLeccion==='9') return <Activity25 />
-        if(idPage==='2'&&idLeccion==='9') return <Activity26 />
-        if(idPage==='3'&&idLeccion==='9') return <Activity27 />
+        if(idPage==='1'&&idActivity==='9') return <Activity25 idActivity={idActivity} {...props} />
+        if(idPage==='2'&&idActivity==='9') return <Activity26 idActivity={idActivity} {...props} />
+        if(idPage==='3'&&idActivity==='9') return <Activity27 idActivity={idActivity} {...props} />
 
-        if(idPage==='1'&&idLeccion==='10') return <Activity28 />
-        if(idPage==='2'&&idLeccion==='10') return <Activity29 />
-        if(idPage==='3'&&idLeccion==='10') return <Activity30 />
+        if(idPage==='1'&&idActivity==='10') return <Activity28 idActivity={idActivity} {...props} />
+        if(idPage==='2'&&idActivity==='10') return <Activity29 idActivity={idActivity} {...props} />
+        if(idPage==='3'&&idActivity==='10') return <Activity30 idActivity={idActivity} {...props} />
 
-        if(idPage==='1'&&idLeccion==='11') return <Activity31 />
-        if(idPage==='2'&&idLeccion==='11') return <Activity32 />
-        if(idPage==='3'&&idLeccion==='11') return <Activity33 />
+        if(idPage==='1'&&idActivity==='11') return <Activity31 idActivity={idActivity} {...props} />
+        if(idPage==='2'&&idActivity==='11') return <Activity32 idActivity={idActivity} {...props} />
+        if(idPage==='3'&&idActivity==='11') return <Activity33 idActivity={idActivity} {...props} />
 
-        if(idPage==='1'&&idLeccion==='12') return <Activity34 />
-        if(idPage==='2'&&idLeccion==='12') return <Activity35 />
-        if(idPage==='3'&&idLeccion==='12') return <Activity36 />
+        if(idPage==='1'&&idActivity==='12') return <Activity34 idActivity={idActivity} {...props} />
+        if(idPage==='2'&&idActivity==='12') return <Activity35 idActivity={idActivity} {...props} />
+        if(idPage==='3'&&idActivity==='12') return <Activity36 idActivity={idActivity} {...props} />
 
-        if(idPage==='1'&&idLeccion==='13') return <Activity37 />
-        if(idPage==='2'&&idLeccion==='13') return <Activity38 />
-        if(idPage==='3'&&idLeccion==='13') return <Activity39 />
+        if(idPage==='1'&&idActivity==='13') return <Activity37 idActivity={idActivity} {...props} />
+        if(idPage==='2'&&idActivity==='13') return <Activity38 idActivity={idActivity} {...props} />
+        if(idPage==='3'&&idActivity==='13') return <Activity39 idActivity={idActivity} {...props} />
 
-        if(idPage==='1'&&idLeccion==='14') return <Activity40 />
-        if(idPage==='2'&&idLeccion==='14') return <Activity41 />
-        if(idPage==='3'&&idLeccion==='14') return <Activity42 />
+        if(idPage==='1'&&idActivity==='14') return <Activity40 idActivity={idActivity} {...props} />
+        if(idPage==='2'&&idActivity==='14') return <Activity41 idActivity={idActivity} {...props} />
+        if(idPage==='3'&&idActivity==='14') return <Activity42 idActivity={idActivity} {...props} />
 
-        if(idPage==='1'&&idLeccion==='15') return <Activity43 />
-        if(idPage==='2'&&idLeccion==='15') return <Activity44 />
-        if(idPage==='3'&&idLeccion==='15') return <Activity45 />
+        if(idPage==='1'&&idActivity==='15') return <Activity43 idActivity={idActivity} {...props} />
+        if(idPage==='2'&&idActivity==='15') return <Activity44 idActivity={idActivity} {...props} />
+        if(idPage==='3'&&idActivity==='15') return <Activity45 idActivity={idActivity} {...props} />
 
-        if(idPage==='1'&&idLeccion==='16') return <Activity46 />
-        if(idPage==='2'&&idLeccion==='16') return <Activity47 />
-        if(idPage==='3'&&idLeccion==='16') return <Activity48 />
+        if(idPage==='1'&&idActivity==='16') return <Activity46 idActivity={idActivity} {...props} />
+        if(idPage==='2'&&idActivity==='16') return <Activity47 idActivity={idActivity} {...props} />
+        if(idPage==='3'&&idActivity==='16') return <Activity48 idActivity={idActivity} {...props} />
 
         
     }
@@ -134,10 +134,10 @@ const ActivityBook1 = (props) => {
         
         <div>
             {
-                seleccionarActividad(idPage, idLeccion)
+                seleccionarActividad(idPage, idActivity)
             }
         </div>
      );
 }
  
-export default withRouter(ActivityBook1);
+export default withRouter(Activity);
