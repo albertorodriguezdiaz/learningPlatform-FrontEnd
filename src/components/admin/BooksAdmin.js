@@ -139,7 +139,7 @@ const obtenerBooksSoyVida = async () => {
 
     const obtenerUsuariosByColegio = async (colegio) => {
         try {
-        
+            
             const resultado = await ClienteAxios.get('/api/users', { params: { colegio }});
             guardarUsuario(resultado.data.alumnos);
             

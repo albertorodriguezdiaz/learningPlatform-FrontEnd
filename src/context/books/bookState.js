@@ -54,14 +54,16 @@ const BookState = props => {
 
 
 
-    const obtenerActivity = async () =>{
+    const obtenerActivity = async (usuario) =>{
         
         try {
-            const respuesta = await ClienteAxios.get(`/api/activity`);
-            // console.log(`actividades: ${JSON.stringify(respuesta)}`);
+            const respuesta = await ClienteAxios.get('/api/activity', { params: { usuario }});
+            console.log(`RESPUESTA ACTIVITY ${JSON.stringify(respuesta.data.actividad)}`); 
+            
+
             dispatch({ 
                 type: ACTIVIDAD_LIBRO,
-                payload: respuesta.data.activity
+                payload: respuesta.data.actividad
             });
 
         } catch (error) {

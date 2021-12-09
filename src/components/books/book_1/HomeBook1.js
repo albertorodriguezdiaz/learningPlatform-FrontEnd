@@ -16,26 +16,37 @@ const HomeBook1 = (props) => {
 
   // Extraer la informacion de autenticacion
   const authContext = useContext(AuthContext);
-  const {usuario, usuarioAutenticado } = authContext;
+  const {userdata_id, usuarioAutenticado } = authContext;
+
+  const [render, setRender] = useState(false);
 
   const bookContext = useContext(BookContext);
   const {bookmain, actividades, obtenerActivity} = bookContext;
 
   const [actividadeslibro, guardarActividadeslibro] = useState([]);
-
   
 
   useEffect(() => {
-      obtenerActivity();
-      usuarioAutenticado();
+    setRender(true)
+    obtenerActivity(userdata_id);
+    
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
 
     useEffect(() => {
-      activityRealizadas(); 
+      // obtenerActivity(usuario._id);
+      
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [usuario]) 
+    }, [render]) 
+
+    
+    useEffect(() => {
+      activityRealizadas(); 
+      console.log(`ACTIVIDADES ${JSON.stringify(actividades)}`);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [actividades]) 
 
   
 
@@ -86,9 +97,7 @@ const HomeBook1 = (props) => {
       const activityRealizadas = ()=>{
 
         actividades.map(act =>
-          act.usuario===usuario._id &&
             guardarActividadeslibro([
-              ...actividadeslibro,
               {id: 1, name: 'Lección 1', act1: act.actividad1, act2: act.actividad2, act3: act.actividad3 },
               {id: 2, name: 'Lección 2', act1: act.actividad4, act2: act.actividad5, act3: act.actividad6 },
               {id: 3, name: 'Lección 3', act1: act.actividad7, act2: act.actividad8, act3: act.actividad9 },

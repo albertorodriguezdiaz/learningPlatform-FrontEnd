@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import { Container, Navbar, Offcanvas, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
 import AuthContext from '../../context/autentication/authContext';
 
@@ -6,18 +6,26 @@ import AuthContext from '../../context/autentication/authContext';
 const TopBar = () => {
         // Extraer la informacion de autenticacion
         const authContext = useContext(AuthContext);
-        const { usuario, usertipo } = authContext;
+        const { usuario, usertipo, cerrarSesion, usuarioAutenticado } = authContext;
 
+    
+   useEffect(() => {  
+     
+        usuarioAutenticado();        
+     // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     return ( 
         <div>
+
             { usertipo==='user' && 
+            
                 <Navbar bg="dark" variant="dark" expand={false}>
                 <Container fluid>
                   <Navbar.Brand href="/home">Home</Navbar.Brand>
                   <Navbar.Brand ><p>Hola {usuario.nombre}</p></Navbar.Brand>
                   <Navbar.Toggle aria-controls="offcanvasNavbar" />
-                  <Navbar.Offcanvas
+                  <Navbar.Offcanvas 
                     id="offcanvasNavbar"
                     aria-labelledby="offcanvasNavbarLabel"
                     placement="end"
@@ -38,11 +46,11 @@ const TopBar = () => {
                           </NavDropdown.Item>
                         </NavDropdown>
                       </Nav>
-                      {/* <Button
+                      <Button
                           className=""
                           onClick={ () => cerrarSesion() }
                       >Cerrar Sesión
-                      </Button> */}
+                      </Button>
 
                     </Offcanvas.Body>
                   </Navbar.Offcanvas>

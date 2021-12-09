@@ -1,7 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import ClienteAxios from 'axios';
 import AuthContext from '../../context/autentication/authContext';
-import TopBar from '../layout/TopBar';
 import BookContext from '../../context/books/bookContex';
 import { Link } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
@@ -27,6 +26,7 @@ const HomeAlumno = (props) => {
     }, [])
 
     useEffect(() => {
+        
         obtenerBooksSoyVida();
         obtenerLibros();
      // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -51,7 +51,7 @@ const HomeAlumno = (props) => {
     return (
     
     <div>
-        <TopBar />
+        
         <Container>
 
                 <h1>Home Alumno</h1>
