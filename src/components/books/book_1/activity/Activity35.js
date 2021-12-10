@@ -1,11 +1,14 @@
 import React from 'react';
 import ButtonUpdate from '../ButtonUpdate';
+import HeaderActivity from '../HeaderActivity';
 
-const Activity35 = () => {
-    return ( 
-        <ButtonUpdate
-            actividad={{actividad35: true}}
-        />
+const Activity35 = (props) => {
+
+     return ( 
+         <div>
+             <HeaderActivity {...props} />
+             <ButtonUpdate {...props} />
+         </div>
      );
 }
  

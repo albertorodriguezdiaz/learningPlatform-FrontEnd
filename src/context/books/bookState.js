@@ -80,7 +80,10 @@ const BookState = props => {
 
 
     const actualizarActivity = async booksoyvida => {
+        const {_id, usuario} = booksoyvida;
         console.log(`booksoyvida: ${JSON.stringify(booksoyvida)}`);
+        console.log(`_id: ${JSON.stringify(_id)}`);
+        console.log(`usuario: ${JSON.stringify(usuario)}`);
         try {
             await ClienteAxios.put(`/api/activity/${booksoyvida._id}`, booksoyvida);
         } catch (error) {
