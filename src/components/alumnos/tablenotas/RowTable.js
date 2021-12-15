@@ -13,28 +13,52 @@ const RowTable = (props) => {
                 <tr>
                     <td>{actividad}</td>
                     <td>{nombre}</td>
-                    <td>Completada</td>
+                    
                     {
                         actividad===1 ?
                             act.act1===true
-                                ? <td><i className="fas fa-star"></i>{nombre}</td>
-                                : <td><i className="far fa-star"></i>{nombre}</td>
+                                ? (<Fragment>
+                                    <td>Completada</td>
+                                    <td><i className="fas fa-star"></i>{nombre}</td>
+                                    </Fragment>
+                                  )
+                                : (<Fragment>
+                                    <td>No Completada</td>
+                                    <td><i className="far fa-star"></i>{nombre}</td>
+                                    </Fragment>
+                                   )
                         : null
                     }  
-                    {             
+                    {
                         actividad===2 ?
                             act.act2===true
-                                ? <td><i className="fas fa-star"></i>{nombre}</td>
-                                : <td><i className="far fa-star"></i>{nombre}</td>
-                     : null
-                    } 
-                    { 
+                                ? (<Fragment>
+                                    <td>Completada</td>
+                                    <td><i className="fas fa-star"></i>{nombre}</td>
+                                    </Fragment>
+                                  )
+                                : (<Fragment>
+                                    <td>No Completada</td>
+                                    <td><i className="far fa-star"></i>{nombre}</td>
+                                    </Fragment>
+                                   )
+                        : null
+                    }  
+                    {
                         actividad===3 ?
                             act.act3===true
-                                ? <td><i className="fas fa-star"></i>{nombre}</td>
-                                : <td><i className="far fa-star"></i>{nombre}</td>
-                        : null  
-                    }
+                                ? (<Fragment>
+                                    <td>Completada</td>
+                                    <td><i className="fas fa-star"></i>{nombre}</td>
+                                    </Fragment>
+                                  )
+                                : (<Fragment>
+                                    <td>No Completada</td>
+                                    <td><i className="far fa-star"></i>{nombre}</td>
+                                    </Fragment>
+                                   )
+                        : null
+                    }  
                 </tr>
             )
         }

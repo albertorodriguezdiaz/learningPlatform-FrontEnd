@@ -3,7 +3,9 @@ import ClienteAxios from 'axios';
 import AuthContext from '../../context/autentication/authContext';
 import BookContext from '../../context/books/bookContex';
 import { Link } from 'react-router-dom';
-import { Container } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
+import imgPrimero from '../../img/primero-mapa.jpg';
+
 
 const HomeAlumno = (props) => {
 
@@ -51,27 +53,32 @@ const HomeAlumno = (props) => {
     return (
     
     <div>
-        
-        <Container>
+        <h1>Home Alumno</h1>
+        <h2>Libros</h2>
 
-                <h1>Home Alumno</h1>
-                <h2>Libros</h2>
-
+        <Row>
                 {
                     bookuser.map( (r, key) => 
                     // Comparamos el id del libro con el id del usuario
                         r.usuario===userdata._id && 
                         books.map( (e) =>
                         // Compara el Id de libros con el id de libros de usuarios
-                            e._id===r.libro
+                            e._id===r.libro                                
                             // Mostramos el link con el nombre del libro
-                            && <Link key={key}  to={"/" + e.nombre.toLowerCase()}><p>{e.nombre}</p></Link>
+                            && (
+                                <Col md={4}>
+                                    <Link key={key}  to={"/" + e.nombre.toLowerCase()}>
+                                        <p className='titleBookHome'>{e.nombre}</p><img className='imgBookHome' src={imgPrimero} alt="" />
+                                    </Link>
+                                </Col>
+                                
+                                )
                         )
                                 
                     )
                 }                
-                
-        </Container>
+        </Row>    
+
      </div>
 
     );

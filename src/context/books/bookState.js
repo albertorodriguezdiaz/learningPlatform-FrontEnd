@@ -29,6 +29,12 @@ const BookState = props => {
     const [actividadeslibro, guardarActividadeslibro] = useState([]);
 
 
+    // Fotos de la actividad
+    const [photo, guardarPhoto] = useState([]);
+    const [photoInfo, guardarPhotoInfo] = useState([]);
+    const [photoExiste, guardarPhotoExiste] = useState(false);
+
+
 
     useEffect(() => {
 
@@ -156,6 +162,60 @@ const BookState = props => {
 
 
 
+
+    const agregarImagen = async (photo, idActivity, actividadUser ) => {
+        const data = new FormData();
+        data.append('file', photo.target.files[0]);
+
+        try {
+            const resultado = await ClienteAxios.post('/api/uploadimage', data);
+
+            const path = resultado.data.path;
+            const pathImage = path.substr(path.lastIndexOf('\\') + 1);
+
+            console.log(pathImage);
+
+            let objImgInfo = {
+                image: pathImage,
+                actividad: idActivity,
+                activity: actividadUser._id,
+                usuario: actividadUser.usuario,
+                libro: actividadUser.libro                
+            }
+
+            guardarPhoto(objImgInfo);
+            
+            const resultado2 = await ClienteAxios.post('/api/uploadimageinfo', objImgInfo);
+            console.log(resultado2);
+
+        } catch (error) {
+            console.log(error);
+        }
+
+    }
+
+    
+    const obtenerImagenInfo = async (usuario) =>{
+        
+        try {
+            const respuesta = await ClienteAxios.get('/api/uploadimageinfo', { params: { usuario }});
+            const resAct = respuesta.data.imageActivity;
+            guardarPhotoInfo(resAct);
+            console.log(resAct);
+            
+            resAct.length > 0
+               && guardarPhotoExiste(true)
+            
+            
+        } catch (error) {
+            console.log(`Error al obtener Imagen`);
+            console.log(error);
+
+        }
+        
+    }
+
+
     return ( 
         <BookContext.Provider
             value={{
@@ -164,10 +224,15 @@ const BookState = props => {
                 bookmain: state.bookmain,
                 obtenerLibros,
                 actividadeslibro: actividadeslibro,
+                photo: photo,
+                photoInfo: photoInfo,
+                photoExiste: photoExiste,
                 activityRealizadas,
                 obtenerActivity,
                 seleccionarActividadUser,
-                cambiarMainLesson
+                cambiarMainLesson,
+                agregarImagen,
+                obtenerImagenInfo
             }}
         >
             {props.children}

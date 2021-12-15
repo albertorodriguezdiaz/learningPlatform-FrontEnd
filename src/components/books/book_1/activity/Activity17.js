@@ -1,5 +1,5 @@
 import React from 'react';
-import ButtonUpdate from '../ButtonUpdate';
+import ButtonUpdate from '../activity-components/ButtonUpdate';
 import HeaderActivity from '../HeaderActivity';
 
 const Activity17 = (props) => {

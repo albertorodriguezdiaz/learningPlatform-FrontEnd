@@ -1,14 +1,12 @@
 import React from 'react';
-import ButtonUpdate from '../ButtonUpdate';
-import HeaderActivity from '../HeaderActivity';
+import MainUploadImage from '../activity-components/MainUploadImage'
 
 const Activity3 = (props) => {
 
      return ( 
-         <div>
-             <HeaderActivity {...props} />
-             <ButtonUpdate {...props} />
-         </div>
+             
+        <MainUploadImage {...props} />
+           
      );
 }
  

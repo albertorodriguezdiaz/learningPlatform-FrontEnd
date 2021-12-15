@@ -7,8 +7,6 @@ import Activity from './Activity';
 const LessonHome = (props) => {
 
 
-
-
     const {lecciones, location, match} = props;
 
     const numBook = match.params.id;
@@ -67,7 +65,12 @@ const LessonHome = (props) => {
             {
                 lecciones.map((act, key)=>
                     <li key={key}>
-                        <Link to={"/primero/leccion/"+numBook+"/actividad/" + act.id}>
+                        <Link                            
+                            to={{
+                                pathname:`/primero/leccion/${numBook}/actividad/${act.id}`,
+                                
+                            }}
+                        >
                             {act.name}
                         </Link>
                     </li>
@@ -77,7 +80,7 @@ const LessonHome = (props) => {
             </ul>
 
             <Route path={"/primero/leccion/:leccion/actividad/:id"}>
-             <Activity />
+             <Activity {...props}  />
             </Route>
         </Router>
 
