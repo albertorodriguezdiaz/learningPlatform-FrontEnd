@@ -1,27 +1,22 @@
-import React,{useContext} from 'react';
+import React,{useContext, useState, useRef, useEffect} from 'react';
 import BookContext from '../../../../context/books/bookContex';
 import AuthContext from '../../../../context/autentication/authContext';
 import { Form, Button } from 'react-bootstrap';
+import ConfettiCongratulation from './confettiCongratulation';
+
 
 
 const ButtonUpdate = (props) => {
 
-    
+    const [showCongratPopup, setShowCongratPopup] = useState(false);
+    const [enviarActividad, setEnviarActividad] = useState(false);
+
     const idactividad = parseInt(props.match.params.id);
     const idleccion = parseInt(props.match.params.leccion);
     const idActivity = (((idleccion-1)*3)+idactividad);
 
     const {acticurrent} = props;
 
-
-    // const a = 'actividad3'
-    // const actividadCurrent2 = eval(`${actividadCurrent}.${a}`);
-    // console.log(actividadCurrent2);
-
-    // const actiTrue = `${actividades}.${idActivity}`;
-    // const activTrueCurrent = eval(actiTrue);
-    // console.log(activTrueCurrent);
-    
     // Creamos el objeto como string con el id y Convertimos el 
     // JSON.parse el string en ojeto 
     const objActividadString=`{"actividad${idActivity}": true}`;
@@ -31,16 +26,22 @@ const ButtonUpdate = (props) => {
     const bookContext = useContext(BookContext);
     const { seleccionarActividadUser } = bookContext;
 
-
      // Extraer la informacion de autenticacion
     const authContext = useContext(AuthContext);
     const {userdata } = authContext;
 
 
+    useEffect(() => {
+        if (enviarActividad===true) {
+            setShowCongratPopup(true);
+        }
+    }, [enviarActividad])
+
+
     const onSubmitBook = (e)=>{
         e.preventDefault();
-
         seleccionarActividadUser(objActividad, userdata);
+        setEnviarActividad(true);
     }
 
 
@@ -62,20 +63,6 @@ const ButtonUpdate = (props) => {
                         </Button> 
                     </Form>
 
-                    <div className="congratulationPopup">
-                        <div className="js-container container"></div>
-
-                        <div className='contenedorCongrat'>
-                        <div className="checkmark-circle">
-                            <div className="background"></div>
-                            <div className="checkmark draw"></div>
-                        </div>
-                        <h1>Congratulations!</h1>
-                        <p>You are all set. Well done!</p>
-                        <button className="submit-btn" type="submit">Continue</button>
-                        </div>  
-
-                    </div>
 
                  </div>
 
@@ -83,7 +70,13 @@ const ButtonUpdate = (props) => {
                 :<p className='actividadEnviada'>Avtividad completada</p>
             }
          
-        </div>
+         {
+            showCongratPopup===true && 
+            ( <ConfettiCongratulation {...props}/>
+            )
+        }
+       </div>
+         
      );
 }
  

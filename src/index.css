@@ -422,12 +422,27 @@ a {
 /* ===================================================================== */
 .contenedorCongrat{
   text-align:center;
-  margin-top:30px;
+  margin-top:0px;
+  padding-top: 150px;
   position:fixed;
   width:100%;
   height:100%;
   top:0px;
   left:0px;
+  background: rgba(29, 29, 29, 0.9);
+}
+
+.contenedorCongrat h1,
+.contenedorCongrat p{
+  color: #fff;
+  padding: 0;
+  margin: 0;
+  margin-top: 10px;
+}
+
+.contenedorCongrat p{
+  margin-bottom: 20px;
+  font-size: 20px;
 }
 
 .js-container{
@@ -534,7 +549,7 @@ a {
   -moz-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
 }
-.checkmark-circle .checkmark:after {
+.checkmark-circle .checkmark:after{
   opacity: 1;
   height: 75px;
   width: 37.5px;
@@ -624,7 +639,8 @@ a {
 .submit-btn {
     height: 45px;
     width: 200px;
-    font-size: 15px;
+    font-size: 20px;
+    font-weight: 600;
     background-color: #00c09d;
     border: 1px solid #00ab8c;
     color: #fff;
@@ -642,3 +658,11 @@ a {
 
 /* Congratulation Style */
 /* ===================================================================== */
+
+.congratulationPopup{
+  background: rgba(0, 0, 0, .1)
+}
+
+.containerCongrat{
+  margin-top: 100px;
+}

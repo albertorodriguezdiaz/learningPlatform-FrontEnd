@@ -185,7 +185,7 @@ const HomeBook1 = (props) => {
                 }
 
                 <Route path="/primero/leccion/:id">
-                  <Lesson/>
+                  <Lesson {...props} actividades={actividades} />
                 </Route>
             </Router>
             

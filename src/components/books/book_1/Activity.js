@@ -1,4 +1,4 @@
-import React,{useContext} from 'react';
+import React,{useContext, useEffect} from 'react';
 import { withRouter } from 'react-router-dom';
 import Activity1 from './activity/Activity1';
 import Activity2 from './activity/Activity2';
@@ -59,10 +59,7 @@ const Activity = (props) => {
     const idActivity = props.match.params.leccion;
 
     // Extraer la informacion de books
-    const bookContext = useContext(BookContext);
-    const { actividades } = bookContext;
-
-    const act = actividades[0];
+    const actividades = props.actividades;
 
     // console.log(`ID: ${idPage}`);
     // console.log(`Props: ${props.match.params.leccion}`);
@@ -70,69 +67,69 @@ const Activity = (props) => {
 
     const seleccionarActividad = (idPage, idActivity)=>{
 
-        if(idPage==='1'&&idActivity==='1') return <Activity1 {...props} actividades={act}  acticurrent={act.actividad1} />
-        if(idPage==='2'&&idActivity==='1') return <Activity2 {...props} actividades={act}  acticurrent={act.actividad2} />
-        if(idPage==='3'&&idActivity==='1') return <Activity3 {...props} actividades={act}  acticurrent={act.actividad3} />
+        if(idPage==='1'&&idActivity==='1') return <Activity1 {...props} actividades={actividades}  acticurrent={actividades[0].actividad1} />
+        if(idPage==='2'&&idActivity==='1') return <Activity2 {...props} actividades={actividades}  acticurrent={actividades[0].actividad2} />
+        if(idPage==='3'&&idActivity==='1') return <Activity3 {...props} actividades={actividades}  acticurrent={actividades[0].actividad3} />
 
-        if(idPage==='1'&&idActivity==='2') return <Activity4 {...props} actividades={act}  acticurrent={act.actividad4} />
-        if(idPage==='2'&&idActivity==='2') return <Activity5 {...props} actividades={act}  acticurrent={act.actividad5} />
-        if(idPage==='3'&&idActivity==='2') return <Activity6 {...props} actividades={act}  acticurrent={act.actividad6} />
+        if(idPage==='1'&&idActivity==='2') return <Activity4 {...props} actividades={actividades}  acticurrent={actividades[0].actividad4} />
+        if(idPage==='2'&&idActivity==='2') return <Activity5 {...props} actividades={actividades}  acticurrent={actividades[0].actividad5} />
+        if(idPage==='3'&&idActivity==='2') return <Activity6 {...props} actividades={actividades}  acticurrent={actividades[0].actividad6} />
 
-        if(idPage==='1'&&idActivity==='3') return <Activity7 {...props} actividades={act}  acticurrent={act.actividad7} />
-        if(idPage==='2'&&idActivity==='3') return <Activity8 {...props} actividades={act}  acticurrent={act.actividad8} />
-        if(idPage==='3'&&idActivity==='3') return <Activity9 {...props} actividades={act}  acticurrent={act.actividad9} />
+        if(idPage==='1'&&idActivity==='3') return <Activity7 {...props} actividades={actividades}  acticurrent={actividades[0].actividad7} />
+        if(idPage==='2'&&idActivity==='3') return <Activity8 {...props} actividades={actividades}  acticurrent={actividades[0].actividad8} />
+        if(idPage==='3'&&idActivity==='3') return <Activity9 {...props} actividades={actividades}  acticurrent={actividades[0].actividad9} />
 
-        if(idPage==='1'&&idActivity==='4') return <Activity10 {...props} actividades={act}  acticurrent={act.actividad10} />
-        if(idPage==='2'&&idActivity==='4') return <Activity11 {...props} actividades={act}  acticurrent={act.actividad11} />
-        if(idPage==='3'&&idActivity==='4') return <Activity12 {...props} actividades={act}  acticurrent={act.actividad12} />
+        if(idPage==='1'&&idActivity==='4') return <Activity10 {...props} actividades={actividades}  acticurrent={actividades[0].actividad10} />
+        if(idPage==='2'&&idActivity==='4') return <Activity11 {...props} actividades={actividades}  acticurrent={actividades[0].actividad11} />
+        if(idPage==='3'&&idActivity==='4') return <Activity12 {...props} actividades={actividades}  acticurrent={actividades[0].actividad12} />
 
-        if(idPage==='1'&&idActivity==='5') return <Activity13 {...props} actividades={act}  acticurrent={act.actividad13} />
-        if(idPage==='2'&&idActivity==='5') return <Activity14 {...props} actividades={act}  acticurrent={act.actividad14} />
-        if(idPage==='3'&&idActivity==='5') return <Activity15 {...props} actividades={act}  acticurrent={act.actividad15} />
+        if(idPage==='1'&&idActivity==='5') return <Activity13 {...props} actividades={actividades}  acticurrent={actividades[0].actividad13} />
+        if(idPage==='2'&&idActivity==='5') return <Activity14 {...props} actividades={actividades}  acticurrent={actividades[0].actividad14} />
+        if(idPage==='3'&&idActivity==='5') return <Activity15 {...props} actividades={actividades}  acticurrent={actividades[0].actividad15} />
 
-        if(idPage==='1'&&idActivity==='6') return <Activity16 {...props} actividades={act}  acticurrent={act.actividad16} />
-        if(idPage==='2'&&idActivity==='6') return <Activity17 {...props} actividades={act}  acticurrent={act.actividad17} />
-        if(idPage==='3'&&idActivity==='6') return <Activity18 {...props} actividades={act}  acticurrent={act.actividad18} />
+        if(idPage==='1'&&idActivity==='6') return <Activity16 {...props} actividades={actividades}  acticurrent={actividades[0].actividad16} />
+        if(idPage==='2'&&idActivity==='6') return <Activity17 {...props} actividades={actividades}  acticurrent={actividades[0].actividad17} />
+        if(idPage==='3'&&idActivity==='6') return <Activity18 {...props} actividades={actividades}  acticurrent={actividades[0].actividad18} />
 
-        if(idPage==='1'&&idActivity==='7') return <Activity19 {...props} actividades={act}  acticurrent={act.actividad19} />
-        if(idPage==='2'&&idActivity==='7') return <Activity20 {...props} actividades={act}  acticurrent={act.actividad20} />
-        if(idPage==='3'&&idActivity==='7') return <Activity21 {...props} actividades={act}  acticurrent={act.actividad21} />
+        if(idPage==='1'&&idActivity==='7') return <Activity19 {...props} actividades={actividades}  acticurrent={actividades[0].actividad19} />
+        if(idPage==='2'&&idActivity==='7') return <Activity20 {...props} actividades={actividades}  acticurrent={actividades[0].actividad20} />
+        if(idPage==='3'&&idActivity==='7') return <Activity21 {...props} actividades={actividades}  acticurrent={actividades[0].actividad21} />
 
-        if(idPage==='1'&&idActivity==='8') return <Activity22 {...props} actividades={act}  acticurrent={act.actividad22} />
-        if(idPage==='2'&&idActivity==='8') return <Activity23 {...props} actividades={act}  acticurrent={act.actividad23} />
-        if(idPage==='3'&&idActivity==='8') return <Activity24 {...props} actividades={act}  acticurrent={act.actividad24} />
+        if(idPage==='1'&&idActivity==='8') return <Activity22 {...props} actividades={actividades}  acticurrent={actividades[0].actividad22} />
+        if(idPage==='2'&&idActivity==='8') return <Activity23 {...props} actividades={actividades}  acticurrent={actividades[0].actividad23} />
+        if(idPage==='3'&&idActivity==='8') return <Activity24 {...props} actividades={actividades}  acticurrent={actividades[0].actividad24} />
 
-        if(idPage==='1'&&idActivity==='9') return <Activity25 {...props} actividades={act}  acticurrent={act.actividad25} />
-        if(idPage==='2'&&idActivity==='9') return <Activity26 {...props} actividades={act}  acticurrent={act.actividad26} />
-        if(idPage==='3'&&idActivity==='9') return <Activity27 {...props} actividades={act}  acticurrent={act.actividad27} />
+        if(idPage==='1'&&idActivity==='9') return <Activity25 {...props} actividades={actividades}  acticurrent={actividades[0].actividad25} />
+        if(idPage==='2'&&idActivity==='9') return <Activity26 {...props} actividades={actividades}  acticurrent={actividades[0].actividad26} />
+        if(idPage==='3'&&idActivity==='9') return <Activity27 {...props} actividades={actividades}  acticurrent={actividades[0].actividad27} />
 
-        if(idPage==='1'&&idActivity==='10') return <Activity28 {...props} actividades={act}  acticurrent={act.actividad28} />
-        if(idPage==='2'&&idActivity==='10') return <Activity29 {...props} actividades={act}  acticurrent={act.actividad29} />
-        if(idPage==='3'&&idActivity==='10') return <Activity30 {...props} actividades={act}  acticurrent={act.actividad30} />
+        if(idPage==='1'&&idActivity==='10') return <Activity28 {...props} actividades={actividades}  acticurrent={actividades[0].actividad28} />
+        if(idPage==='2'&&idActivity==='10') return <Activity29 {...props} actividades={actividades}  acticurrent={actividades[0].actividad29} />
+        if(idPage==='3'&&idActivity==='10') return <Activity30 {...props} actividades={actividades}  acticurrent={actividades[0].actividad30} />
 
-        if(idPage==='1'&&idActivity==='11') return <Activity31 {...props} actividades={act}  acticurrent={act.actividad31} />
-        if(idPage==='2'&&idActivity==='11') return <Activity32 {...props} actividades={act}  acticurrent={act.actividad32} />
-        if(idPage==='3'&&idActivity==='11') return <Activity33 {...props} actividades={act}  acticurrent={act.actividad33} />
+        if(idPage==='1'&&idActivity==='11') return <Activity31 {...props} actividades={actividades}  acticurrent={actividades[0].actividad31} />
+        if(idPage==='2'&&idActivity==='11') return <Activity32 {...props} actividades={actividades}  acticurrent={actividades[0].actividad32} />
+        if(idPage==='3'&&idActivity==='11') return <Activity33 {...props} actividades={actividades}  acticurrent={actividades[0].actividad33} />
 
-        if(idPage==='1'&&idActivity==='12') return <Activity34 {...props} actividades={act}  acticurrent={act.actividad34} />
-        if(idPage==='2'&&idActivity==='12') return <Activity35 {...props} actividades={act}  acticurrent={act.actividad35} />
-        if(idPage==='3'&&idActivity==='12') return <Activity36 {...props} actividades={act}  acticurrent={act.actividad36} />
+        if(idPage==='1'&&idActivity==='12') return <Activity34 {...props} actividades={actividades}  acticurrent={actividades[0].actividad34} />
+        if(idPage==='2'&&idActivity==='12') return <Activity35 {...props} actividades={actividades}  acticurrent={actividades[0].actividad35} />
+        if(idPage==='3'&&idActivity==='12') return <Activity36 {...props} actividades={actividades}  acticurrent={actividades[0].actividad36} />
 
-        if(idPage==='1'&&idActivity==='13') return <Activity37 {...props} actividades={act}  acticurrent={act.actividad37} />
-        if(idPage==='2'&&idActivity==='13') return <Activity38 {...props} actividades={act}  acticurrent={act.actividad38} />
-        if(idPage==='3'&&idActivity==='13') return <Activity39 {...props} actividades={act}  acticurrent={act.actividad39} />
+        if(idPage==='1'&&idActivity==='13') return <Activity37 {...props} actividades={actividades}  acticurrent={actividades[0].actividad37} />
+        if(idPage==='2'&&idActivity==='13') return <Activity38 {...props} actividades={actividades}  acticurrent={actividades[0].actividad38} />
+        if(idPage==='3'&&idActivity==='13') return <Activity39 {...props} actividades={actividades}  acticurrent={actividades[0].actividad39} />
 
-        if(idPage==='1'&&idActivity==='14') return <Activity40 {...props} actividades={act}  acticurrent={act.actividad40} />
-        if(idPage==='2'&&idActivity==='14') return <Activity41 {...props} actividades={act}  acticurrent={act.actividad41} />
-        if(idPage==='3'&&idActivity==='14') return <Activity42 {...props} actividades={act}  acticurrent={act.actividad42} />
+        if(idPage==='1'&&idActivity==='14') return <Activity40 {...props} actividades={actividades}  acticurrent={actividades[0].actividad40} />
+        if(idPage==='2'&&idActivity==='14') return <Activity41 {...props} actividades={actividades}  acticurrent={actividades[0].actividad41} />
+        if(idPage==='3'&&idActivity==='14') return <Activity42 {...props} actividades={actividades}  acticurrent={actividades[0].actividad42} />
 
-        if(idPage==='1'&&idActivity==='15') return <Activity43 {...props} actividades={act}  acticurrent={act.actividad43} />
-        if(idPage==='2'&&idActivity==='15') return <Activity44 {...props} actividades={act}  acticurrent={act.actividad44} />
-        if(idPage==='3'&&idActivity==='15') return <Activity45 {...props} actividades={act}  acticurrent={act.actividad45} />
+        if(idPage==='1'&&idActivity==='15') return <Activity43 {...props} actividades={actividades}  acticurrent={actividades[0].actividad43} />
+        if(idPage==='2'&&idActivity==='15') return <Activity44 {...props} actividades={actividades}  acticurrent={actividades[0].actividad44} />
+        if(idPage==='3'&&idActivity==='15') return <Activity45 {...props} actividades={actividades}  acticurrent={actividades[0].actividad45} />
 
-        if(idPage==='1'&&idActivity==='16') return <Activity46 {...props} actividades={act}  acticurrent={act.actividad46} />
-        if(idPage==='2'&&idActivity==='16') return <Activity47 {...props} actividades={act}  acticurrent={act.actividad47} />
-        if(idPage==='3'&&idActivity==='16') return <Activity48 {...props} actividades={act}  acticurrent={act.actividad48} />
+        if(idPage==='1'&&idActivity==='16') return <Activity46 {...props} actividades={actividades}  acticurrent={actividades[0].actividad46} />
+        if(idPage==='2'&&idActivity==='16') return <Activity47 {...props} actividades={actividades}  acticurrent={actividades[0].actividad47} />
+        if(idPage==='3'&&idActivity==='16') return <Activity48 {...props} actividades={actividades}  acticurrent={actividades[0].actividad48} />
 
         
     }
