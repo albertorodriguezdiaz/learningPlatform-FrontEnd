@@ -1,6 +1,6 @@
 import React, {useState, useContext, useRef, useEffect} from 'react';
 import { Container } from 'react-bootstrap';
-import { BrowserRouter as Router, Link, Route, RouteComponentProps } from 'react-router-dom';
+import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 import BookContext from '../../../context/books/bookContex';
 import AuthContext from '../../../context/autentication/authContext';
 import TopBar from '../../layout/TopBar';
@@ -159,7 +159,7 @@ const HomeBook1 = (props) => {
                     {scrollX !== 0 && (
                         <button
                         className="prev"
-                        onClick={() => slide(-235)}
+                        onClick={() => slide(-245)}
                         onMouseEnter={(e) => anim(e)}
                         onMouseLeave={(e) => anim2(e)}
                         >
@@ -170,7 +170,7 @@ const HomeBook1 = (props) => {
                     {!scrolEnd && (
                         <button
                         className="next"
-                        onClick={() => slide(+235)}
+                        onClick={() => slide(+245)}
                         onMouseEnter={(e) => anim(e)}
                         onMouseLeave={(e) => anim2(e)}
                         >

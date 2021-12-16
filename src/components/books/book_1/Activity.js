@@ -1,4 +1,4 @@
-import React,{useContext, useEffect} from 'react';
+import React from 'react';
 import { withRouter } from 'react-router-dom';
 import Activity1 from './activity/Activity1';
 import Activity2 from './activity/Activity2';
@@ -48,8 +48,6 @@ import Activity45 from './activity/Activity45';
 import Activity46 from './activity/Activity46';
 import Activity47 from './activity/Activity47';
 import Activity48 from './activity/Activity48';
-
-import BookContext from '../../../context/books/bookContex';
 
 
 const Activity = (props) => {

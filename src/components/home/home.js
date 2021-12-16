@@ -12,7 +12,7 @@ const Home = (props) => {
 
     // Extraer la informacion de autenticacion
     const authContext = useContext(AuthContext);
-    const { usuario, usertipo, usuarioAutenticado } = authContext;
+    const { usertipo, usuarioAutenticado } = authContext;
 
 
     useEffect(() => {

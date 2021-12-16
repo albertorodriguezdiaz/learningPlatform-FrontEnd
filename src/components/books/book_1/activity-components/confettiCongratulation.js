@@ -1,13 +1,9 @@
 import React,{useState, useRef, useEffect} from 'react';
 import Confetti from "react-confetti";
-import { Link, Router, useHistory } from 'react-router-dom';
 
 
 const ConfettiCongratulation = (props) => {
 
-    const history = useHistory();
-
-    const [cambios, setcambios] = useState(false);
 
     const [height, setHeight] = useState(null);
     const [width, setWidth] = useState(null);
@@ -19,17 +15,13 @@ const ConfettiCongratulation = (props) => {
         setWidth(confettiRef.current.clientWidth);
     }, [])
 
-    useEffect(() => {
-        
-    }, [cambios])
-
+   
     const handleShow = toggle => {
         setShow(toggle);
     }
 
     const handleClick = () =>{
-        setcambios(true);
-        history.push("/primero/");
+        window.location.href = "http://localhost:3000/primero";
     }
 
 

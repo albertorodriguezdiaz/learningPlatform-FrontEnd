@@ -18,7 +18,7 @@ const MainTable = (props) => {
                 <th>Actividad</th>
                 <th>Nombre</th>
                 <th>Proceso</th>
-                <th><i class="fas fa-star"></i></th>
+                <th><i className="fas fa-star"></i></th>
                 </tr>
             </thead>
             <tbody>

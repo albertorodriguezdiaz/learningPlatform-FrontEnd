@@ -66,8 +66,8 @@ const HomeAlumno = (props) => {
                             e._id===r.libro                                
                             // Mostramos el link con el nombre del libro
                             && (
-                                <Col md={4}>
-                                    <Link key={key}  to={"/" + e.nombre.toLowerCase()}>
+                                <Col md={4} key={key}>
+                                    <Link to={"/" + e.nombre.toLowerCase()}>
                                         <p className='titleBookHome'>{e.nombre}</p><img className='imgBookHome' src={imgPrimero} alt="" />
                                     </Link>
                                 </Col>

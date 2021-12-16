@@ -9,8 +9,9 @@ const MainUploadImage = (props) => {
     const bookContext = useContext(BookContext);
     const {agregarImagen, obtenerImagenInfo, photo, photoInfo, photoExiste} = bookContext;
 
+    // Seleccionamos las actividades del usuario con y nos ubicamos en la pisicion [0]
     const{actividades} = props;
-    const actividadUser = actividades;
+    const actividadUser = actividades[0];
 
     const idactividad = parseInt(props.match.params.id);
     const idleccion = parseInt(props.match.params.leccion);
@@ -26,6 +27,7 @@ const MainUploadImage = (props) => {
         obtenerImagenInfo(actividadUser.usuario);
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+    
 
     // Recargamos cuando suvimos una imagen nueva
     useEffect(() => {

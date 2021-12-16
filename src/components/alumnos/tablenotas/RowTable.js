@@ -3,14 +3,14 @@ import React, { Fragment } from 'react';
 
 const RowTable = (props) => {
     
-    const {id, nombre, actividad, actividadeslibro, periodo} = props;
+    const {id, nombre, actividad, actividadeslibro} = props;
 
   return (
         <Fragment>
         {   
-            actividadeslibro.map((act) =>
+            actividadeslibro.map((act, key) =>
             id===act.id &&
-                <tr>
+                <tr key={key}>
                     <td>{actividad}</td>
                     <td>{nombre}</td>
                     

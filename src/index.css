@@ -473,7 +473,7 @@ a {
   height: 100vh;
   background: #ffffff;
   border:1px solid white;
-  display:fixed;
+  /* display:fixed; */
   top:0px;
 }
 
