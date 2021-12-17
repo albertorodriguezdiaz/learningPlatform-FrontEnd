@@ -5,7 +5,7 @@ import BookContext from '../../../context/books/bookContex';
 import AuthContext from '../../../context/autentication/authContext';
 import TopBar from '../../layout/TopBar';
 import Lesson from './Lessons';
-import mapbook from '../../../img/mapbook-primero.jpg';
+import mapbook from '../../../resources/img/mapbook-primero.jpg';
 
 import { gsap } from "gsap";
 
@@ -99,7 +99,7 @@ const HomeBook1 = (props) => {
       
         <div>
         <TopBar />    
-        <Container>
+        <div>
             <Router >
                            
                 {
@@ -189,7 +189,7 @@ const HomeBook1 = (props) => {
                 </Route>
             </Router>
             
-        </Container>
+        </div>
         
 
         </div>

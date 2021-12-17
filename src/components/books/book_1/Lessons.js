@@ -69,8 +69,6 @@ const Lessons = (props) => {
 
     return ( 
         <div>
-            <a href="/primero">Voler a las lecciones</a>
-            
             {
                 seleccionarLeccion(idPage)
             }

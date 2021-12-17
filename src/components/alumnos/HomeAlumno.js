@@ -4,7 +4,7 @@ import AuthContext from '../../context/autentication/authContext';
 import BookContext from '../../context/books/bookContex';
 import { Link } from 'react-router-dom';
 import { Row, Col } from 'react-bootstrap';
-import imgPrimero from '../../img/primero-mapa.jpg';
+import imgPrimero from '../../resources/img/primero-mapa.jpg';
 
 
 const HomeAlumno = (props) => {

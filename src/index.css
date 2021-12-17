@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap');
+
 :root {
   --blanco: #ffffff;
   --gris1: #edf2f6;
@@ -20,12 +22,12 @@ body {
   background-color: #fff;
   font-size: 16px; 
   font-size: 1.6rem;
-  font-family: var(--textFont);
+  font-family: 'Baloo 2', cursive;
 }
 
 
 h1, h2 {
-  font-family: var(--headingFont);
+  font-family: 'Baloo 2', cursive;
   font-weight: 900;
   margin: 0 0 4rem 0;
   text-align: center;
@@ -53,7 +55,7 @@ a {
 /** BOTONES **/
 .btn {
   margin-top: 2rem;
-  font-family: var(--headingFont);
+  font-family: 'Baloo 2', cursive;
   padding: 1.5rem;
   font-size: 1.4rem;
   font-weight: 400;
@@ -178,7 +180,7 @@ a {
   left: 0;
   padding: 1rem 3rem;
   border-radius: 1rem;
-  font-family: var(--headingFont);
+  font-family: 'Baloo 2', cursive;
   font-weight: 600;
   text-transform: uppercase;
   font-size: 2.2rem;
@@ -665,4 +667,65 @@ a {
 
 .containerCongrat{
   margin-top: 100px;
+}
+
+/* Dsesing Activity */
+.containerActivity1{
+  margin: 30px 0;
+  text-align: center;
+  background: #f3f4f5;
+  border: 10px solid #fff;
+  border-radius: 10px;
+  padding: 50px 20px;
+  box-shadow: 0px 20px 50px 0px rgba(0, 0, 0, 0.2);
+  /* background: linear-gradient(93.4deg, #1F3D83 8.16%, #00A7DA 37.71%, #00C897 64.19%, #1BA94C 87.62%, #068932 99.34%); */
+}
+
+.progress{
+  height: 20px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.lessonBookActivity{
+  text-align: center;
+}
+
+.lessonBookActivity li{
+  display: inline-block;
+  text-align: center;
+  border-radius: 7px;
+  padding: 10px 30px;
+  background: #4559b3;
+  color: #fff;
+  font-weight: 700;
+  box-shadow: inset 0px -4px 0px 0px rgb(0 0 0 / 10%);
+  margin: 10px;
+}
+
+.lessonBookActivity li a{
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.headerActivity{
+  background: url(./resources/img/header-activity.png);
+  background-position: center top;
+  height: 467px;
+  width: 100%;
+  padding-top: 70px;
+}
+
+.headerActivity h1{
+  color: #fff;
+}
+.headerActivity h3{
+  color: #fff;
+}
+.headerActivity p{
+  color: #fff;
 }

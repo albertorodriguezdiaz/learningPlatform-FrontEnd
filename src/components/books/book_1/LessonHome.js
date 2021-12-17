@@ -1,5 +1,5 @@
 import React from 'react';
-import { ProgressBar } from 'react-bootstrap';
+import { Collapse, ProgressBar } from 'react-bootstrap';
 import { BrowserRouter as Router, Link, Route  } from 'react-router-dom';
 import Activity from './Activity';
 
@@ -16,7 +16,10 @@ const LessonHome = (props) => {
     
     
     return ( 
-        <div>
+    <div>
+        <div className="headerActivity">
+
+            
             <h1>{actLec.name}</h1>
             {
                 actLec.act1===true && actLec.act2===true && actLec.act3===true 
@@ -59,21 +62,23 @@ const LessonHome = (props) => {
                     }
                 </li>
             </ul>
+
             
+        </div>
+
+
         <Router>
-            <ul className="lessonBook">
+            <ul className="lessonBookActivity">
             {
                 lecciones.map((act, key)=>
-                    <li key={key}>
-                        <Link                            
-                            to={{
-                                pathname:`/primero/leccion/${numBook}/actividad/${act.id}`,
-                                
-                            }}
-                        >
-                            {act.name}
-                        </Link>
-                    </li>
+                    <Link 
+                        key={key}  
+                        to={{
+                            pathname:`/primero/leccion/${numBook}/actividad/${act.id}`,
+                        }}
+                    >                          
+                        <li>{act.name} </li>
+                    </Link>
                     
                 )
             }
@@ -84,7 +89,8 @@ const LessonHome = (props) => {
             </Route>
         </Router>
 
-        </div>
+    
+    </div>
      );
 }
  

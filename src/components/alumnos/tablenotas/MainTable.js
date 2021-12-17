@@ -22,19 +22,21 @@ const MainTable = (props) => {
                 </tr>
             </thead>
             <tbody>
-                {
-                    ActividadesJson.map((act) =>
-                    (leccion===act.leccion && periodo===act.periodo) &&
-                        <RowTable
-                            leccion={leccion}
-                            nombre={act.nombre}
-                            actividad={act.actividad}
-                            periodo={periodo}
-                            id={id}
-                            {...props}
-                        />
-                    )
-                }
+
+            {
+                ActividadesJson.map((act, key) =>
+                (leccion===act.leccion && periodo===act.periodo) &&
+                    <RowTable
+                        key={key}
+                        leccion={leccion}
+                        nombre={act.nombre}
+                        actividad={act.actividad}
+                        periodo={periodo}
+                        id={id}
+                        {...props}
+                    />
+                )
+            }
                 
             </tbody>
         </Table>
