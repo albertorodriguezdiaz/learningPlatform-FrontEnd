@@ -715,9 +715,9 @@ a {
 .headerActivity{
   background: url(./resources/img/header-activity.png);
   background-position: center bottom;
-  height: 350px;
+  height: 300px;
   width: 100%;
-  padding-top: 70px;
+  padding-top: 40px;
 }
 
 .headerActivity h1{
@@ -729,3 +729,30 @@ a {
 .headerActivity p{
   color: #fff;
 }
+
+.actividadEnviada{
+  border-radius: 5px;
+  background: #fff;
+  border: 2px solid #00ab8c ;
+  padding: 20px;
+  width:350px;
+  color: #00ab8c;
+  position: absolute;
+  margin: 0 auto;
+  margin-bottom: 50px;
+  left: 0;
+  right: 0;
+}
+
+.footerActivity{
+  margin-bottom: 100px;
+}
+
+.title2Activity{
+  color: #323663;
+  background: #ffe58c;
+  margin-bottom: 30px;
+  font-size: 20px;
+  border-radius: 10px;
+  font-weight: 600;
+} 

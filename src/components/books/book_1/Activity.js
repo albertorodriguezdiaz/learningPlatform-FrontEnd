@@ -51,6 +51,8 @@ import Activity48 from './activity/Activity48';
 import { Container } from 'react-bootstrap';
 
 
+
+
 const Activity = (props) => {
 
 
@@ -140,7 +142,9 @@ const Activity = (props) => {
             {
                 seleccionarActividad(idPage, idActivity)
             }
+            <div className='footerActivity'></div>
         </Container>
+        
      );
 }
  
