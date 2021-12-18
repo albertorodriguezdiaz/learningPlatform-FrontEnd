@@ -714,8 +714,8 @@ a {
 
 .headerActivity{
   background: url(./resources/img/header-activity.png);
-  background-position: center top;
-  height: 467px;
+  background-position: center bottom;
+  height: 350px;
   width: 100%;
   padding-top: 70px;
 }
