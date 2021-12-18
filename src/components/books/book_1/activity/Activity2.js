@@ -72,9 +72,9 @@ function dejandoObjArrastrable(event) {
 
 // PUNTAJE JUEGO /////////////////////////////////////////////////////////////////
     let total = 0;
-    // let puntaje = document.querySelector(".puntaje");
-    // let correctas = puntaje.querySelector(".correctas");
-    // let infoPuntaje = document.querySelector(".infoPuntaje");
+    let puntaje = document.querySelector(".puntaje");
+    let correctas = puntaje.querySelector(".correctas");
+    let infoPuntaje = document.querySelector(".infoPuntaje");
 // PUNTAJE FIN /////////////////////////////////////////////////////////////////
 
 
@@ -86,33 +86,34 @@ function soltandoObjArrastrable(event) {
   event.target.classList.remove("objColocable-Hover");
 
 
-  // ( gato, perro, sapo... ) Obteniendo los datos del objeto arrastrable. Este método devolverá los datos que se establecieron en el mismo tipo en el método setData () 
-  const draggableElementData = event.dataTransfer.getData("text"); 
-
+  // Obteniendo los datos del objeto arrastrable. Este método devolverá los datos que se establecieron en el mismo tipo en el método setData () 
+  let draggableElementData = event.dataTransfer.getData("text"); 
+  let draggableElementDataSplit = draggableElementData.split("-");
 
   const droppableElementData = event.target.getAttribute("idObjColocable");
+  console.log(droppableElementData);
 
 
-//   setTimeout(() => {
-//     correctas.textContent = total;
+  setTimeout(() => {
+    correctas.textContent = total;
     
-//     if(total===5) {infoPuntaje.classList.add("ganaste"); infoPuntaje.textContent = 'Ganaste :)';}
+    if(total===12) {infoPuntaje.classList.add("ganaste"); infoPuntaje.textContent = 'Ganaste :)';}
 
-//   }, 200);
+  }, 200);
 
-  if(draggableElementData === droppableElementData) {
+  if(draggableElementDataSplit[0] === droppableElementData) {
     total++;
     console.log(total);
     const draggableElement = document.getElementById(draggableElementData);
 
-    event.target.classList.add("objColocableValido");
+    // event.target.classList.add("objColocableValido");
 
     event.target.style.backgroundColor = window.getComputedStyle(draggableElement).color;
 
     draggableElement.classList.add("objArrastrableValido");
     draggableElement.setAttribute("draggable", "false");
 
-    event.target.insertAdjacentHTML("afterbegin", `<i className="bg100 ${draggableElement.className}"></i>`);
+    // event.target.insertAdjacentHTML("afterbegin", `<i className="bg100 ${draggableElement.className}"></i>`);
   }
 }
     }
@@ -120,7 +121,7 @@ function soltandoObjArrastrable(event) {
 
      return ( 
          <div>
-             <HeaderActivity {...props} />
+             <HeaderActivity {...props} /> 
 
             <div className='containerActivity1'>
              <h2>¿Qué acciones ayudarían a mejorar las situaciones que muestran las imágenes?</h2>
@@ -131,49 +132,49 @@ function soltandoObjArrastrable(event) {
             </section>
             
             <section className='figuras-arrastrables'>
-                <div className="objArrastrable deforestacion" draggable="true" id="deforestacion">
+                <div className="objArrastrable" draggable="true" id="deforestacion-1">
                     Sembrar un árbol
                 </div>
-                <div className="objArrastrable deforestacion" draggable="true" id="caza">
+                <div className="objArrastrable" draggable="true" id="deforestacion-2">
                     No tirar basuras al río
                 </div>
-                <div className="objArrastrable deforestacion" draggable="true" id="agua">
+                <div className="objArrastrable" draggable="true" id="deforestacion-3">
                     No comprar productos hechos de animales
                 </div>
-                <div className="objArrastrable caza" draggable="true" id="contaminacion">
+                <div className="objArrastrable" draggable="true" id="caza-1">
                     No ocasionar incendios
                 </div>
-                <div className="objArrastrable caza" draggable="true">
+                <div className="objArrastrable" draggable="true" id="caza-2">
                     Mantener limpias las playas
                 </div>
-                <div className="objArrastrable caza" draggable="true">
+                <div className="objArrastrable" draggable="true" id="caza-3">
                     No comprar especies de animales silvestres 
                 </div>
-                <div className="objArrastrable agua" draggable="true">
+                <div className="objArrastrable" draggable="true" id="agua-1">
                     Cuidar los bosques
                 </div>
-                <div className="objArrastrable agua" draggable="true">
+                <div className="objArrastrable" draggable="true" id="agua-2">
                     No arrojar productos químicos al agua
                 </div>
-                <div className="objArrastrable agua" draggable="true">
+                <div className="objArrastrable" draggable="true" id="agua-3">
                     Apoyar la prohibición de caza de animales
                 </div>
-                <div className="objArrastrable contaminacion" draggable="true">
+                <div className="objArrastrable" draggable="true" id="contaminacion-1">
                     Apagar las luces cuando no las utilicemos
                 </div>
-                <div className="objArrastrable contaminacion" draggable="true">
+                <div className="objArrastrable" draggable="true" id="contaminacion-2">
                     Usar luces ahorradoras de energía
                 </div>
-                <div className="objArrastrable contaminacion" draggable="true">
+                <div className="objArrastrable" draggable="true" id="contaminacion-3">
                     Desconectar los electrodomésticos que no se están utilizando 
                 </div>
             </section>
 
-            
+
             <section className='caja-colocar'>
             <Row>
                 <Col md={3}>
-                <div>
+                <div className='contMultImge'>
                     <img src={img1} alt="" className="objColocable deforestacion" idObjColocable="deforestacion"/>
                 </div>
                 </Col>

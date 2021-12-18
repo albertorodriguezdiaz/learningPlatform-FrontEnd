@@ -1,3 +1,5 @@
+
+
 .puntaje{
     text-align: center;
    padding: 20px;
@@ -11,6 +13,7 @@
     font-weight: 500;
     
 }
+
 p.infoPuntaje{
     font-size: 30px;
 }
@@ -41,7 +44,7 @@ p.infoPuntaje.ganaste{
     padding: 10px 10px;
     box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.15);
 
-    width: 195px;
+    width: 185px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -98,3 +101,4 @@ p.infoPuntaje.ganaste{
   html { font-size: 14px; }
   .figuras-arrastrables { margin: 1.5rem; }
 }
+
