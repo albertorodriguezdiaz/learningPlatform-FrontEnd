@@ -19,7 +19,16 @@ const LessonHome = (props) => {
     <div>
         <div className="headerActivity">
 
-            
+        
+            <div className='volverInicio'>                 
+                <a href='/primero'>
+                    <div className='iconHome'>
+                        <i class="fas fa-house-user"></i> 
+                    </div>
+                    Inicio
+                </a>
+            </div>
+
             <h1>{actLec.name}</h1>
             {
                 actLec.act1===true && actLec.act2===true && actLec.act3===true 
@@ -68,6 +77,7 @@ const LessonHome = (props) => {
 
 
         <Router>
+            <p className='seleccionarActividadTitle'>Selecciona una actividad</p>
             <ul className="lessonBookActivity">
             {
                 lecciones.map((act, key)=>

@@ -1,6 +1,6 @@
 import React from 'react';
 import ButtonUpdate from '../activity-components/ButtonUpdate';
-import HeaderActivity from '../HeaderActivity';
+import HeaderActivity from '../activity-components/HeaderActivity';
 
 const Activity32 = (props) => {
 

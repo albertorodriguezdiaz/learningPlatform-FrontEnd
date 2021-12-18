@@ -40,6 +40,9 @@ const ButtonUpdate = (props) => {
 
     const onSubmitBook = (e)=>{
         e.preventDefault();
+
+        // Movemos el scroll de la pagina arriba
+        window.scrollTo(0, 0)
         seleccionarActividadUser(objActividad, userdata);
         setEnviarActividad(true);
     }
@@ -67,7 +70,7 @@ const ButtonUpdate = (props) => {
                  </div>
 
                 )
-                :<p className='actividadEnviada'>Avtividad completada <i class="fas fa-check"></i></p>
+                :<p className='actividadEnviada'>Actividad completada <i class="fas fa-check"></i></p>
             }
          
          {

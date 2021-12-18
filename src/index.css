@@ -91,21 +91,7 @@ a {
 .btn-eliminar {
   background-color: var(--blanco);
 }
-@media (min-width: 768px) {
-  .contenedor-app {
-      display: flex;
-      min-height: 100vh;
-  }
 
-  aside {
-      background-color: var(--blanco);
-      flex: 0 0 300px;
-  }
-  .seccion-principal {
-      flex: 1;
-  }
-
-}
 
 /** Formulario crear y editar tareas **/
 .formulario {
@@ -224,7 +210,16 @@ a {
 
 .listHorizontal li{
   display: inline-block;
-  padding: 5px;
+  padding: 5px 10px;
+  margin-top: 10px;
+  text-transform: capitalize;
+}
+
+.seleccionarActividadTitle{
+  text-align: center;
+  font-size: 18px;
+  margin: 0;
+  letter-spacing: 7px;
 }
 
 .listHorizontal i{
@@ -366,6 +361,8 @@ a {
 }
 
 .imgEnviada img{
+  max-width: 100%;
+  height: auto;
   border: 10px solid #fff;
   box-shadow: 0px 20px 50px 0px rgba(0, 0, 0, 0.2);
 }
@@ -391,10 +388,32 @@ a {
 }
 
 .botonEnviarActividad{
-  margin-top: 50px;
-  padding: 30px 40px;
-
+  display: inline-block;
+  text-align: center;
+  border-radius: 7px;
+  padding: 20px 40px;
+  color: #fff;
+  font-weight: 700;
+  box-shadow: inset 0px -4px 0px 0px rgb(0 0 0 / 10%);
+  margin: 10px;
+  font-size: 20px;
+  animation: botonEnviarAni 2s linear infinite;
 }
+
+@keyframes botonEnviarAni {
+  0% {
+    transform: scale(1, 1);
+  }
+
+  50% {
+    transform: scale(1.2,1.2);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+
 
 .actividadEnviada{
   font-size: 20px;
@@ -470,13 +489,13 @@ a {
   100% { transform: translate3d(-50px, 105vh, 0) rotateX(10deg) rotateY(250deg); }
 }
 
-.container {
+.container.containerConfetti {
   width: 100vw;
   height: 100vh;
   background: #ffffff;
   border:1px solid white;
-  /* display:fixed; */
-  top:0px;
+  display:fixed;
+  top:0px; 
 }
 
 .confetti-container {
@@ -688,6 +707,18 @@ a {
   font-weight: 600;
   max-width: 500px;
   margin: 0 auto;
+  
+}
+
+.progress-bar{
+  color: #0064ff;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.progress-bar-striped {
+  background-image: linear-gradient(45deg,rgba(255,255,255,.30) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.30) 50%,rgba(255,255,255,.30) 75%,transparent 75%,transparent);
+  background-size: 1.2rem 1.2rem;
 }
 
 .lessonBookActivity{
@@ -715,16 +746,20 @@ a {
 .headerActivity{
   background: url(./resources/img/header-activity.png);
   background-position: center bottom;
-  height: 300px;
+  height: 280px;
   width: 100%;
   padding-top: 40px;
+  
 }
 
+
 .headerActivity h1{
+  margin-bottom: 20px;
   color: #fff;
 }
 .headerActivity h3{
   color: #fff;
+  letter-spacing: 5px;
 }
 .headerActivity p{
   color: #fff;
@@ -736,12 +771,13 @@ a {
   border: 2px solid #00ab8c ;
   padding: 20px;
   width:350px;
-  color: #00ab8c;
+  color: #00ab8c !important;
   position: absolute;
   margin: 0 auto;
   margin-bottom: 50px;
   left: 0;
   right: 0;
+  margin-top: 50px;
 }
 
 .footerActivity{
@@ -756,3 +792,106 @@ a {
   border-radius: 10px;
   font-weight: 600;
 } 
+
+.titleBox{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.titleActivity{
+  width: 14ch;
+  font-size: 45px;
+  color: #f16684;
+  font-weight: 700;
+  letter-spacing: 5px;
+  animation: typing 2s steps(14), blink .5s step-end infinite alternate; 
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid;
+  font-size: 2em;
+}
+
+
+@keyframes typing {
+  from {
+    width: 0
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent
+  }
+}
+
+
+/* Menu miga de pan */
+
+.volverInicio{
+  position: absolute;
+  margin-left: 10%;
+  font-size: 20px;
+  font-weight: 700;
+}
+.volverInicio a{
+  color: #fff;
+}
+
+.volverInicio .iconHome{
+  display: inline-block;
+  text-align: center;
+  border-radius: 50%;
+  padding: 16px; 
+  width: 70px;
+  height: 70px;
+  background: #f7de00;
+  font-weight: 700;
+  font-size: 28px;
+  box-shadow: inset 0px -4px 0px 0px rgb(0 0 0 / 10%);
+  margin: 10px;
+}
+
+i.fa-house-user{
+  color: #0064ff !important;
+}
+
+
+
+/* Responsive */
+
+@media (max-width: 768px) {
+  
+  .volverInicio{
+    position: relative;
+    width: 140px;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+  }
+
+  .headerActivity{
+    height: 450px;
+    padding-top: 20px;
+    
+  }
+
+  
+}
+@media (min-width: 768px) {
+
+  .contenedor-app {
+      display: flex;
+      min-height: 100vh;
+  }
+
+  aside {
+      background-color: var(--blanco);
+      flex: 0 0 300px;
+  }
+  .seccion-principal {
+      flex: 1;
+  }
+
+}

@@ -21,7 +21,7 @@ const ConfettiCongratulation = (props) => {
     }
 
     const handleClick = () =>{
-        window.location.href = "http://localhost:3000/primero";
+        window.location.href = "/primero";
     }
 
 
@@ -34,7 +34,7 @@ const ConfettiCongratulation = (props) => {
                     ref={confettiRef}
             >
             <div className="containerCongrat">
-                    <div className="js-container container"></div>
+                    <div className="js-container container containerConfetti"></div>
                     <div className='contenedorCongrat'>
                         <div className="checkmark-circle">
                             <div className="background"></div>

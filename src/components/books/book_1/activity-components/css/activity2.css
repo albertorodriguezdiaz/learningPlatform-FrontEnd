@@ -1,6 +1,7 @@
 
 
 .puntaje{
+  border-radius: 10px;
     text-align: center;
    padding: 20px;
    background: rgb(46, 199, 166);
@@ -102,3 +103,10 @@ p.infoPuntaje.ganaste{
   .figuras-arrastrables { margin: 1.5rem; }
 }
 
+
+.botonEnconder{
+  display: none;
+}
+.botonEnconder.botonMostrar{
+  display: block !important;
+}

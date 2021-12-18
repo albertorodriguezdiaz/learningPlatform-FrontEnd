@@ -100,10 +100,12 @@ const HomeBook1 = (props) => {
         <div>
         <TopBar />    
         <div>
+          
             <Router >
                            
                 {
                     bookmain===true &&
+                    <Container>
                     <ul className="lessonBook">
 
                   <div className="mapBook" ref={scrl} onScroll={scrollCheck}>
@@ -179,8 +181,8 @@ const HomeBook1 = (props) => {
                     )}
 
                     
-                  
                     </ul>
+                  </Container>
 
                 }
 
@@ -191,7 +193,6 @@ const HomeBook1 = (props) => {
             
         </div>
         
-
         </div>
 
      );

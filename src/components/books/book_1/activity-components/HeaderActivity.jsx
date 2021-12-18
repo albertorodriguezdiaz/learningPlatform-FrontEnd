@@ -7,7 +7,9 @@ const HeaderActivity = (props) => {
     const idActivity = (((idleccion-1)*3)+idactividad);
 
     return ( 
-        <h1>Actividad #{idActivity}</h1>
+        <div className='titleBox'>
+            <h1 className='titleActivity'>Actividad #{idActivity}</h1>
+        </div>
      );
 }
  

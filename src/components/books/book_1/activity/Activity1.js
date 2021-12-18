@@ -1,6 +1,6 @@
 import React from 'react';
 import ButtonUpdate from '../activity-components/ButtonUpdate';
-import HeaderActivity from '../HeaderActivity';
+import HeaderActivity from '../activity-components/HeaderActivity';
 import AudioActividad1 from '../../../../resources/audio/actividad-1.mp3'
 
 const Activity1 = (props) => {

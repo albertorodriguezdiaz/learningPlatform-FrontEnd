@@ -1,6 +1,6 @@
 import React,{useEffect} from 'react';
 import ButtonUpdate from '../activity-components/ButtonUpdate';
-import HeaderActivity from '../HeaderActivity';
+import HeaderActivity from '../activity-components/HeaderActivity';
 
 
 import img1 from '../../../../resources/img/act2/deforestacion.jpg.jpg'
@@ -97,11 +97,20 @@ function soltandoObjArrastrable(event) {
   setTimeout(() => {
     correctas.textContent = total;
     
-    if(total===12) {infoPuntaje.classList.add("ganaste"); infoPuntaje.textContent = 'Ganaste :)';}
+    if(total===12) {
+      infoPuntaje.classList.add("ganaste"); 
+      infoPuntaje.textContent = 'Ganaste :)';
+
+      const botonEnconder = document.querySelector(".botonEnconder");
+      botonEnconder.classList.add("botonMostrar");
+
+      window.scrollTo(0, 400)
+    }
 
   }, 200);
 
   if(draggableElementDataSplit[0] === droppableElementData) {
+
     total++;
     console.log(total);
     const draggableElement = document.getElementById(draggableElementData);
@@ -129,6 +138,7 @@ function soltandoObjArrastrable(event) {
              <section className="puntaje">
                 <p className="infoPuntaje">Arrastra las acciones de solución y cuidado con la imagen correspondiente.</p>
                 <p>Puntaje del juego: <span className="correctas">0</span></p>
+                <div className='botonEnconder'><ButtonUpdate {...props} /></div>
             </section>
             
             <section className='figuras-arrastrables'>
@@ -201,7 +211,7 @@ function soltandoObjArrastrable(event) {
             </section>
             </div>  
              
-             <ButtonUpdate {...props} />
+             
          </div>
      );
 }

@@ -1,6 +1,6 @@
 import React,{useEffect, useContext} from 'react';
 import ButtonUpdate from '../activity-components/ButtonUpdate';
-import HeaderActivity from '../HeaderActivity';
+import HeaderActivity from './HeaderActivity';
 import BookContext from '../../../../context/books/bookContex';
 
 const MainUploadImage = (props) => {
