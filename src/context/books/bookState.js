@@ -163,7 +163,7 @@ const BookState = props => {
 
 
 
-    const agregarImagen = async (photo, idActivity, actividadUser ) => {
+    const agregarImagen = async (photo, idActivity, actividadUser, textoAct ) => {
         const data = new FormData();
         data.append('file', photo.target.files[0]);
 
@@ -172,21 +172,32 @@ const BookState = props => {
 
             const path = resultado.data.path;
             const pathImage = path.substr(path.lastIndexOf('\\') + 1);
+            
+            guardarPhoto(pathImage);
 
-            console.log(pathImage);
+        } catch (error) {
+            console.log(error);
+        }
+
+    }
+
+    const agregarImagenInfo = async (textoAct, idActivity, actividadUser) => {
+
+        const {texto, photo} = textoAct;
+        console.log(textoAct);
+        try {
 
             let objImgInfo = {
-                image: pathImage,
                 actividad: idActivity,
                 activity: actividadUser._id,
                 usuario: actividadUser.usuario,
-                libro: actividadUser.libro                
+                libro: actividadUser.libro,
+                texto: texto,
+                image: photo
             }
 
-            guardarPhoto(objImgInfo);
-            
-            const resultado2 = await ClienteAxios.post('/api/uploadimageinfo', objImgInfo);
-            console.log(resultado2);
+            const resultado = await ClienteAxios.post('/api/uploadimageinfo', objImgInfo);
+            console.log(resultado);
 
         } catch (error) {
             console.log(error);
@@ -232,7 +243,8 @@ const BookState = props => {
                 seleccionarActividadUser,
                 cambiarMainLesson,
                 agregarImagen,
-                obtenerImagenInfo
+                obtenerImagenInfo,
+                agregarImagenInfo
             }}
         >
             {props.children}

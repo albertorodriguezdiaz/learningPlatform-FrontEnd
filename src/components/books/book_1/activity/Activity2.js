@@ -1,13 +1,12 @@
 import React,{useEffect} from 'react';
 import ButtonUpdate from '../activity-components/ButtonUpdate';
 import HeaderActivity from '../activity-components/HeaderActivity';
-
-
-import img1 from '../../../../resources/img/act2/deforestacion.jpg.jpg'
-import img2 from '../../../../resources/img/act2/caza.jpg'
-import img3 from '../../../../resources/img/act2/agua-contaminada.jpg'
-import img4 from '../../../../resources/img/act2/contaminacion-luminica.jpg'
 import { Col, Row } from 'react-bootstrap';
+
+import img1 from '../../../../resources/img/act2/deforestacion.jpg.jpg';
+import img2 from '../../../../resources/img/act2/caza.jpg';
+import img3 from '../../../../resources/img/act2/agua-contaminada.jpg';
+import img4 from '../../../../resources/img/act2/contaminacion-luminica.jpg';
 
 import '../activity-components/css/activity2.css';
 
@@ -20,26 +19,26 @@ const Activity2 = (props) => {
 
 
     const gameActivity2 = ()=>{
-        const objArrastrables = document.querySelectorAll(".objArrastrable");
+        const objArrastrableAct2s = document.querySelectorAll(".objArrastrableAct2");
 const objColocables = document.querySelectorAll(".objColocable");
 
 // Agregamos a cada elemento arrastrable el evento de ser escuchado para manipularlo
-objArrastrables.forEach(elem => {
-  elem.addEventListener("dragstart", iniciarObjArrastrable); 
+objArrastrableAct2s.forEach(elem => {
+  elem.addEventListener("dragstart", iniciarObjArrastrableAct2); 
 });
 
 // Agregamos a cada elemento colocable los eventos
 objColocables.forEach(elem => {
-  elem.addEventListener("dragenter", entradaValidaObjArrastrable); // Se ejecuta cuando entra a la caja valida
-  elem.addEventListener("dragover", pasandoObjArrastrable); // Se ejecuta cuenta es arrastrado y pasa por las cajas
-  elem.addEventListener("dragleave", dejandoObjArrastrable); // Se ejecuta cuando sale de la caja valida
-  elem.addEventListener("drop", soltandoObjArrastrable); // Se ejecuta cuando se deja caer en la caja valida
+  elem.addEventListener("dragenter", entradaValidaObjArrastrableAct2); // Se ejecuta cuando entra a la caja valida
+  elem.addEventListener("dragover", pasandoObjArrastrableAct2); // Se ejecuta cuenta es arrastrado y pasa por las cajas
+  elem.addEventListener("dragleave", dejandoObjArrastrableAct2); // Se ejecuta cuando sale de la caja valida
+  elem.addEventListener("drop", soltandoObjArrastrableAct2); // Se ejecuta cuando se deja caer en la caja valida
 });
 
 // Funciones para el Drag and Drop / Arrastrar y colocar
 
 //Eventos ejecutados sobre el objetivo arrastrable 
-function iniciarObjArrastrable(event) {
+function iniciarObjArrastrableAct2(event) {
   event.dataTransfer.setData("text", event.target.id); // "text/plain", recibimos el texto del objeto  
   
 }
@@ -48,21 +47,21 @@ function iniciarObjArrastrable(event) {
 //Eventos ejejcutados en el objeto colocable
 
 // Si no ha entrado el objeto valido en la caja valida entonces agregamos la clase hover para tener un efecto al pasar por el objeto
-function entradaValidaObjArrastrable(event) {
+function entradaValidaObjArrastrableAct2(event) {
   if(!event.target.classList.contains("objColocableValido")) {
     event.target.classList.add("objColocable-Hover");
   }
 }
 
 // Quitamos el evento por defecto para agregar la nueva clase si es objeto es valido
-function pasandoObjArrastrable(event) {
+function pasandoObjArrastrableAct2(event) {
   if(!event.target.classList.contains("objColocableValido")) {
     event.preventDefault();
   }
 }
 
 // Quitamos la clase hover para que vuelva el objeto colocable como esta al inicio
-function dejandoObjArrastrable(event) {
+function dejandoObjArrastrableAct2(event) {
   if(!event.target.classList.contains("objColocableValido")) {
     event.target.classList.remove("objColocable-Hover"); 
   }
@@ -78,7 +77,7 @@ function dejandoObjArrastrable(event) {
 // PUNTAJE FIN /////////////////////////////////////////////////////////////////
 
 
-function soltandoObjArrastrable(event) {
+function soltandoObjArrastrableAct2(event) {
   // Esto es para evitar que el navegador ejecute el evento por defecto
   event.preventDefault(); 
   
@@ -119,7 +118,7 @@ function soltandoObjArrastrable(event) {
 
     event.target.style.backgroundColor = window.getComputedStyle(draggableElement).color;
 
-    draggableElement.classList.add("objArrastrableValido");
+    draggableElement.classList.add("objArrastrableAct2Valido");
     draggableElement.setAttribute("draggable", "false");
 
     // event.target.insertAdjacentHTML("afterbegin", `<i className="bg100 ${draggableElement.className}"></i>`);
@@ -142,40 +141,40 @@ function soltandoObjArrastrable(event) {
             </section>
             
             <section className='figuras-arrastrables'>
-                <div className="objArrastrable" draggable="true" id="deforestacion-1">
+                <div className="objArrastrableAct2" draggable="true" id="deforestacion-1">
                     Sembrar un árbol
                 </div>
-                <div className="objArrastrable" draggable="true" id="deforestacion-2">
+                <div className="objArrastrableAct2" draggable="true" id="deforestacion-2">
                     No tirar basuras al río
                 </div>
-                <div className="objArrastrable" draggable="true" id="deforestacion-3">
+                <div className="objArrastrableAct2" draggable="true" id="deforestacion-3">
                     No comprar productos hechos de animales
                 </div>
-                <div className="objArrastrable" draggable="true" id="caza-1">
+                <div className="objArrastrableAct2" draggable="true" id="caza-1">
                     No ocasionar incendios
                 </div>
-                <div className="objArrastrable" draggable="true" id="caza-2">
+                <div className="objArrastrableAct2" draggable="true" id="caza-2">
                     Mantener limpias las playas
                 </div>
-                <div className="objArrastrable" draggable="true" id="caza-3">
+                <div className="objArrastrableAct2" draggable="true" id="caza-3">
                     No comprar especies de animales silvestres 
                 </div>
-                <div className="objArrastrable" draggable="true" id="agua-1">
+                <div className="objArrastrableAct2" draggable="true" id="agua-1">
                     Cuidar los bosques
                 </div>
-                <div className="objArrastrable" draggable="true" id="agua-2">
+                <div className="objArrastrableAct2" draggable="true" id="agua-2">
                     No arrojar productos químicos al agua
                 </div>
-                <div className="objArrastrable" draggable="true" id="agua-3">
+                <div className="objArrastrableAct2" draggable="true" id="agua-3">
                     Apoyar la prohibición de caza de animales
                 </div>
-                <div className="objArrastrable" draggable="true" id="contaminacion-1">
+                <div className="objArrastrableAct2" draggable="true" id="contaminacion-1">
                     Apagar las luces cuando no las utilicemos
                 </div>
-                <div className="objArrastrable" draggable="true" id="contaminacion-2">
+                <div className="objArrastrableAct2" draggable="true" id="contaminacion-2">
                     Usar luces ahorradoras de energía
                 </div>
-                <div className="objArrastrable" draggable="true" id="contaminacion-3">
+                <div className="objArrastrableAct2" draggable="true" id="contaminacion-3">
                     Desconectar los electrodomésticos que no se están utilizando 
                 </div>
             </section>

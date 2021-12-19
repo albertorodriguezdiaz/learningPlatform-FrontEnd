@@ -36,7 +36,7 @@ p.infoPuntaje.ganaste{
     display: flex;
 }
 
-.objArrastrable{
+.objArrastrableAct2{
     margin: 10px;
     text-align: center;
     background-color: #fff;
@@ -55,7 +55,7 @@ p.infoPuntaje.ganaste{
     display: inline-block;
 }
 
-  .objArrastrable:hover {
+  .objArrastrableAct2:hover {
     background-color: rgb(5, 17, 87);
     color: #fff;
     opacity: 1;
@@ -84,17 +84,17 @@ p.infoPuntaje.ganaste{
 .objColocable.objColocableValido i {
   pointer-events: none;
 }
-.objArrastrable.objArrastrableValido {
+.objArrastrableAct2.objArrastrableAct2Valido {
   user-select: none;
   opacity: 0.1;
   cursor: default;
 }
-.bg100.objArrastrable.objArrastrableValido {
+.bg100.objArrastrableAct2.objArrastrableAct2Valido {
   user-select: none;
   opacity: 1;
   cursor: default;
 }
-.objArrastrable.objArrastrableValido:hover {
+.objArrastrableAct2.objArrastrableAct2Valido:hover {
   opacity: 0.1;
 }
 

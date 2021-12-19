@@ -115,6 +115,7 @@ a {
   border-radius: .5rem;
   flex: 1;
   width: 100%;
+  margin-top: 20px;
 }
 
 .form-usuario {
@@ -358,13 +359,18 @@ a {
 
 .imgEnviada{
   text-align: center;
+  height: auto;
+  border: 10px solid #fff;
+  box-shadow: 0px 20px 50px 0px rgba(0, 0, 0, 0.2);
 }
 
 .imgEnviada img{
   max-width: 100%;
-  height: auto;
-  border: 10px solid #fff;
-  box-shadow: 0px 20px 50px 0px rgba(0, 0, 0, 0.2);
+}
+
+.imgEnviada p{
+  font-size: 16px;
+  margin-top: 20px;
 }
 
 .imgPhotoNone{
@@ -374,6 +380,11 @@ a {
   border: 10px solid #fff;
   border-radius: 10px;
   padding: 50px 20px;
+}
+
+.imgPhotoNone img{
+  max-width: 100%;
+  text-align: center;
 }
 
 
