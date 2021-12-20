@@ -104,9 +104,3 @@ p.infoPuntaje.ganaste{
 }
 
 
-.botonEnconder{
-  display: none;
-}
-.botonEnconder.botonMostrar{
-  display: block !important;
-}

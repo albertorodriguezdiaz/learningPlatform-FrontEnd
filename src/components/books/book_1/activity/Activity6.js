@@ -1,15 +1,25 @@
 import React from 'react';
-import ButtonUpdate from '../activity-components/ButtonUpdate';
-import HeaderActivity from '../activity-components/HeaderActivity';
+import MainUploadImage from '../activity-components/MainUploadImage'
 
-const Activit6 = (props) => {
+const Activity6 = (props) => {
+
+    const tituloActividad =`
+    Sube la evidencia de la entrega de la tarjeta al familiar que deseas decirle que es creación especial de Dios. 
+    `;
+
+   const textoTextArea =`
+      Ingresa la siguiente información: 1) Nombre del familiar. 2) Fecha de la entrega de la tarjeta
+   `;
 
      return ( 
-         <div>
-             <HeaderActivity {...props} />
-             <ButtonUpdate {...props} />
-         </div>
+        <div>
+        <MainUploadImage {...props} 
+         textoTextArea={textoTextArea}
+         tituloActividad={tituloActividad}
+        />
+        </div>
+           
      );
 }
  
-export default Activit6;
+export default Activity6;

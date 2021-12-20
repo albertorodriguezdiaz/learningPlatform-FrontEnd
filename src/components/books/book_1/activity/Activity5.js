@@ -1,7 +1,7 @@
 import React,{useEffect} from 'react';
 import ButtonUpdate from '../activity-components/ButtonUpdate';
 import HeaderActivity from '../activity-components/HeaderActivity';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
 
 import img1 from '../../../../resources/img/act5/iris.jpg'
 import img2 from '../../../../resources/img/act5/lengua.jpg'

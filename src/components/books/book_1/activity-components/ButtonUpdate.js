@@ -70,7 +70,7 @@ const ButtonUpdate = (props) => {
                  </div>
 
                 )
-                :<p className='actividadEnviada'>Actividad completada <i class="fas fa-check"></i></p>
+                :<p className='actividadEnviada'>Actividad completada <i className="fas fa-check"></i></p>
             }
          
          {

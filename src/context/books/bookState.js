@@ -206,10 +206,11 @@ const BookState = props => {
     }
 
     
-    const obtenerImagenInfo = async (usuario) =>{
+    const obtenerImagenInfo = async (usuario, actividad) =>{
         
         try {
-            const respuesta = await ClienteAxios.get('/api/uploadimageinfo', { params: { usuario }});
+            
+            const respuesta = await ClienteAxios.get('/api/uploadimageinfo', { params: { usuario, actividad }});
             const resAct = respuesta.data.imageActivity;
             guardarPhotoInfo(resAct);
             console.log(resAct);

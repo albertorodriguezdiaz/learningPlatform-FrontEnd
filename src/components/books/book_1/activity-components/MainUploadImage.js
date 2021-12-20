@@ -11,7 +11,7 @@ const MainUploadImage = (props) => {
     const {agregarImagen, agregarImagenInfo, obtenerImagenInfo, photo, photoInfo, photoExiste} = bookContext;
 
     // Seleccionamos las actividades del usuario con y nos ubicamos en la pisicion [0]
-    const{actividades} = props;
+    const{actividades, textoTextArea, tituloActividad} = props;
     const actividadUser = actividades[0];
 
     const idactividad = parseInt(props.match.params.id);
@@ -27,14 +27,18 @@ const MainUploadImage = (props) => {
     const {texto} = textoact;
 
     useEffect(() => {
-        obtenerImagenInfo(actividadUser.usuario);
+        obtenerImagenInfo(actividadUser.usuario, idActivity);
+        
+        const titleAct = document.querySelector('#tituloActividad');
+        titleAct.innerHTML = tituloActividad;
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     
     
     // Recargamos cuando suvimos una imagen nueva
     useEffect(() => {
-        obtenerImagenInfo(actividadUser.usuario);
+        obtenerImagenInfo(actividadUser.usuario, idActivity);
 
         if(photo.length>0){
             guardarTextoAct({
@@ -81,10 +85,16 @@ const MainUploadImage = (props) => {
                         ) 
                     )
                 : ( 
-                    <div className="imgPhotoNone"><p>Sube tu imagen</p>
+                    <div className="imgPhotoNone">
+
+                        <div id='tituloActividad'></div>
+
+                        <p>Sube tu imagen</p>
                     {
                         photo.length > 0 && <img src={`${process.env.REACT_APP_BACKEND_URL}/uploads/img/${photo}`} alt="" />
                     }
+
+
                     
                     <input 
                         type="file" 
@@ -97,10 +107,11 @@ const MainUploadImage = (props) => {
                         className="formulario-nuevo-colegio"
                         onSubmit={onSubmitUploadImageInfo}
                     >
-
+                        
+                        <p className='textTextArea'>{textoTextArea}:</p>
                         <textarea 
                             className="input-text"
-                            placeholder="Comentarios"
+                            placeholder="Escribe aquí..."
                             name="texto"
                             id="texto"
                             value={texto}

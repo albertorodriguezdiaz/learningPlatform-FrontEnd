@@ -23,7 +23,7 @@ const LessonHome = (props) => {
             <div className='volverInicio'>                 
                 <a href='/primero'>
                     <div className='iconHome'>
-                        <i class="fas fa-house-user"></i> 
+                        <i className="fas fa-house-user"></i> 
                     </div>
                     Inicio
                 </a>

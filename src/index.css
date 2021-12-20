@@ -395,6 +395,7 @@ a {
 }
 
 .formEnviarActividad{
+  z-index: 999;
   text-align: center;
 }
 
@@ -777,6 +778,7 @@ a {
 }
 
 .actividadEnviada{
+  z-index: 999;
   border-radius: 5px;
   background: #fff;
   border: 2px solid #00ab8c ;
@@ -906,3 +908,16 @@ i.fa-house-user{
   }
 
 }
+
+
+.textTextArea{
+  margin-top: 50px;
+}
+
+.botonEnconder{
+  display: none;
+}
+.botonEnconder.botonMostrar{
+  display: block !important;
+}
+
