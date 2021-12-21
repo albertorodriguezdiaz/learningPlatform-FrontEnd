@@ -1,14 +1,23 @@
 import React from 'react';
-import ButtonUpdate from '../activity-components/ButtonUpdate';
-import HeaderActivity from '../activity-components/HeaderActivity';
+import MainUploadImage from '../activity-components/MainUploadImage'
+
 
 const Activity42 = (props) => {
+   
+   const tituloActividad =`
+    <h2>Sube aquí la evidencia de la actividad que realizaste en Vive la Vida</h2>
+    `;
+   const textoTextArea =`
+    Espacio para dejar un comentario de la actividad
+   `;
 
      return ( 
-         <div>
-             <HeaderActivity {...props} />
-             <ButtonUpdate {...props} />
-         </div>
+            <div>
+                <MainUploadImage {...props} 
+                textoTextArea={textoTextArea}
+                tituloActividad={tituloActividad}
+                />
+            </div>
      );
 }
  

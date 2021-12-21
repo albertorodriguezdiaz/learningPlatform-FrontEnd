@@ -28,12 +28,19 @@ const MainUploadImage = (props) => {
 
     useEffect(() => {
         obtenerImagenInfo(actividadUser.usuario, idActivity);
-        
-        const titleAct = document.querySelector('#tituloActividad');
-        titleAct.innerHTML = tituloActividad;
+         
+        if (tituloActividad.length>0 && photoExiste===false) {
+            titleActividad(tituloActividad);
+        }
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
+
+    const titleActividad = (title)=>{
+        const titleActUpload = document.querySelector('#tituloActividadBox');
+        titleActUpload.innerHTML = title;
+    }
     
     
     // Recargamos cuando suvimos una imagen nueva
@@ -87,16 +94,15 @@ const MainUploadImage = (props) => {
                 : ( 
                     <div className="imgPhotoNone">
 
-                        <div id='tituloActividad'></div>
+                        <div id='tituloActividadBox'></div>
 
-                        <p>Sube tu imagen</p>
+                        <p className='subeImagen'>Sube tu imagen</p>
                     {
                         photo.length > 0 && <img src={`${process.env.REACT_APP_BACKEND_URL}/uploads/img/${photo}`} alt="" />
                     }
-
-
                     
                     <input 
+                        className='formularioUploadImage'
                         type="file" 
                         name="file" 
                         accept="image/png, image/gif, image/jpeg, image/jpg"
@@ -104,7 +110,7 @@ const MainUploadImage = (props) => {
                     />
 
                     <form
-                        className="formulario-nuevo-colegio"
+                        className="formularioUploadText"
                         onSubmit={onSubmitUploadImageInfo}
                     >
                         
@@ -120,11 +126,17 @@ const MainUploadImage = (props) => {
                         </textarea>
 
                         <div className="d-grid gap-2">
-                            <Button 
-                                as="input" variant="primary" size="lg" 
-                                type="submit" 
-                                value={'Cargar imagen'}>
-                            </Button>     
+                            {
+                                (mostrarBoton===false)
+                                && 
+                                <Button 
+                                    as="input" variant="primary" size="lg" 
+                                    className='botonEnviarFoto'
+                                    type="submit" 
+                                    value={'Enviar'}>
+                                </Button> 
+                            }
+                                
                         </div>                    
                     
                     </form>

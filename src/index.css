@@ -921,3 +921,35 @@ i.fa-house-user{
   display: block !important;
 }
 
+
+.textoActivity1 p,
+.containerActivity1 img{
+  margin-top: 10px;
+  font-size: 20px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.botonEnviarFoto{
+  width: 250px;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+
+p.subeImagen{
+  margin-top: 30px;
+  color: #4559b3;
+  font-weight: 700;
+}
+
+.formularioUploadImage{
+  color: #4559b3;
+  padding: 20px 50px;
+  border-radius: 5px;
+  text-align: center;
+  background: #f7de00;
+  font-weight: 700;
+  font-size: 20px;
+  box-shadow: inset 0px -4px 0px 0px rgb(0 0 0 / 10%);
+}
