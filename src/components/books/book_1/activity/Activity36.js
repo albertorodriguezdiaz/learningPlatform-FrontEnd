@@ -1,14 +1,26 @@
-import React from 'react';
-import ButtonUpdate from '../activity-components/ButtonUpdate';
-import HeaderActivity from '../activity-components/HeaderActivity';
+import React,{ Fragment } from 'react';
+import MainUploadAudio from '../activity-components/MainUploadAudio';
+
 
 const Activity36 = (props) => {
+   
+   const tituloActividad =`
+    <h2>Sube aquí la evidencia de la actividad descrita en el punto Vive la vida de la cartilla Soy Vida.</h2>
+    `;
+   const textoTextArea =`
+    Espacio para escribir algún comentario de la actividad realizada
+    `;
+
 
      return ( 
-         <div>
-             <HeaderActivity {...props} />
-             <ButtonUpdate {...props} />
-         </div>
+       <Fragment>
+            <div>
+                <MainUploadAudio {...props} 
+                    tituloActividad={tituloActividad}
+                    textoTextArea={textoTextArea}
+                />
+            </div>
+        </Fragment>
      );
 }
  

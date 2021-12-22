@@ -1019,3 +1019,7 @@ p.subeImagen{
   border-radius: 5px;
   border: 0;
 }
+
+.audioBox{
+  width: 100%;
+}
