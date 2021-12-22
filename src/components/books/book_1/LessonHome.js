@@ -16,7 +16,7 @@ const LessonHome = (props) => {
     
     
     return ( 
-    <div>
+    <div className='bgBook'>
         <div className="headerActivity">
 
         

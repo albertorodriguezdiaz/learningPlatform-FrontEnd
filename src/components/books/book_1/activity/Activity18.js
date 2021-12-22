@@ -1,19 +1,19 @@
 import React from 'react';
-import MainUploadImage from '../activity-components/MainUploadImage'
+import MainUploadText from '../activity-components/MainUploadText'
+import newsAct18 from '../../../../resources/img/act18/news-actividad18.png';
 
 const Activity18 = (props) => {
    
    const tituloActividad =`
-    Sube aquí tus fotos o videos de las tres acciones que ejecutaron como una forma de respetar y valorar la vida
+    <h2>Con la ayuda de tu familia:</h2>
+    <h3>Lean la siguiente noticia y respondan las preguntas a continuación</h3>
+    <img src=${newsAct18} alt="newsAct18" />
    `;
-   const textoTextArea =`
-      Ingresa el link del video aquí
-   `;
+
 
      return ( 
         <div>
-        <MainUploadImage {...props} 
-         textoTextArea={textoTextArea}
+        <MainUploadText {...props} 
          tituloActividad={tituloActividad}
         />
         </div>

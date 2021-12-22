@@ -97,7 +97,7 @@ const HomeBook1 = (props) => {
 
     return ( 
       
-        <div>
+        <div className='bgHomeBook'>
         <TopBar />    
         <div>
           
