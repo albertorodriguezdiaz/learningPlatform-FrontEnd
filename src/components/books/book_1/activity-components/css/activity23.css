@@ -1,0 +1,146 @@
+
+
+.puntaje{
+    border-radius: 10px;
+      text-align: center;
+     padding: 20px;
+     background: rgb(46, 199, 166);
+     transition: .5 all;
+     margin-bottom: 30px;
+  }
+  .puntaje p{
+      font-size: 20px;
+      color: #fff;
+      font-weight: 500;
+      
+  }
+  
+  p.infoPuntaje{
+      font-size: 30px;
+  }
+  p.infoPuntaje.ganaste{
+      font-size: 50px;
+  }
+  .correctas{
+      font-size: 30px;
+      color: #fff;
+      font-weight: 700;
+  }
+  
+  
+  .caja-colocarAct23{
+      position: relative;
+      width: 1000px;
+      margin: 0 auto;
+    }
+    .caja-colocarAct23 img{
+        z-index: 1;
+        width: 1000px;
+        position: relative;
+    }
+ 
+  .objArrastrableAct23{
+      margin: 10px 0;
+      text-align: center;
+      background-color: #fff;
+      border: 5px solid #fff;
+      border-radius: 10px;
+      padding: 5px;
+      box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.15);
+
+      font-size: 1px;
+      color: #fff;
+      cursor: move;
+      display: inline-block;
+      transition: all 0.2s;
+  }
+  
+    .objArrastrableAct23:hover {
+      border: 5px solid rgb(5, 17, 87);
+      transform: scale(1.1,1.1);
+      background: rgb(5, 17, 87);;
+    }
+  
+  
+
+    img.objArrastrableAct23 {
+      max-width: 100px;
+      padding: 0;
+      margin: 10px 0;
+      user-select: none;
+  }
+
+  
+  /* Drag and Drop Related Styling */
+  
+  .objColocableAct23.objColocableAct23-Hover{
+    border-width: 8px;
+    transform: scale(1.1);
+  }
+  .objColocableAct23.objColocableAct23Valido {
+    border-style: solid;
+    color: #fff;
+  }
+  .objColocableAct23.objColocableAct23Valido span {
+    font-size: 0.75rem;
+    margin-top: -0.5rem;
+  }
+  .objColocableAct23.objColocableAct23Valido i {
+    pointer-events: none;
+  }
+  .objArrastrableAct23.objArrastrableAct23Valido {
+    user-select: none;
+    opacity: 0.1;
+    cursor: default;
+  }
+  .bg100.objArrastrableAct23.objArrastrableAct23Valido {
+    user-select: none;
+    opacity: 1;
+    cursor: default;
+  }
+  .objArrastrableAct23.objArrastrableAct23Valido:hover {
+    opacity: 0.1;
+  }
+  
+ 
+
+  .objColocableAct23{
+    z-index: 99;
+    width: 120px;
+    height: 120px;
+    border: 2px solid #fff;
+    position: absolute;
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+    transition: all 0.2s;
+}
+
+.objAct23-1{
+    top: 145px;
+    left: 45px;
+}
+.objAct23-2{
+    top: 238px;
+    left: 167px;
+}
+.objAct23-3{
+    top: 181px;
+    left: 310px;
+}
+.objAct23-4{
+    top: 280px;
+    left: 445px;
+}
+.objAct23-5{
+    top: 230px;
+    left: 577px;
+}
+.objAct23-6{
+    top: 162px;
+    left: 707px;
+}
+.objAct23-7{
+    top: 246px;
+    left: 824px;
+}
