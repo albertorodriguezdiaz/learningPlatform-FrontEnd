@@ -1023,3 +1023,40 @@ p.subeImagen{
 .audioBox{
   width: 100%;
 }
+
+.botonActColor{
+  width: 70px;
+  height: 70px;
+  background: #000;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: .3s all;
+  border: 2px solid #fff;
+}
+.botonActColor:hover{
+  transform: scale(1.2,1.2);
+  border: 5px solid #fff;
+}
+
+.botonVerde{
+  background: rgb(10, 194, 108);
+}
+.botonRojo{
+  background: rgb(223, 11, 11);
+}
+
+.tableAct14 p{
+  text-align: left;
+  font-size: 18px;
+  padding: 10px;
+}
+
+.puntajeAct14{
+  background: rgb(10, 194, 108);
+  border-radius: 20px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  font-size: 25px;
+  color: #fff;
+  padding: 10px 0 2px 0;
+}

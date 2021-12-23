@@ -1,9 +1,10 @@
 import React,{useState, useRef, useEffect} from 'react';
 import Confetti from "react-confetti";
+import Calping from "../../../../resources/sounds/clapping.mp3"
 
 
 const ConfettiCongratulation = (props) => {
-
+    
 
     const [height, setHeight] = useState(null);
     const [width, setWidth] = useState(null);
@@ -13,6 +14,7 @@ const ConfettiCongratulation = (props) => {
     useEffect(() => {
         setHeight(confettiRef.current.clientHeight);
         setWidth(confettiRef.current.clientWidth);
+        playSound();
     }, [])
 
    
@@ -22,6 +24,10 @@ const ConfettiCongratulation = (props) => {
 
     const handleClick = () =>{
         window.location.href = "/primero";
+    }
+
+    const playSound = () =>{
+        new Audio(Calping).play();
     }
 
 
