@@ -1060,3 +1060,44 @@ p.subeImagen{
   color: #fff;
   padding: 10px 0 2px 0;
 }
+
+.piramideAct32{
+  width: 1000px;
+  position: relative;
+  text-align: center;
+  margin: 0 auto;
+  
+}
+
+.figuraMovible {
+  /* margin: 40px 0 0 50px; */
+  position: absolute;
+  z-index: 9;
+  background-color: transparent;
+  width: 50px ;
+}
+.piramideAct32 img{
+  border-radius: 0px;
+  padding: 0px;
+  border: 0px;
+}
+
+.figuraMovible img{
+  height: 100px;
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+}
+
+.headerMover {
+  padding: 10px;
+  cursor: move;
+  z-index: 10;
+  background-color: #2196f3;
+  color: #fff;
+}
+
+.figurasDiv{
+  position: relative;
+  margin: 50px 0 0 50px
+}
