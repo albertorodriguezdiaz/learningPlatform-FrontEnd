@@ -984,6 +984,18 @@ p.subeImagen{
   box-shadow: inset 0px -4px 0px 0px rgb(0 0 0 / 10%);
 }
 
+.formularioUploadImageFive{
+  color: #4559b3;
+  padding: 20px 45px;
+  border-radius: 5px;
+  text-align: center;
+  background: #f7de00;
+  font-weight: 700;
+  font-size: 20px;
+  box-shadow: inset 0px -4px 0px 0px rgb(0 0 0 / 10%);
+  width: 200px;
+}
+
 
 .bgBook{
   background: #fff;
