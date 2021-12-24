@@ -1,6 +1,6 @@
-import React,{useEffect} from 'react';
-import ButtonUpdate from '../activity-components/ButtonUpdate';
+import React,{useEffect,Fragment} from 'react';
 import HeaderActivity from '../activity-components/HeaderActivity';
+import MainUploadTextOneField from '../activity-components/MainUploadTextOneField';
 
 import triangulo from '../../../../resources/img/act32/triangulo.png';
 
@@ -23,7 +23,6 @@ import profesora from '../../../../resources/img/act32/profesora.png';
 
 const Activity32 = (props) => {
 
-    
     useEffect(() => {
         imgDD();
     }, [])
@@ -86,8 +85,12 @@ function dragElement(elmnt) {
 
 }
     
+
+const tituloActividad =`
+<h2>Observa la pirámide construida y escribe un comentario crítico sobre este orden social y cómo crees que este afecta la dignidad humana.</h2>
+`;
      return ( 
-         <div>
+         <Fragment>
              <HeaderActivity {...props} />
 
         <div className="containerActivity1">
@@ -152,8 +155,10 @@ function dragElement(elmnt) {
             
             </div>
 
-            <ButtonUpdate {...props} />
-         </div>
+            <MainUploadTextOneField {...props} 
+                tituloActividad={tituloActividad}
+            />
+         </Fragment>
      );
 }
  

@@ -2,17 +2,16 @@ import React,{useEffect, useContext, useState} from 'react';
 import ButtonUpdate from '../activity-components/ButtonUpdate';
 import HeaderActivity from './HeaderActivity';
 import BookContext from '../../../../context/books/bookContex';
-import { Button, Table } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 
-
-const MainUploadText33 = (props) => {
+const MainUploadTextOneField = (props) => {
 
     // 
     const bookContext = useContext(BookContext);
-    const {agregarImagenInfo, obtenerImagenInfo, photoExiste, photoInfo} = bookContext;
+    const {agregarImagenInfo, obtenerImagenInfo, photoInfo, photoExiste} = bookContext;
 
     // Seleccionamos las actividades del usuario con y nos ubicamos en la pisicion [0]
-    const{actividades, tituloActividad, textoTextArea} = props;
+    const{actividades, tituloActividad} = props;
     const actividadUser = actividades[0];
 
     const idactividad = parseInt(props.match.params.id);
@@ -22,12 +21,10 @@ const MainUploadText33 = (props) => {
     const [mostrarBoton, guardarMostrarBoton] = useState(false)
 
     const [textoact, guardarTextoAct] = useState({
-        texto2: '',
-        texto1: '',
-        video: ''
+        texto: '',
     });
 
-    let {texto1, texto2, video} = textoact;
+    let {texto} = textoact;
     
     useEffect(() => {
         obtenerImagenInfo(actividadUser.usuario, idActivity);
@@ -39,7 +36,6 @@ const MainUploadText33 = (props) => {
          
         if (tituloActividad.length>0 && photoExiste===false) {
             titleActividad(tituloActividad);
-            textTextArea(textoTextArea);
         }
 
         if (photoExiste===true) {
@@ -51,25 +47,20 @@ const MainUploadText33 = (props) => {
 
 
 
-
     const titleActividad = (title)=>{
         const titleActUpload = document.querySelector('#tituloActividadBox');
         titleActUpload.innerHTML = title;
     }
 
-    const textTextArea = (textA)=>{
-        const titleActUpload = document.querySelector('#tituloActividadBox2');
-        titleActUpload.innerHTML = textA;
-    }
-    
-
     const textoActividad = ()=>{
-        // console.log(photoInfo);
         // const filtered = photoInfo.filter(e => {
         //     return e.actividad;
+        // });
+
         const textoActUpload = document.querySelector('#textoActividadBox');
         textoActUpload.innerHTML = photoInfo[0].texto;
     }
+    
 
     // Lee los contenidos del input
     const onChangePhotoTexto = (e) =>{
@@ -85,16 +76,9 @@ const MainUploadText33 = (props) => {
     const onSubmitUploadImageInfo = (e) =>{ 
         e.preventDefault();
 
-
         let textoAll = {texto: `
-            <h3>¿Qué observaste en el video?</h3>
-            <p>${texto1}</p>
-
-            <h3>¿Cómo crees que debemos mirar o tratar a los demás sabiendo que también tienen dignidad?</h3>
-            <p>${texto2}</p>
-
-            <h3>Enlace Video:</h3>
-            <p>${video}</p>
+            <h3>Texto escrito:</h3>
+            <p>${texto}</p>
         `}; 
 
         agregarImagenInfo(textoAll, idActivity, actividadUser);
@@ -119,52 +103,15 @@ const MainUploadText33 = (props) => {
                         className="formularioUploadText"
                         onSubmit={onSubmitUploadImageInfo}
                     >
-                        <Table striped bordered hover className='tableTextArea'>
-                            <thead>
-                                <tr>
-                                    <td>¿Qué observaste en el video?</td>
-                                    <td>¿Cómo crees que debemos mirar o tratar a los demás sabiendo que también tienen dignidad?</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <textarea 
-                                            className="inputW100"
-                                            placeholder="Espacio para escribir"
-                                            name="texto1"
-                                            id="texto1"
-                                            value={texto1}
-                                            onChange={onChangePhotoTexto}
-                                        >
-                                        </textarea>
-                                    </td>
-                                    <td>
-                                        <textarea 
-                                            className="inputW100"
-                                            placeholder="Espacio para escribir"
-                                            name="texto2"
-                                            id="texto2"
-                                            value={texto2}
-                                            onChange={onChangePhotoTexto}
-                                        >
-                                        </textarea>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </Table>
-
-
-                        <div id='tituloActividadBox2'></div>
-                            <textarea 
-                                className="inputW100"
-                                placeholder="Link del video aquí"
-                                name="video"
-                                id="video"
-                                value={video}
-                                onChange={onChangePhotoTexto}
-                            >
-                            </textarea>
+                        <textarea 
+                            className="inputW100"
+                            placeholder="Espacio para escribir"
+                            name="texto"
+                            id="texto"
+                            value={texto}
+                            onChange={onChangePhotoTexto}
+                        ></textarea>
+                        
                     
                     
 
@@ -196,4 +143,4 @@ const MainUploadText33 = (props) => {
      );
 }
  
-export default MainUploadText33;
+export default MainUploadTextOneField;

@@ -2,13 +2,13 @@ import React,{useEffect, useContext, useState} from 'react';
 import ButtonUpdate from '../activity-components/ButtonUpdate';
 import HeaderActivity from './HeaderActivity';
 import BookContext from '../../../../context/books/bookContex';
-import { Button, Table } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 
-const MainUploadText = (props) => {
+const MainUploadVideo = (props) => {
 
     // 
     const bookContext = useContext(BookContext);
-    const {agregarImagenInfo, obtenerImagenInfo, photo, photoInfo, photoExiste} = bookContext;
+    const {agregarImagenInfo, obtenerImagenInfo, photoInfo, photoExiste} = bookContext;
 
     // Seleccionamos las actividades del usuario con y nos ubicamos en la pisicion [0]
     const{actividades, tituloActividad} = props;
@@ -144,4 +144,4 @@ const MainUploadText = (props) => {
      );
 }
  
-export default MainUploadText;
+export default MainUploadVideo;

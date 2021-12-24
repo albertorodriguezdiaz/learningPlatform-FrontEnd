@@ -4,7 +4,7 @@ import HeaderActivity from './HeaderActivity';
 import BookContext from '../../../../context/books/bookContex';
 import { Button } from 'react-bootstrap';
 
-const MainUploadImage = (props) => {
+const MainUploadAudio = (props) => {
 
     // 
     const bookContext = useContext(BookContext);
@@ -163,4 +163,4 @@ const MainUploadImage = (props) => {
      );
 }
  
-export default MainUploadImage;
+export default MainUploadAudio;

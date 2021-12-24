@@ -14,7 +14,7 @@ const MainUploadText = (props) => {
 
     // 
     const bookContext = useContext(BookContext);
-    const {agregarImagenInfo, obtenerImagenInfo, photo, photoInfo, photoExiste} = bookContext;
+    const {agregarImagenInfo, obtenerImagenInfo, photoInfo, photoExiste} = bookContext;
 
     // Seleccionamos las actividades del usuario con y nos ubicamos en la pisicion [0]
     const{actividades, tituloActividad} = props;
