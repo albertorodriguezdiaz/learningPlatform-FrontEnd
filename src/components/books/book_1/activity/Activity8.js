@@ -131,7 +131,7 @@ function soltandoObjArrastrableAct8(event) {
     console.log(draggableElement);
 
     draggableElement.setAttribute("draggable", "false");
-
+ 
     let imgAct = "";
     if (droppableElementData==='img1') {imgAct = img1;}
     if (droppableElementData==='img2') {imgAct = img2;}
@@ -147,6 +147,7 @@ function soltandoObjArrastrableAct8(event) {
     event.target.insertAdjacentHTML("afterbegin", `<img src="${imgAct}" />`);
 
   }
+
 }
     }
 
@@ -155,7 +156,7 @@ function soltandoObjArrastrableAct8(event) {
          <div>
              <HeaderActivity {...props} /> 
 
-            <div className='containerActivity1'>
+            <div className='containerActivity'>
              <h2>Construyamos sociedad</h2>
             
              <section className="puntaje">

@@ -131,7 +131,7 @@ function soltandoObjArrastrableAct2(event) {
          <div>
              <HeaderActivity {...props} /> 
 
-            <div className='containerActivity1'>
+            <div className='containerActivity'>
              <h2>¿Qué acciones ayudarían a mejorar las situaciones que muestran las imágenes?</h2>
             
              <section className="puntaje">

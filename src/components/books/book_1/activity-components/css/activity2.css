@@ -98,6 +98,7 @@ p.infoPuntaje.ganaste{
   opacity: 0.1;
 }
 
+
 @media (max-width: 600px) {
   html { font-size: 14px; }
   .figuras-arrastrables { margin: 1.5rem; }
