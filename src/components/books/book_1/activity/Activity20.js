@@ -1,16 +1,63 @@
-import React,{useEffect} from 'react';
+import React,{useEffect, useState} from 'react';
 import ButtonUpdate from '../activity-components/ButtonUpdate';
 import HeaderActivity from '../activity-components/HeaderActivity';
+import { useStopwatch  } from 'react-timer-hook';
 
 import '../activity-components/css/activity20.css';
+import { Col, Container, Row, Table } from 'react-bootstrap';
 
 
 const Activity20 = (props) => {
 
+    const [contMinutos, setCountMinutos] = useState({
+        minutosPista: 0,
+        mostrarPista: true
+    });
+
+    const {
+        seconds,
+        minutes,
+        hours,
+        days,
+        isRunning,
+        start,
+        pause,
+        reset,
+      } = useStopwatch ({ autoStart: false });
+
+      
 useEffect(() => {
     crucigramaJuego();
 // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [])
+ 
+useEffect(() => {
+    tiempoEsperaPistaFunction();
+// eslint-disable-next-line react-hooks/exhaustive-deps
+}, [minutes])
+ 
+
+const tiempoEsperaPistaFunction = () =>{
+
+    let tiempoEsperaPista = contMinutos.minutosPista-minutes;
+    console.log(`tiempoEsperaPista ${tiempoEsperaPista}`);
+
+    tiempoEsperaPista===-2
+        &&setCountMinutos({
+            mostrarPista: true
+        });
+}
+
+
+const contadorMinutosPista = () =>{
+    // Mostramos la Pista
+    mostrarPista();
+
+    setCountMinutos({
+        minutosPista: minutes,
+        mostrarPista: false
+    });
+}
 
 
 const objCrucigrama = [
@@ -223,13 +270,65 @@ habilitarCampos(objCrucigrama);
 
 }
 
-
      return ( 
          <div className='containerActivity1'>
              <HeaderActivity {...props} />
+             
+             
+             <div style={{textAlign: 'center'}}>
+                <div style={{fontSize: '100px'}}>
+                    <span>{days}</span>:<span>{hours}</span>:<span>{minutes}</span>:<span>{seconds}</span>
+                </div>
+                {
+                    minutes&&<p>Hola 4min</p>
+                }
+                <p>{isRunning 
+                    ? (
+
+                        <div className="preguntasCruc">
+                            <h3>Preguntas</h3> 
+
+                            <Container className='tablaCricigrama'>
+                                <Row>
+                                    <Col md={6}><div className="boxPregunta"> 1.	Génesis 6:9. Noé era __?__ en sus generaciones.</div></Col>
+                                    <Col md={6}><div className="boxPregunta"> 2.	Génesis 8:1 Dios envió un viento sobre la tierra, y __?__las aguas.</div></Col>
+                                </Row>
+                                <Row>
+                                    <Col md={6}><div className="boxPregunta"> 3.	Génesis 7:18 y flotaba el arca sobre la __?__ de las aguas</div></Col>
+                                    <Col md={6}><div className="boxPregunta"> 4.	Génesis 9:11 ni habrá más diluvio para __?__ la tierra</div></Col>
+                                </Row>
+                                <Row>
+                                    <Col md={6}><div className="boxPregunta"> 5.	Génesis 7:17  las aguas crecieron, y __?__ el arca, y se elevó sobre la tierra.</div></Col>
+                                    <Col md={6}><div className="boxPregunta"> 6.	Génesis 8:12 y envió la __?__ , la cual no volvió ya más a él.</div></Col>
+                                </Row>
+                                <Row>
+                                    <Col md={6}><div className="boxPregunta"> 7.	Génesis 6:11 Y se __?__  la tierra delante de Dios,</div></Col>
+                                    <Col md={6}><div className="boxPregunta"> 8.	Génesis 9:16 Estará el arco en las nubes, y lo veré, y me acordaré del pacto __?__ </div></Col>
+                                </Row>
+                                <Row>
+                                    <Col md={6}><div className="boxPregunta"> 9.	Génesis 8:2 Y se __?__ las fuentes del abismo y las cataratas de los cielos.</div></Col>
+                                    <Col md={6}><div className="boxPregunta"> 10.	Génesis 7: 5 E hizo Noé __?__ a todo lo que le mandó Jehová.</div></Col>
+                                </Row>
+                            </Container>
+                            {
+                                contMinutos.mostrarPista===true
+                                && <button className='botonPista' onClick={contadorMinutosPista}>Mostrar Pista</button>
+
+                            }
+                        </div>
+                        
+                        )
+                
+                    : <button className='botonPista' onClick={start} on>Iniciar Juego</button>}</p>
+
                 <div className="crucigramaTablero"></div>
 
-                <button className='botonPista' onClick={mostrarPista}>Mostrar Pista</button>
+            </div>
+
+
+
+
+                
                 
              <ButtonUpdate {...props} />
          </div>

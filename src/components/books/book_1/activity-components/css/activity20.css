@@ -18,8 +18,8 @@ table.crucigrama td{
 
 
 .casilla {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     text-align: center;
 }
 
@@ -55,6 +55,25 @@ p.numFila{
     font-weight: 700;
     box-shadow: inset 0px -4px 0px 0px rgb(0 0 0 / 10%);
     margin: 0 auto;
-    margin-top: 50px;
-    margin-bottom: 50px;
+    /* margin-top: 50px; */
+    margin-bottom: 20px;
+}
+
+.tablaCricigrama{
+    text-align: left;
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+
+
+.tablaCricigrama .boxPregunta{
+    background: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    box-shadow: 10px 10px 10px rgba(0,0,0,.1);
+}
+
+.preguntasCruc h3{
+    font-size: 30px;
 }
