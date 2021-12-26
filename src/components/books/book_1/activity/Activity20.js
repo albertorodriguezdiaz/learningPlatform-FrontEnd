@@ -4,7 +4,7 @@ import HeaderActivity from '../activity-components/HeaderActivity';
 import { useStopwatch  } from 'react-timer-hook';
 
 import '../activity-components/css/activity20.css';
-import { Col, Container, Row, Table } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 
 
 const Activity20 = (props) => {
@@ -14,6 +14,15 @@ const Activity20 = (props) => {
         mostrarPista: true
     });
 
+    const [puntosPalabra, setPuntosPalabra] = useState([]);
+
+
+    const [puntosJuego, setPuntosJuego] = useState({
+        minutosPalabra: 0,
+        segundosPalabra: 0,
+        puntos: 0
+    });
+
     const {
         seconds,
         minutes,
@@ -21,13 +30,13 @@ const Activity20 = (props) => {
         days,
         isRunning,
         start,
-        pause,
-        reset,
       } = useStopwatch ({ autoStart: false });
 
       
 useEffect(() => {
     crucigramaJuego();
+
+    
 // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [])
  
@@ -36,14 +45,19 @@ useEffect(() => {
 // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [minutes])
  
+useEffect(() => {
+    validarJuego();
+// eslint-disable-next-line react-hooks/exhaustive-deps
+}, [seconds])
+ 
 
 const tiempoEsperaPistaFunction = () =>{
 
     let tiempoEsperaPista = contMinutos.minutosPista-minutes;
-    console.log(`tiempoEsperaPista ${tiempoEsperaPista}`);
 
-    tiempoEsperaPista===-2
+    tiempoEsperaPista<=-2
         &&setCountMinutos({
+            minutosPista: minutes,
             mostrarPista: true
         });
 }
@@ -59,6 +73,24 @@ const contadorMinutosPista = () =>{
     });
 }
 
+// const objCrucigrama = [
+//     { id: 1,
+//       palabra: 'fuego',
+//       ubicacion:  [ {fila: 'fila1C1'},{fila: 'fila1C2'},{fila: 'fila1C3'},{fila: 'fila1C4'},{fila: 'fila1C5'} ]
+//     },
+//     { id: 2,
+//       palabra: 'oso',
+//       ubicacion:  [ {fila: 'fila4C2'},{fila: 'fila4C3'},{fila: 'fila4C4'} ]
+//     },
+//     { id: 3,
+//       palabra: 'gato',
+//       ubicacion:  [ {fila: 'fila1C4'},{fila: 'fila2C4'},{fila: 'fila3C4'},{fila: 'fila4C4'} ]
+//     },
+//     { id: 4,
+//       palabra: 'loro',
+//       ubicacion:  [ {fila: 'fila3C2'},{fila: 'fila4C2'},{fila: 'fila5C2'},{fila: 'fila6C2'} ]
+//     }
+// ];
 
 const objCrucigrama = [
     { id: 1,
@@ -153,7 +185,97 @@ const mostrarPista = ()=>{
 }
 
 
+// Creamos las variables con los valores de cada palabra ingresadas por el jugador
+// const crearVariablePalabra = (objPalabra, palabraExiste)=>{
+//     let palabra = '';
 
+//     objPalabra.forEach((objC, fila)=>{
+//         objC.ubicacion.forEach((ubi, col)=>{
+//             // Comparamos la palabra a volver variable por la palabra en el objeto
+//             if (palabraExiste===objC.palabra){
+//                 // Le añadimos a cada variable el valor de su casilla
+//                 palabra += document.getElementById(ubi.fila).value;
+//             } 
+            
+//         });
+//     })
+
+//     return palabra;
+// }
+
+
+const validarJuego = ()=>{
+
+    let palabrapuntos = '';
+    let palabraObjet = [];
+
+    objCrucigrama.forEach(objC=>{
+
+        palabrapuntos = '';
+
+        objC.ubicacion.forEach(ubi=>{
+            // Le añadimos a cada variable el valor de su casilla
+            palabrapuntos += String(document.getElementById(ubi.fila).value);
+            // console.log(`palabrapuntos ${palabrapuntos}`);
+        })
+
+        // palabrapuntos===objC.palabra
+        // &&    // JSON value Dynamic, agregar []
+        //     setPuntosPalabra({
+        //         ...puntosPalabra,
+        //         [palabrapuntos]: 'true'
+        // })
+
+        // Agregamos al state las palabras completadas
+        if(palabrapuntos===objC.palabra){
+
+                
+            
+            // ASignar El puntaje
+                // let minG = minutes-puntosJuego.minutosPalabra;
+                // let segG = seconds-puntosJuego.segundosPalabra;
+                // if ( (minutes<=1 && seconds<=59 && (minG===1 || minG===0)) || 
+                //     (minG===2 && segG>=0)){
+                //     let puntosG = puntosJuego.puntos+20;
+                //     setPuntosJuego({
+                //         minutosPalabra: minutes,
+                //         segundosPalabra: seconds,
+                //         puntos: puntosG
+                //     })
+                // }
+                // else if((minG===2 && segG>=0 )){
+                //     let puntosG = puntosJuego.puntos+10;
+                //     setPuntosJuego({
+                //         minutosPalabra: minutes,
+                //         segundosPalabra: seconds,
+                //         puntos: puntosG
+                //     })
+                // }
+
+
+            // value Dynamic, agregar [] para que muestre el nombre de la variable
+            palabraObjet.push({[palabrapuntos]: 'true'});
+            setPuntosPalabra(palabraObjet);
+
+           
+
+
+         }
+            
+    })
+
+    if (objCrucigrama.length===puntosPalabra.length) {
+        console.log('GANASTE :)');
+    }
+    
+    
+    
+
+    // if(palabra_fuego==='fuego' && palabra_oso==='oso' && palabra_gato==='gato' && palabra_loro==='loro'){
+    //     console.log(`GANASTE :) - ${palabra_fuego} + ${palabra_oso} + ${palabra_gato} + ${palabra_loro}`);
+    // }
+
+}
 
 
 const crucigramaJuego = ()=>{
@@ -162,30 +284,10 @@ const tableroX = 12;
 const tableroY = 21;
  
 
-// Creamos las variables con los valores de cada palabra ingresadas por el jugador
-const crearVariablePalabra = (objPalabra, palabraExiste)=>{
-    let palabra = '';
-
-    objPalabra.forEach((objC, fila)=>{
-        objC.ubicacion.map((ubi, col)=>{
-            // Comparamos la palabra a volver variable por la palabra en el objeto
-            if (palabraExiste===objC.palabra){
-                // Le añadimos a cada variable el valor de su casilla
-                palabra += document.getElementById(ubi.fila).value;
-            } 
-            
-        })
-    })
-
-    return palabra;
-}
-
-
-
 // Creamos el tablero
 const crearTablero = (x,y) =>{
 
-    let table = '<table class="crucigrama">';
+    let table = '<form><table class="crucigrama">';
     
     for (let fila = 1; fila <= x; fila++) {
         table += `
@@ -201,11 +303,12 @@ const crearTablero = (x,y) =>{
         </tr>`;
     }
     
-    table += '</table>';
+    table += '</table></form>';
 
 
     return table;
 }
+
 
 
 // Deshabilitamos todos los campos del tablero
@@ -238,21 +341,6 @@ const habilitarCampos = (objCru)=>{
 
 
 
-// setInterval(() => {
-//     const palabra_fuego = crearVariablePalabra(objCrucigrama,'fuego');
-//     const palabra_oso = crearVariablePalabra(objCrucigrama,'oso');
-//     const palabra_gato = crearVariablePalabra(objCrucigrama,'gato');
-//     const palabra_loro = crearVariablePalabra(objCrucigrama,'loro');
-
-    
-//     console.log(palabra_fuego);
-
-//     if(palabra_fuego==='fuego' && palabra_oso==='oso' && palabra_gato==='gato' && palabra_loro==='loro'){
-//         console.log(`GANASTE :) - ${palabra_fuego} + ${palabra_oso} + ${palabra_gato} + ${palabra_loro}`);
-//     }
-
-//   }, 5000);
-
 
 // Instanciamos el tablero y se lo añadimos al la clase html .crucigramaTablero
 const tablero = crearTablero(tableroX,tableroY);
@@ -270,6 +358,8 @@ habilitarCampos(objCrucigrama);
 
 }
 
+
+
      return ( 
          <div className='containerActivity1'>
              <HeaderActivity {...props} />
@@ -279,9 +369,7 @@ habilitarCampos(objCrucigrama);
                 <div style={{fontSize: '100px'}}>
                     <span>{days}</span>:<span>{hours}</span>:<span>{minutes}</span>:<span>{seconds}</span>
                 </div>
-                {
-                    minutes&&<p>Hola 4min</p>
-                }
+        
                 <p>{isRunning 
                     ? (
 
