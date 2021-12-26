@@ -45,10 +45,10 @@ useEffect(() => {
 // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [minutes])
  
-useEffect(() => {
-    validarJuego();
-// eslint-disable-next-line react-hooks/exhaustive-deps
-}, [seconds])
+// useEffect(() => {
+//     validarJuego();
+// // eslint-disable-next-line react-hooks/exhaustive-deps
+// }, [seconds])
  
 
 const tiempoEsperaPistaFunction = () =>{
@@ -71,6 +71,7 @@ const contadorMinutosPista = () =>{
         minutosPista: minutes,
         mostrarPista: false
     });
+
 }
 
 // const objCrucigrama = [
@@ -229,45 +230,43 @@ const validarJuego = ()=>{
         // Agregamos al state las palabras completadas
         if(palabrapuntos===objC.palabra){
 
-                
-            
-            // ASignar El puntaje
-                // let minG = minutes-puntosJuego.minutosPalabra;
-                // let segG = seconds-puntosJuego.segundosPalabra;
-                // if ( (minutes<=1 && seconds<=59 && (minG===1 || minG===0)) || 
-                //     (minG===2 && segG>=0)){
-                //     let puntosG = puntosJuego.puntos+20;
-                //     setPuntosJuego({
-                //         minutosPalabra: minutes,
-                //         segundosPalabra: seconds,
-                //         puntos: puntosG
-                //     })
-                // }
-                // else if((minG===2 && segG>=0 )){
-                //     let puntosG = puntosJuego.puntos+10;
-                //     setPuntosJuego({
-                //         minutosPalabra: minutes,
-                //         segundosPalabra: seconds,
-                //         puntos: puntosG
-                //     })
-                // }
-
-
             // value Dynamic, agregar [] para que muestre el nombre de la variable
-            palabraObjet.push({[palabrapuntos]: 'true'});
+            palabraObjet.push({[palabrapuntos]: 'true', validado: false});
             setPuntosPalabra(palabraObjet);
 
-           
 
-
+                    // Asignar El puntaje
+                    // let minG = minutes-puntosJuego.minutosPalabra;
+                    // let segG = seconds-puntosJuego.segundosPalabra;
+                    // if ( (minutes<=1 && seconds<=59 && (minG===1 || minG===0)) || 
+                    //     (minG===2 && segG>=0)){
+                    //     let puntosG = puntosJuego.puntos+20;
+                    //     setPuntosJuego({
+                    //         minutosPalabra: minutes,
+                    //         segundosPalabra: seconds,
+                    //         puntos: puntosG
+                    //     })
+                    // }
+                    // else if((minG===2 && segG>=0 )){
+                    //     let puntosG = puntosJuego.puntos+10;
+                    //     setPuntosJuego({
+                    //         minutosPalabra: minutes,
+                    //         segundosPalabra: seconds,
+                    //         puntos: puntosG
+                    //     })
+                    // }
+  
          }
             
     })
 
+
     if (objCrucigrama.length===puntosPalabra.length) {
         console.log('GANASTE :)');
+        let puntajeFinal = ((puntosPalabra.length/minutes)*100);
+        minutes<=10 &&  console.log(`Obtuviste 100Pts)`);
+        (minutes>10) &&  console.log(`Obtuviste ${parseInt(puntajeFinal)}Pts de 100Pts)`);
     }
-    
     
     
 
@@ -401,8 +400,9 @@ habilitarCampos(objCrucigrama);
                             {
                                 contMinutos.mostrarPista===true
                                 && <button className='botonPista' onClick={contadorMinutosPista}>Mostrar Pista</button>
-
+                                
                             }
+                            <button className='botonPista' onClick={validarJuego}>Validar Respuesta</button>
                         </div>
                         
                         )
@@ -410,6 +410,7 @@ habilitarCampos(objCrucigrama);
                     : <button className='botonPista' onClick={start} on>Iniciar Juego</button>}</p>
 
                 <div className="crucigramaTablero"></div>
+                <button className='botonPista' onClick={contadorMinutosPista}>Mostrar Pista</button>
 
             </div>
 
