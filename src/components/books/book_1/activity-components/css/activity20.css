@@ -2,7 +2,7 @@ table.crucigrama{
     position: relative;
     width: 480px;
     margin: 0 auto;
-    border: 1px solid rgb(74, 0, 212);
+    border: 1px solid #0064ff;
 }
 
 table.crucigrama td{
@@ -13,7 +13,7 @@ table.crucigrama td{
     font-weight: 700;
     color: #fff;
     text-transform: uppercase;
-    border: 2px solid rgb(74, 0, 212);
+    border: 2px solid #0064ff;
 }
 
 
@@ -29,7 +29,7 @@ table.crucigrama td{
 }
 
 .bgCammpo{
-    background-color: rgb(74, 0, 212);
+    background-color: #0064ff;
     position: relative;
 }
 
@@ -43,21 +43,33 @@ p.numFila{
     left: 5px;
 }
 
-.botonPista{
+.botonBlue{
     width: 200px;
     position: relative;
     border: 0;
     text-align: center;
     border-radius: 7px;
     padding: 10px 30px;
-    background: #4559b3;
+    background: #0064ff;
     color: #fff;
     font-weight: 700;
     box-shadow: inset 0px -4px 0px 0px rgb(0 0 0 / 10%);
     margin: 0 auto;
     /* margin-top: 50px; */
-    margin-bottom: 20px;
+    margin: 10px;
 }
+
+.colorAmarillo{
+    background: #f7de00;
+    color: #4559b3;
+}
+.colorRosado{
+    background: #f16684
+}
+.colorVerde{
+    background: #0eca9b
+}
+
 
 .tablaCricigrama{
     text-align: left;

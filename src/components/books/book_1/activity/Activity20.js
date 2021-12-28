@@ -5,9 +5,12 @@ import { useStopwatch  } from 'react-timer-hook';
 
 import '../activity-components/css/activity20.css';
 import { Col, Container, Row } from 'react-bootstrap';
+import MyModal from '../activity-components/Modal';
 
 
 const Activity20 = (props) => {
+
+    const [modalShow, setModalShow] = useState(false);
 
     const [contMinutos, setCountMinutos] = useState({
         minutosPista: 0,
@@ -17,10 +20,11 @@ const Activity20 = (props) => {
     const [puntosPalabra, setPuntosPalabra] = useState([]);
 
 
+
+
     const [puntosJuego, setPuntosJuego] = useState({
-        minutosPalabra: 0,
-        segundosPalabra: 0,
-        puntos: 0
+        puntajeJuego: '0',
+        mensajePuntajeJuego: 'Cargando...',
     });
 
     const {
@@ -35,11 +39,11 @@ const Activity20 = (props) => {
       
 useEffect(() => {
     crucigramaJuego();
-
-    
 // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [])
- 
+
+      
+
 useEffect(() => {
     tiempoEsperaPistaFunction();
 // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -73,25 +77,6 @@ const contadorMinutosPista = () =>{
     });
 
 }
-
-// const objCrucigrama = [
-//     { id: 1,
-//       palabra: 'fuego',
-//       ubicacion:  [ {fila: 'fila1C1'},{fila: 'fila1C2'},{fila: 'fila1C3'},{fila: 'fila1C4'},{fila: 'fila1C5'} ]
-//     },
-//     { id: 2,
-//       palabra: 'oso',
-//       ubicacion:  [ {fila: 'fila4C2'},{fila: 'fila4C3'},{fila: 'fila4C4'} ]
-//     },
-//     { id: 3,
-//       palabra: 'gato',
-//       ubicacion:  [ {fila: 'fila1C4'},{fila: 'fila2C4'},{fila: 'fila3C4'},{fila: 'fila4C4'} ]
-//     },
-//     { id: 4,
-//       palabra: 'loro',
-//       ubicacion:  [ {fila: 'fila3C2'},{fila: 'fila4C2'},{fila: 'fila5C2'},{fila: 'fila6C2'} ]
-//     }
-// ];
 
 const objCrucigrama = [
     { id: 1,
@@ -168,20 +153,6 @@ const mostrarPista = ()=>{
         if(cont>=100) {return 0};
     }
     
-
-    // objCrucigrama.forEach((pal) =>{
-    //     if(pal.id===palabra){
-    //         let maxL = pal.ubicacion.length;
-    //         let letra = Math.floor(Math.random() * (maxL - min)) + min;
-            
-    //         pal.ubicacion.forEach((letr, key) =>{
-    //             if (letra===key+1) {
-    //                 document.getElementById(letr.fila).value = 'A';
-    //             }
-    //         })
-    //     }
-        
-    // })
 
 }
 
@@ -260,13 +231,45 @@ const validarJuego = ()=>{
             
     })
 
+    let mJuego = '...';
+    let pJuego = '...'
 
     if (objCrucigrama.length===puntosPalabra.length) {
-        console.log('GANASTE :)');
-        let puntajeFinal = ((puntosPalabra.length/minutes)*100);
-        minutes<=10 &&  console.log(`Obtuviste 100Pts)`);
-        (minutes>10) &&  console.log(`Obtuviste ${parseInt(puntajeFinal)}Pts de 100Pts)`);
+
+
+        let porcentaje = (puntosPalabra.length*100)/puntosPalabra.length;
+        let puntajeFinal = (  porcentaje - (((minutes-20)*100)/60)/2);
+        
+        if(minutes<=20){
+            pJuego = '100Pts';
+            mJuego = 'GANASTE :)';
+            setPuntosJuego({
+                ...puntosJuego,
+                puntajeJuego: pJuego,
+                mensajePuntajeJuego: mJuego
+            })
+        }
+        if(minutes>20){
+            pJuego=`Obtuviste ${parseInt(puntajeFinal)}Pts de 100Pts`
+            mJuego = 'GANASTE :)';
+            setPuntosJuego({
+                ...puntosJuego,
+                puntajeJuego: pJuego,
+                mensajePuntajeJuego: mJuego
+            })
+        }
+
+    }else{
+        mJuego = 'Faltan palabras por completar o corregir, continuar....';
+        pJuego='...';
+        setPuntosJuego({
+            ...puntosJuego,
+            mensajePuntajeJuego: mJuego,
+            puntajeJuego: pJuego
+        })
     }
+
+    setModalShow(true);
     
     
 
@@ -275,6 +278,7 @@ const validarJuego = ()=>{
     // }
 
 }
+
 
 
 const crucigramaJuego = ()=>{
@@ -358,20 +362,26 @@ habilitarCampos(objCrucigrama);
 }
 
 
-
      return ( 
          <div className='containerActivity1'>
-             <HeaderActivity {...props} />
+             <HeaderActivity 
+             {...props}/>
              
+            <MyModal
+                size="sm"
+                show={modalShow}
+                onHide={() => setModalShow(false)}
+                titulo={'Puntaje del Juego'}
+                puntaje={puntosJuego.puntajeJuego}
+                texto={puntosJuego.mensajePuntajeJuego}
+            />
+            
              
              <div style={{textAlign: 'center'}}>
-                <div style={{fontSize: '100px'}}>
-                    <span>{days}</span>:<span>{hours}</span>:<span>{minutes}</span>:<span>{seconds}</span>
-                </div>
+                
         
                 <p>{isRunning 
                     ? (
-
                         <div className="preguntasCruc">
                             <h3>Preguntas</h3> 
 
@@ -397,29 +407,33 @@ habilitarCampos(objCrucigrama);
                                     <Col md={6}><div className="boxPregunta"> 10.	Génesis 7: 5 E hizo Noé __?__ a todo lo que le mandó Jehová.</div></Col>
                                 </Row>
                             </Container>
+
+                            <div style={{fontSize: '50px', color:'#0064ff'}}>
+                                <span>Tiempo: {days}</span>:<span>{hours}</span>:<span>{minutes}</span>:<span>{seconds}</span>
+                            </div>
+
                             {
                                 contMinutos.mostrarPista===true
-                                && <button className='botonPista' onClick={contadorMinutosPista}>Mostrar Pista</button>
+                                && <button className='botonBlue colorAmarillo' onClick={contadorMinutosPista}>Mostrar Pista</button>
                                 
                             }
-                            <button className='botonPista' onClick={validarJuego}>Validar Respuesta</button>
+                            <button className='botonBlue colorVerde' onClick={validarJuego}>Validar Respuesta</button>
                         </div>
-                        
                         )
                 
-                    : <button className='botonPista' onClick={start} on>Iniciar Juego</button>}</p>
+                    : <button className='botonBlue' onClick={start} on>Iniciar Juego</button>}</p>
 
+                
                 <div className="crucigramaTablero"></div>
-                <button className='botonPista' onClick={contadorMinutosPista}>Mostrar Pista</button>
 
             </div>
 
 
 
-
-                
-                
-             <ButtonUpdate {...props} />
+            {
+                puntosJuego.puntajeJuego.length>3
+                    &&<ButtonUpdate {...props} />
+            }
          </div>
      );
 }
