@@ -263,14 +263,15 @@ p{
 .mapBook{
   display: flex;
   position: relative;
-  max-width: 1150px;
+  /* max-width: 1150px; */
+  width: 100%;
   overflow-x: hidden;
   scroll-behavior: smooth;
   white-space: nowrap;
   background: transparent;
   height: 100%;
   margin: 0 auto;
-  border-radius: 0 0 50px 50px;
+  border-radius: 0 0 30px 30px;
   border: 8px solid #39bbee
 }
 
@@ -301,28 +302,26 @@ p{
 }
 
 .lessonBook .next{
-  right: 30px;
+  right: -50px;
   top: 350px;
 }
 
 .lessonBook .prev{
-  left: 30px;
+  left: -50px;
   top: 350px;
 }
 
 
 
 .jugador {
-  z-index: 999;
+  z-index: 1;
   position: absolute;
-  background: #ffffff;
-  box-shadow: 0px 20px 20px rgba(0, 0, 0, .3);
   width: 60px;
   height: 60px;
-  margin: auto;
+  left: 30px;
+  bottom: 50px;
   border-radius: 4px;
   text-align: center;
-  font-size: 40px;
   /* Here we declare our inline animation */
   animation: jugador-rotate 3s linear infinite;
 }
@@ -338,11 +337,6 @@ p{
   padding: 0;
   margin-bottom: -10px;
   font-size: 10px;
-}
-
-.jugador{
-  left: 50px;
-  bottom: 50px;
 }
 
 /* Here we define our animation with the name "rotate" */
@@ -469,22 +463,22 @@ p{
   background: #fff !important;
   border-radius: 20px !important;
 }
-.actividadIcon1{  margin: 620px 140px; }
-.actividadIcon2{  margin: 450px 210px; }
-.actividadIcon3{  margin: 355px 80px; }
-.actividadIcon4{  margin: 200px 250px; }
-.actividadIcon5{  margin: 200px 590px; }
-.actividadIcon6{  margin: 365px 525px;}
-.actividadIcon7{  margin: 575px 585px; }
-.actividadIcon8{  margin: 460px 770px; }
-.actividadIcon9{  margin: 630px 1100px; }
-.actividadIcon10{  margin: 485px 1080px; }
-.actividadIcon11{  margin: 300px 1070px;}
-.actividadIcon12{  margin: 110px 995px; }
-.actividadIcon13{  margin: 80px 1360px; }
-.actividadIcon14{  margin: 245px 1490px;}
-.actividadIcon15{  margin: 375px 1360px; }
-.actividadIcon16{  margin: 580px 1500px; }
+.actividadIcon1{  margin: 590px 130px; }
+.actividadIcon2{  margin: 420px 200px; }
+.actividadIcon3{  margin: 325px 65px; }
+.actividadIcon4{  margin: 170px 240px; }
+.actividadIcon5{  margin: 170px 570px; }
+.actividadIcon6{  margin: 335px 510px;}
+.actividadIcon7{  margin: 545px 570px; }
+.actividadIcon8{  margin: 430px 760px; }
+.actividadIcon9{  margin: 600px 1085px; }
+.actividadIcon10{  margin: 460px 1065px; }
+.actividadIcon11{  margin: 270px 1055px;}
+.actividadIcon12{  margin: 80px 980px; }
+.actividadIcon13{  margin: 50px 1345px; }
+.actividadIcon14{  margin: 215px 1475px;}
+.actividadIcon15{  margin: 345px 1345px; }
+.actividadIcon16{  margin: 550px 1485px; }
 
 
 /* Congratulation Style */
@@ -1344,6 +1338,17 @@ table.tableTextArea{
 }
 .botonRojo{
   background: rgb(223, 11, 11);
+}
+
+.fas.colorVerde{
+  width: 33px;
+  height: 33px;
+  border-radius: 50%;
+  padding-top: 5px;
+  padding-left: 2px;
+  margin-right: 20px;
+  color: #fff;
+  background: rgb(10, 194, 108);
 }
 
 .tableAct14 p{

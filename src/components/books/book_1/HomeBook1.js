@@ -7,6 +7,16 @@ import TopBar from '../../layout/TopBar';
 import Lesson from './Lessons';
 import mapbook from '../../../resources/img/mapbook-primero.jpg';
 
+import imgAvatar from '../../../resources/img/img-avatar.png'
+import foto from '../../../resources/img/foto1.png'
+
+import star0 from '../../../resources/img/0star.png'
+import star1 from '../../../resources/img/1star.png'
+import star2 from '../../../resources/img/2star.png'
+import star2a from '../../../resources/img/2star-a.png'
+import star2b from '../../../resources/img/2star-b.png'
+import star3 from '../../../resources/img/3star.png'
+
 import { gsap } from "gsap";
 
 
@@ -128,17 +138,17 @@ const HomeBook1 = (props) => {
                         </div>
 
                         <div className="jugador">
-                          <p>Lección #1</p> 
-                          <i className="far fa-laugh-wink"></i>
+                          <img className='imgFotoTop' src={foto} alt="foto" />
+                          <img className='imgMarcoTop' src={imgAvatar} alt="marco" />
                         </div>
 
                         <div className="iconsActivity">
                           <ul>
+                            
                           {
                             actividadeslibro.map((actividad, key) =>
                             // Muestra los iconos segun las actividades completadas y no completadas
-                                actividad.act1===true && actividad.act2===true && actividad.act3===true
-                                ? (
+                                
                                     <li key={key} className={`actividadIcon${actividad.id}`}>
                                       <Link 
                                         to={{
@@ -146,25 +156,24 @@ const HomeBook1 = (props) => {
                                           state: actividadeslibro
                                         }}
                                       >
-                                        <i className="fas fa-star"></i>
+
+                                      { 
+                                      // Mostramos las estrellas segun las actividades completadas en el mapa
+                                      actividad.act1===true && actividad.act2===true && actividad.act3===true 
+                                      ? <img src={star3} alt="3 Estrellas" /> 
+                                      : actividad.act1===true && actividad.act2===true
+                                        ?<img src={star2} alt="2 Estrellas" /> 
+                                        : actividad.act1===true && actividad.act3===true
+                                          ?<img src={star2b} alt="2 Estrellas" /> 
+                                          : actividad.act2===true && actividad.act3===true
+                                            ?<img src={star2a} alt="2 Estrellas" /> 
+                                            : actividad.act1===true || actividad.act2===true || actividad.act3===true
+                                              ? <img src={star1} alt="1 Estrella" /> 
+                                              : <img src={star0} alt="0 Estrella" /> 
+                                      }
+                                        
                                       </Link>
                                     </li> 
-                                  )
-                                
-                                : (
-                                    <li key={key} className={`actividadIcon${actividad.id}`}>
-                                      <Link 
-                                        to={{
-                                          pathname:`/primero/leccion/${actividad.id}`,
-                                          state: actividadeslibro
-                                        }}
-                                      >
-                                        <i className="fas fa-lock"></i>
-                                      </Link>
-                                    </li>
-                                  )
-                                
-                                
                             )
                           }
                           </ul>
@@ -174,7 +183,7 @@ const HomeBook1 = (props) => {
                     {scrollX !== 0 && (
                         <button
                         className="prev"
-                        onClick={() => slide(-245)}
+                        onClick={() => slide(-300)}
                         onMouseEnter={(e) => anim(e)}
                         onMouseLeave={(e) => anim2(e)}
                         >
@@ -185,7 +194,7 @@ const HomeBook1 = (props) => {
                     {!scrolEnd && (
                         <button
                         className="next"
-                        onClick={() => slide(+245)}
+                        onClick={() => slide(+300)}
                         onMouseEnter={(e) => anim(e)}
                         onMouseLeave={(e) => anim2(e)}
                         >

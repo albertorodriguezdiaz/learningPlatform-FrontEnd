@@ -50,7 +50,7 @@ const Notas = (props) => {
             <div className='containerActivity'>
             <Accordion defaultActiveKey="1">
             <Accordion.Item eventKey="0">
-                <Accordion.Header>Periodo #1</Accordion.Header>
+                <Accordion.Header><i class="fas fa-angle-double-right colorVerde"></i> Periodo #1</Accordion.Header>
                 <Accordion.Body>
                 
                 <Tab.Container id="left-tabs-example" defaultActiveKey="leccion1-1">
@@ -118,7 +118,7 @@ const Notas = (props) => {
                 </Accordion.Item>
                 
                 <Accordion.Item eventKey="2">
-                <Accordion.Header>Periodo #2</Accordion.Header>
+                <Accordion.Header><i class="fas fa-angle-double-right colorVerde"></i> Periodo #2</Accordion.Header>
                 <Accordion.Body>
                 
                 <Tab.Container id="left-tabs-example" defaultActiveKey="leccion1-2">
@@ -186,7 +186,7 @@ const Notas = (props) => {
                 </Accordion.Item>
 
                 <Accordion.Item eventKey="3">
-                <Accordion.Header>Periodo #3</Accordion.Header>
+                <Accordion.Header><i class="fas fa-angle-double-right colorVerde"></i> Periodo #3</Accordion.Header>
                 <Accordion.Body>
                 
                 <Tab.Container id="left-tabs-example" defaultActiveKey="leccion1-3">
@@ -254,7 +254,7 @@ const Notas = (props) => {
                 </Accordion.Item>
 
                 <Accordion.Item eventKey="4">
-                <Accordion.Header>Periodo #4</Accordion.Header>
+                <Accordion.Header><i class="fas fa-angle-double-right colorVerde"></i> Periodo #4</Accordion.Header>
                 <Accordion.Body>
                 
                 <Tab.Container id="left-tabs-example" defaultActiveKey="leccion1-4">
