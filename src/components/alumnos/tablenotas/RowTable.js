@@ -1,4 +1,6 @@
 import React, { Fragment } from 'react';
+import estrella from '../../../resources/img/estrellaAmarillo.png';
+import estrellaNo from '../../../resources/img/estrellaBlanco.png';
 
 
 const RowTable = (props) => {
@@ -19,12 +21,12 @@ const RowTable = (props) => {
                             act.act1===true
                                 ? (<Fragment>
                                     <td>Completada</td>
-                                    <td><i className="fas fa-star"></i>{nombre}</td>
+                                    <td><img src={estrella} alt="Competado" /></td>
                                     </Fragment>
                                   )
                                 : (<Fragment>
-                                    <td>No Completada</td>
-                                    <td><i className="far fa-star"></i>{nombre}</td>
+                                    <td>Incompleta</td>
+                                    <td><img src={estrellaNo} alt="Incompleta" /></td>
                                     </Fragment>
                                    )
                         : null
@@ -34,12 +36,12 @@ const RowTable = (props) => {
                             act.act2===true
                                 ? (<Fragment>
                                     <td>Completada</td>
-                                    <td><i className="fas fa-star"></i>{nombre}</td>
+                                    <td><img src={estrella} alt="Competado" /></td>
                                     </Fragment>
                                   )
                                 : (<Fragment>
-                                    <td>No Completada</td>
-                                    <td><i className="far fa-star"></i>{nombre}</td>
+                                    <td>Incompleta</td>
+                                    <td><img src={estrellaNo} alt="Incompleta" /></td>
                                     </Fragment>
                                    )
                         : null
@@ -49,12 +51,12 @@ const RowTable = (props) => {
                             act.act3===true
                                 ? (<Fragment>
                                     <td>Completada</td>
-                                    <td><i className="fas fa-star"></i>{nombre}</td>
+                                    <td><img src={estrella} alt="Competado" /></td>
                                     </Fragment>
                                   )
                                 : (<Fragment>
-                                    <td>No Completada</td>
-                                    <td><i className="far fa-star"></i>{nombre}</td>
+                                    <td>Incompleta</td>
+                                    <td><img src={estrellaNo} alt="Incompleta" /></td>
                                     </Fragment>
                                    )
                         : null

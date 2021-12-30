@@ -2,6 +2,8 @@ import React,{Fragment} from 'react';
 import { Table } from 'react-bootstrap';
 import RowTable from './RowTable';
 import ActividadesJson from './ActividadData';
+import estrella from '../../../resources/img/estrellaAmarillo.png';
+
 
 
 const MainTable = (props) => {
@@ -12,13 +14,13 @@ const MainTable = (props) => {
         <Fragment>
         {
         
-        <Table striped bordered hover>
+        <Table bordered hover>
             <thead>
                 <tr>
                 <th>Actividad</th>
                 <th>Nombre</th>
                 <th>Proceso</th>
-                <th><i className="fas fa-star"></i></th>
+                <th><img src={estrella} alt="Estrella" /></th>
                 </tr>
             </thead>
             <tbody>

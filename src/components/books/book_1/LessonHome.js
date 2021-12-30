@@ -3,6 +3,9 @@ import { Collapse, ProgressBar } from 'react-bootstrap';
 import { BrowserRouter as Router, Link, Route  } from 'react-router-dom';
 import Activity from './Activity';
 
+import estrella from '../../../resources/img/estrellaAmarillo.png';
+import estrellaNo from '../../../resources/img/estrellaBlanco.png';
+
 
 const LessonHome = (props) => {
 
@@ -40,10 +43,12 @@ const LessonHome = (props) => {
                 actLec.act1===true && actLec.act2===true && actLec.act3===true
                 ? <ProgressBar animated striped variant="info" now={100} label={`100%`} />
                 : ( 
-                    actLec.act1===true && actLec.act2===true
+                    ((actLec.act1===true && actLec.act2===true) || 
+                    (actLec.act2===true && actLec.act3===true) || 
+                    (actLec.act1===true && actLec.act3===true))
                     ? <ProgressBar animated striped variant="info" now={66} label={`66%`} />
                     : (
-                        actLec.act1===true
+                        actLec.act1===true || actLec.act2===true || actLec.act3===true
                         ? <ProgressBar animated striped variant="info" now={33} label={`33%`} />
                         : <ProgressBar animated striped variant="info" now={0} label={`0%`} />
                       )
@@ -54,20 +59,20 @@ const LessonHome = (props) => {
             <ul className="listHorizontal text-center">
                 <li>{
                         actLec.act1===true 
-                        ? <p><i className="fas fa-star"></i>Actividad 1</p>
-                        : <p><i className="far fa-star"></i>Actividad 1</p>
+                        ? <p><img src={estrella} alt="Completada" />Actividad 1</p>
+                        : <p><img src={estrellaNo} alt="No Completada" />Actividad 1</p>
                     }
                 </li>
                 <li>{
                         actLec.act2===true 
-                        ? <p><i className="fas fa-star"></i>Actividad 2</p>
-                        : <p><i className="far fa-star"></i>Actividad 2</p>
+                        ? <p><img src={estrella} alt="Completada" />Actividad 2</p>
+                        : <p><img src={estrellaNo} alt="No Completada" />Actividad 2</p>
                     }
                 </li>
                 <li>{
                         actLec.act3===true 
-                        ? <p><i className="fas fa-star"></i>Actividad 3</p>
-                        : <p><i className="far fa-star"></i>Actividad 3</p>
+                        ? <p><img src={estrella} alt="Completada" />Actividad 3</p>
+                        : <p><img src={estrellaNo} alt="No Completada" />Actividad 3</p>
                     }
                 </li>
             </ul>

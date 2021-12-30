@@ -144,7 +144,7 @@ const MainUploadFiveImage = (props) => {
                 (photoExiste===true)
                 ?
                     fotosJsonP.map(p=>
-                    <div className="imgEnviada">
+                    <div className="containerActivity imgEnviada">
                         <table>
                             <tr>
                                 <td><img src={`${process.env.REACT_APP_BACKEND_URL}/uploads/img/${p.foto1}`} alt='foto1' /></td>
@@ -159,7 +159,7 @@ const MainUploadFiveImage = (props) => {
                         
                     
                 : ( 
-                    <div className="imgPhotoNone">
+                    <div className="containerActivity imgPhotoNone">
 
                         <div id='tituloActividadBox'></div>
 

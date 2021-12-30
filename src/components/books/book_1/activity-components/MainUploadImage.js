@@ -85,14 +85,14 @@ const MainUploadImage = (props) => {
                 (photoExiste===true)
                  ?   photoInfo.map((e, key)=>
                     (  parseInt(e.actividad) === idActivity) && 
-                       (    <div key={key} className="imgEnviada">
+                       (    <div key={key} className="containerActivity imgEnviada">
                                 <img src={`${process.env.REACT_APP_BACKEND_URL}/uploads/img/${e.image}`} alt="" />
                                 <p>{e.texto}</p>
                             </div>
                         ) 
                     )
                 : ( 
-                    <div className="imgPhotoNone">
+                    <div className="containerActivity imgPhotoNone">
 
                         <div id='tituloActividadBox'></div>
 

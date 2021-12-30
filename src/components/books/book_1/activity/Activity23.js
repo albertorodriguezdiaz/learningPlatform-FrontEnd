@@ -155,7 +155,7 @@ function soltandoObjArrastrableAct23(event) {
             
              <section className="puntaje">
                 <p className="infoPuntaje">Arrastra las acciones de solución y cuidado con la imagen correspondiente.</p>
-                <p>Puntaje del juego: <span className="correctas">0</span></p>
+                <p className='puntajePuntos'>Puntaje del juego: <span className="correctas">0</span></p>
                 <div className='botonEnconder'><ButtonUpdate {...props} /></div>
             </section>
 

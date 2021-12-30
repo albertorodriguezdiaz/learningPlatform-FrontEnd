@@ -40,10 +40,14 @@ const Notas = (props) => {
           }, [actividades]) 
    
     return ( 
-    <div>
+    <div className='notasMain'>
         <TopBar />
-        <Container>            
-            <h1>Notas</h1>
+        <Container className='marginTop150 width700'>      
+        <div className='titleBox'>
+            <h1 className='titleActivity'>Notas Libro</h1>
+        </div>      
+
+            <div className='containerActivity'>
             <Accordion defaultActiveKey="1">
             <Accordion.Item eventKey="0">
                 <Accordion.Header>Periodo #1</Accordion.Header>
@@ -54,16 +58,16 @@ const Notas = (props) => {
                     <Col sm={3}>
                     <Nav variant="pills" className="flex-column">
                         <Nav.Item>
-                            <Nav.Link eventKey="leccion1-1">Lección #1</Nav.Link>
+                            <Nav.Link eventKey="leccion1-1">Lección 1</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link eventKey="leccion2-1">Lección #2</Nav.Link>
+                            <Nav.Link eventKey="leccion2-1">Lección 2</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link eventKey="leccion-3-1">Lección #3</Nav.Link>
+                            <Nav.Link eventKey="leccion-3-1">Lección 3</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link eventKey="leccion-4-1">Lección #4</Nav.Link>
+                            <Nav.Link eventKey="leccion-4-1">Lección 4</Nav.Link>
                         </Nav.Item>
                     </Nav>
                     </Col>
@@ -122,16 +126,16 @@ const Notas = (props) => {
                     <Col sm={3}>
                     <Nav variant="pills" className="flex-column">
                         <Nav.Item>
-                            <Nav.Link eventKey="leccion1-2">Lección #1</Nav.Link>
+                            <Nav.Link eventKey="leccion1-2">Lección 1</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link eventKey="leccion2-2">Lección #2</Nav.Link>
+                            <Nav.Link eventKey="leccion2-2">Lección 2</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link eventKey="leccion-3-2">Lección #3</Nav.Link>
+                            <Nav.Link eventKey="leccion-3-2">Lección 3</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link eventKey="leccion-4-2">Lección #4</Nav.Link>
+                            <Nav.Link eventKey="leccion-4-2">Lección 4</Nav.Link>
                         </Nav.Item>
                     </Nav>
                     </Col>
@@ -190,16 +194,16 @@ const Notas = (props) => {
                     <Col sm={3}>
                     <Nav variant="pills" className="flex-column">
                         <Nav.Item>
-                            <Nav.Link eventKey="leccion1-3">Lección #1</Nav.Link>
+                            <Nav.Link eventKey="leccion1-3">Lección 1</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link eventKey="leccion2-3">Lección #2</Nav.Link>
+                            <Nav.Link eventKey="leccion2-3">Lección 2</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link eventKey="leccion-3-3">Lección #3</Nav.Link>
+                            <Nav.Link eventKey="leccion-3-3">Lección 3</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link eventKey="leccion-4-3">Lección #4</Nav.Link>
+                            <Nav.Link eventKey="leccion-4-3">Lección 4</Nav.Link>
                         </Nav.Item>
                     </Nav>
                     </Col>
@@ -258,16 +262,16 @@ const Notas = (props) => {
                     <Col sm={3}>
                     <Nav variant="pills" className="flex-column">
                         <Nav.Item>
-                            <Nav.Link eventKey="leccion1-4">Lección #1</Nav.Link>
+                            <Nav.Link eventKey="leccion1-4">Lección 1</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link eventKey="leccion2-4">Lección #2</Nav.Link>
+                            <Nav.Link eventKey="leccion2-4">Lección 2</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link eventKey="leccion-3-4">Lección #3</Nav.Link>
+                            <Nav.Link eventKey="leccion-3-4">Lección 3</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link eventKey="leccion-4-4">Lección #4</Nav.Link>
+                            <Nav.Link eventKey="leccion-4-4">Lección 4</Nav.Link>
                         </Nav.Item>
                     </Nav>
                     </Col>
@@ -318,6 +322,7 @@ const Notas = (props) => {
                 </Accordion.Item>
 
                 </Accordion>
+            </div>
             </Container>
         </div>
      );

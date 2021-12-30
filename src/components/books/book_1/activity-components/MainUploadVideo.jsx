@@ -92,12 +92,12 @@ const MainUploadVideo = (props) => {
              <HeaderActivity {...props} />
             {   
                 (photoExiste===true)
-                 ?(  <div className="imgEnviada">
+                 ?(  <div className="containerActivity imgEnviada">
                         <div id='textoActividadBox'></div>
                      </div>
                  )
                 : ( 
-                    <div className="imgPhotoNone">
+                    <div className="containerActivity imgPhotoNone">
                         <div id='tituloActividadBox'></div>
                     <form
                         className="formularioUploadText"

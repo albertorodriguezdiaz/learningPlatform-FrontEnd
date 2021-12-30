@@ -21,18 +21,19 @@ const HomeBook1 = (props) => {
   const bookContext = useContext(BookContext);
   const {bookmain, actividades, obtenerActivity, activityRealizadas, actividadeslibro} = bookContext;
 
-  
+  const [sumaPuntos, setSumaPuntos] = useState(0);
+
+  let actTotal = actividadesTotal();
 
   useEffect(() => {
     usuarioAutenticado();
-    setRender(true);
-    
+    setRender(true);   
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   
   
   useEffect(() => {  
-    obtenerActivity(userdata._id);  
+    obtenerActivity(userdata._id); 
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [render, usuario]) 
  
@@ -40,6 +41,7 @@ const HomeBook1 = (props) => {
     useEffect(() => {
       
       activityRealizadas(); 
+      actividadesTotal(); 
       // console.log(`ACTIVIDADES ${JSON.stringify(actividades)}`);
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [actividades]) 
@@ -91,14 +93,25 @@ const HomeBook1 = (props) => {
 
 
   
+  function actividadesTotal(){
+      let puntos = 0;
 
+      actividadeslibro.forEach(e => {
+          e.act1===true && puntos++
+          e.act2===true && puntos++
+          e.act3===true && puntos++
+      });
+
+      return puntos;
+
+    }
     
 
 
-    return ( 
+    return (  
       
         <div className='bgHomeBook'>
-        <TopBar />    
+        <TopBar {...props} actTotal={actTotal} />    
         <div>
           
             <Router >
@@ -187,7 +200,7 @@ const HomeBook1 = (props) => {
                 }
 
                 <Route path="/primero/leccion/:id">
-                  <Lesson {...props} actividades={actividades} />
+                  <Lesson {...props} actividades={actividades}  />
                 </Route>
             </Router>
             

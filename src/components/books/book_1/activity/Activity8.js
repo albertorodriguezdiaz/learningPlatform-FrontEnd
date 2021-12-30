@@ -161,7 +161,7 @@ function soltandoObjArrastrableAct8(event) {
             
              <section className="puntaje">
                 <p className="infoPuntaje">Construyamos una sociedad con las personas que se aman, se cuidan y se protegen. <br />Arrastra las imágenes hasta la casilla correspondiente. </p>
-                <p>Puntaje del juego: <span className="correctas">0</span></p>
+                <p className='puntajePuntos'>Puntaje del juego: <span className="correctas">0</span></p>
                 <div className='botonEnconder'><ButtonUpdate {...props} /></div>
             </section>
 

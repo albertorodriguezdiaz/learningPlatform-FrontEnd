@@ -322,11 +322,11 @@ habilitarCampos(objCrucigrama);
 // }
 
      return ( 
-         <div className='containerActivity1'>
+         <Fragment>
+        <HeaderActivity {...props}/>
+         <div className='containerActivity'>
              {/* <CrearTableroHTML /> */}
              
-             <HeaderActivity 
-             {...props}/>
              
             <MyModal
                 size="sm"
@@ -378,6 +378,7 @@ habilitarCampos(objCrucigrama);
             
 
          </div>
+         </Fragment>
      );
 }
  

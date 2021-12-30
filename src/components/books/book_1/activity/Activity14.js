@@ -35,8 +35,8 @@ const Activity14 = (props) => {
                  <h2>Respeto por la vida</h2>
                  <p>Lee cada una de las situaciones a continuación. Si consideras que se trata de una ocasión en la que se irrespeta y no valora la vida, marca el círculo rojo. Si por el contrario, se trata de una situación en la que se muestra valor y respeto por la vida, marca el círculo verde. </p>
              
-             <div className="puntajeAct14">
-                 <p>Puntaje <strong id="puntaje">{puntaje}</strong></p>
+             <div className="puntaje">
+                 <p className='puntajePuntos'>Puntaje <strong id="puntaje">{puntaje}</strong></p>
              </div>
              <Table striped bordered hover className='tableAct14'>
              <tbody>

@@ -13,11 +13,13 @@ const ConfettiCongratulation = (props) => {
 
     useEffect(() => {
         setHeight(confettiRef.current.clientHeight);
-        setWidth(confettiRef.current.clientWidth);
+        setWidth((window.innerWidth-50));
+        // setWidth(confettiRef.current.clientWidth);
         playSound();
     }, [])
 
    
+
     const handleShow = toggle => {
         setShow(toggle);
     }

@@ -1,32 +1,5 @@
 
 
-.puntaje{
-    border-radius: 10px;
-      text-align: center;
-     padding: 20px;
-     background: rgb(46, 199, 166);
-     transition: .5 all;
-     margin-bottom: 30px;
-  }
-  .puntaje p{
-      font-size: 20px;
-      color: #fff;
-      font-weight: 500;
-      
-  }
-  
-  p.infoPuntaje{
-      font-size: 25px;
-  }
-  p.infoPuntaje.ganaste{
-      font-size: 50px;
-  }
-  .correctas{
-      font-size: 30px;
-      color: #fff;
-      font-weight: 700;
-  }
-  
   
   .caja-colocar img{
       width: 100%;

@@ -144,7 +144,7 @@ function soltandoObjArrastrableAct11(event) {
             
              <section className="puntaje">
                 <p className="infoPuntaje">Observa muy bien los dibujos, arrastra hasta el círculo aquellos que tienen que ver con la clase de hoy. </p>
-                <p>Puntaje del juego: <span className="correctas">0</span></p>
+                <p className='puntajePuntos'>Puntaje del juego: <span className="correctas">0</span></p>
                 <div className='botonEnconder'><ButtonUpdate {...props} /></div>
             </section>
             

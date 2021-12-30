@@ -1,32 +1,6 @@
 
 
-.puntaje{
-    border-radius: 10px;
-      text-align: center;
-     padding: 20px;
-     background: rgb(46, 199, 166);
-     transition: .5 all;
-     margin-bottom: 30px;
-  }
-  .puntaje p{
-      font-size: 20px;
-      color: #fff;
-      font-weight: 500;
-      
-  }
-  
-  p.infoPuntaje{
-      font-size: 30px;
-  }
-  p.infoPuntaje.ganaste{
-      font-size: 50px;
-  }
-  .correctas{
-      font-size: 30px;
-      color: #fff;
-      font-weight: 700;
-  }
-  
+
   
   .caja-colocarAct23{
       position: relative;
@@ -106,8 +80,8 @@
 
   .objColocableAct23{
     z-index: 99;
-    width: 120px;
-    height: 120px;
+    width: 122px;
+    height: 122px;
     border: 2px solid #fff;
     position: absolute;
     border-radius: 50%;
@@ -117,30 +91,30 @@
 }
 
 .objAct23-1{
-    top: 145px;
-    left: 45px;
+    top: 133px;
+    left: 28px;
 }
 .objAct23-2{
-    top: 238px;
-    left: 167px;
+    top: 229px;
+    left: 155px;
 }
 .objAct23-3{
-    top: 181px;
-    left: 310px;
+    top: 170px;
+    left: 305px;
 }
 .objAct23-4{
-    top: 280px;
+    top: 272px;
     left: 445px;
 }
 .objAct23-5{
-    top: 230px;
-    left: 577px;
+    top: 221px;
+    left: 581px;
 }
 .objAct23-6{
-    top: 162px;
-    left: 707px;
+    top: 148px;
+    left: 717px;
 }
 .objAct23-7{
-    top: 246px;
-    left: 824px;
+    top: 236px;
+    left: 839px;
 }

@@ -136,7 +136,7 @@ function soltandoObjArrastrable(event) {
          <div>
              <HeaderActivity {...props} /> 
 
-            <div className='containerActivity'>
+            <div className='containerActivity activity38'>
              <h2>Palabra clave </h2>
             
             <section className="puntaje">

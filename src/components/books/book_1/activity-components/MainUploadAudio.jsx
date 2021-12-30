@@ -86,7 +86,7 @@ const MainUploadAudio = (props) => {
                 (photoExiste===true)
                  ?   photoInfo.map((e, key)=>
                     (  parseInt(e.actividad) === idActivity) && 
-                       (    <div key={key} className="imgEnviada">
+                       (    <div key={key} className="containerActivity imgEnviada">
                                 <audio controls="controls">
                                     <source src={`${process.env.REACT_APP_BACKEND_URL}/uploads/img/${e.image}`} type="audio/mpeg" />
                                     Your browser does not support the audio element.
@@ -96,7 +96,7 @@ const MainUploadAudio = (props) => {
                         ) 
                     )
                 : ( 
-                    <div className="imgPhotoNone">
+                    <div className="containerActivity imgPhotoNone">
 
                         <div id='tituloActividadBox'></div>
 
