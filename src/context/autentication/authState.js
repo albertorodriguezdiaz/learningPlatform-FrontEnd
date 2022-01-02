@@ -68,7 +68,8 @@ const AuthState = props => {
 
         try {
             const respuesta = await clienteAxios.get('/api/auth');
-            // console.log(`USUARIO DATA ${JSON.stringify(respuesta.data.usuario.)}`);
+            // console.log(`USUARIO DATA ${JSON.stringify(respuesta.data.usuario)}`);
+            
             dispatch({
                 type: OBTENER_USUARIO,
                 payload: respuesta.data.usuario
@@ -92,7 +93,7 @@ const AuthState = props => {
     const iniciarSesion = async datos => {
         try {
             const respuesta = await clienteAxios.post('/api/auth', datos);
-            console.log(`Respuesta.Data ${respuesta}`);
+            // console.log(`Respuesta.Data ${respuesta}`);
 
             dispatch({
                 type: LOGIN_EXITOSO,
@@ -105,9 +106,18 @@ const AuthState = props => {
 
         } catch (error) {
 
-            // console.log(error.response.data.msg);
+            // Validamos si existe un listado de errores, si no solo enviamos el simple
+            let erroresLogin='';
+
+            if (typeof error.response.data.errores !== 'undefined') {
+                erroresLogin = error.response.data.errores[0].msg;
+            }else{
+                erroresLogin = error.response.data.msg;
+            }
+
             const alerta = {
-                msg: error.response.data.msg,
+                
+                msg: erroresLogin,
                 categoria: 'alerta-error'
             }
 
