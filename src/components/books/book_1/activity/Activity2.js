@@ -141,41 +141,41 @@ function soltandoObjArrastrableAct2(event) {
             </section>
             
             <section className='figuras-arrastrables'>
-                <div className="objArrastrableAct2" draggable="true" id="deforestacion-1">
-                    Sembrar un árbol
-                </div>
-                <div className="objArrastrableAct2" draggable="true" id="deforestacion-2">
+                <div className="objArrastrableAct2" draggable="true" id="agua-1">
                     No tirar basuras al río
                 </div>
-                <div className="objArrastrableAct2" draggable="true" id="deforestacion-3">
+                <div className="objArrastrableAct2" draggable="true" id="caza-1">
                     No comprar productos hechos de animales
                 </div>
-                <div className="objArrastrableAct2" draggable="true" id="caza-1">
+                <div className="objArrastrableAct2" draggable="true" id="contaminacion-3">
+                    Desconectar los electrodomésticos que no se están utilizando 
+                </div>
+                <div className="objArrastrableAct2" draggable="true" id="deforestacion-2">
                     No ocasionar incendios
                 </div>
-                <div className="objArrastrableAct2" draggable="true" id="caza-2">
+                <div className="objArrastrableAct2" draggable="true" id="agua-2">
                     Mantener limpias las playas
                 </div>
-                <div className="objArrastrableAct2" draggable="true" id="caza-3">
+                <div className="objArrastrableAct2" draggable="true" id="caza-2">
                     No comprar especies de animales silvestres 
                 </div>
-                <div className="objArrastrableAct2" draggable="true" id="agua-1">
-                    Cuidar los bosques
-                </div>
-                <div className="objArrastrableAct2" draggable="true" id="agua-2">
-                    No arrojar productos químicos al agua
-                </div>
-                <div className="objArrastrableAct2" draggable="true" id="agua-3">
-                    Apoyar la prohibición de caza de animales
-                </div>
-                <div className="objArrastrableAct2" draggable="true" id="contaminacion-1">
-                    Apagar las luces cuando no las utilicemos
+                <div className="objArrastrableAct2" draggable="true" id="deforestacion-1">
+                    Sembrar un árbol
                 </div>
                 <div className="objArrastrableAct2" draggable="true" id="contaminacion-2">
                     Usar luces ahorradoras de energía
                 </div>
-                <div className="objArrastrableAct2" draggable="true" id="contaminacion-3">
-                    Desconectar los electrodomésticos que no se están utilizando 
+                <div className="objArrastrableAct2" draggable="true" id="deforestacion-3">
+                    Cuidar los bosques
+                </div>
+                <div className="objArrastrableAct2" draggable="true" id="agua-3">
+                    No arrojar productos químicos al agua
+                </div>
+                <div className="objArrastrableAct2" draggable="true" id="caza-3">
+                    Apoyar la prohibición de caza de animales
+                </div>
+                <div className="objArrastrableAct2" draggable="true" id="contaminacion-1">
+                    Apagar las luces cuando no las utilicemos
                 </div>
             </section>
 

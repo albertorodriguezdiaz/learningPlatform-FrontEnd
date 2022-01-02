@@ -1585,3 +1585,69 @@ p.infoPuntaje.ganaste{
   min-height: 100vh;
   padding-bottom: 100px;
 }
+
+
+/* Login */
+.form-usuario{
+  background: url(./resources/img/bg-login.jpg);
+  background-position: center center;
+  background-size: cover;
+}
+
+.form-usuario .contenedor-form{
+  background: rgba(255, 255, 255, .6);
+  border-radius: 20px;
+  border: 2px solid #fff;
+  position: relative;
+}
+
+.logoLogin{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  margin-top: -70px;
+}
+
+.iniciarLogin{
+  margin-top: 35px;
+  position: relative;
+  color: #4559b3;
+}
+
+.iniciarLogin img{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  margin-top: -60px;
+
+}
+
+.contenedor-form {
+  color: #4559b3;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.contenedor-form input[type=email],
+.contenedor-form input[type=password]{
+  background: #4559b3;
+  border-radius: 20px;
+  border: 0px !important;
+  color: #fff;
+  padding: 10px 20px;
+  width: 100%;
+}
+.contenedor-form input[type=submit]{
+  background: #f16684;
+  font-weight: 700;
+  font-size: 20px;
+  border-radius: 50px;
+  max-width: 350px;
+  margin: 0 auto;
+  margin-top: 30px;
+
+}

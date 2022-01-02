@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 import AlertaContext from '../../context/alerts/alertContext';
 import AuthContext from '../../context/autentication/authContext';
 
+import logo from '../../resources/img/logo-soyvida-login.png'
+import estrellas from '../../resources/img/estrellaslogin.png'
+
 
 
 const Login = (props) => {
@@ -67,34 +70,58 @@ const Login = (props) => {
                     : null
             }
             <div className="contenedor-form sombra-dark">
-                <h1>Iniciar Sesión</h1>
+                <img className='logoLogin' src={logo} alt="SoyVida" />
+
+                <h1 className='iniciarLogin'>
+                    <img src={estrellas} alt="Estrellas" />
+                    Iniciar Sesión
+                </h1>
 
                 <form
                     onSubmit={onSubmit}
                 >
 
                     <div className="campo-form">
-                        <label htmlFor="email">Email</label>
-                        <input 
-                            type="email"
-                            id="email"
-                            name="email"
-                            placeholder="Tu Email"
-                            value={email}
-                            onChange={onChange}
-                        />
+                    <div className="container">
+                            <div className="row">
+                                <div className="col-md-3">
+                                    <label htmlFor="email">Email</label>
+                                    </div>
+                                <div className="col-md-9">
+                                    <input 
+                                        type="email"
+                                        id="email"
+                                        name="email"
+                                        placeholder="Tu Email"
+                                        value={email}
+                                        onChange={onChange}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
                     </div>
 
                     <div className="campo-form">
-                        <label htmlFor="password">Contraseña</label>
-                        <input 
-                            type="password"
-                            id="password"
-                            name="password"
-                            placeholder="Tu Contraseña"
-                            value={password}
-                            onChange={onChange}
-                        />
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-md-3">
+                                    <label htmlFor="password">Contraseña</label>
+                                </div>
+                                <div className="col-md-9">
+                                <input 
+                                    type="password"
+                                    id="password"
+                                    name="password"
+                                    placeholder="Tu Contraseña"
+                                    value={password}
+                                    onChange={onChange}
+                                />
+                                </div>
+                            </div>
+                        </div>
+                        
                     </div>
 
                     <div className="campo-form">
@@ -107,9 +134,7 @@ const Login = (props) => {
 
                 </form>
 
-                <Link to={'/nueva-cuenta'}  className="enlace-cuenta text-center">
-                    Crear una cuenta
-                </Link>
+               
             </div>
         </div>
      );
