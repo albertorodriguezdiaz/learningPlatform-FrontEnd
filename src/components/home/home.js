@@ -12,20 +12,20 @@ const Home = (props) => {
 
     // Extraer la informacion de autenticacion
     const authContext = useContext(AuthContext);
-    const { usertipo, usuarioAutenticado } = authContext;
+    const { userdata_id, usertipo, usuarioAutenticado } = authContext;
 
 
     useEffect(() => {
-        
         usuarioAutenticado();        
      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
 
     return ( 
         <div>
             <TopBar />
             <Container>
-                { usertipo==='user' && <HomeAlumno {...props} />}
+                { usertipo==='user' && <HomeAlumno {...props} usuario={userdata_id} />}
                 { usertipo==='admin' && <HomeAdmin {...props} /> }
                 { usertipo==='editor' && <HomeDocente {...props} /> }
             </Container>

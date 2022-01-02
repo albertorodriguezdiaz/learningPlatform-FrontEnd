@@ -22,42 +22,62 @@ import { gsap } from "gsap";
 
 const HomeBook1 = (props) => {
 
+
   // Extraer la informacion de autenticacion
   const authContext = useContext(AuthContext);
   const {userdata, usuario, usuarioAutenticado } = authContext;
 
   const [render, setRender] = useState(false);
 
-  const bookContext = useContext(BookContext);
-  const {bookmain, actividades, obtenerActivity, activityRealizadas, actividadeslibro} = bookContext;
+ 
 
-  const [sumaPuntos, setSumaPuntos] = useState(0);
+  const bookContext = useContext(BookContext);
+  const { bookmain, books, actividades, obtenerActivity, activityRealizadas, 
+          actividadeslibro, obtenerBooksSoyVida} = bookContext;
 
   let actTotal = actividadesTotal();
 
   useEffect(() => {
     usuarioAutenticado();
     setRender(true);   
+    obtenerBooksSoyVida();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   
-  
+
   useEffect(() => {  
-    obtenerActivity(userdata._id); 
+    let libroActual = buscarLibroActual();
+
+    if (libroActual.length>0) {
+      obtenerActivity(userdata._id, libroActual);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [render, usuario]) 
+  }, [render, books, usuario]) 
  
-    
-    useEffect(() => {
-      
-      activityRealizadas(); 
-      actividadesTotal(); 
-      // console.log(`ACTIVIDADES ${JSON.stringify(actividades)}`);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [actividades]) 
+
+  useEffect(() => {
+    activityRealizadas(); 
+    actividadesTotal(); 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [actividades]) 
 
   
+function buscarLibroActual(){
 
+  if(books){
+    let libroActual = props.location.pathname.split('/');
+    let libroActualEncontrado = '';
+
+    books.forEach(e =>{
+      if(e.nombre.toLowerCase()===libroActual[1]) {
+        libroActualEncontrado = e._id;
+      } 
+    })
+    
+
+    return libroActualEncontrado;
+  }
+}
 
 
   let scrl = useRef(null);

@@ -28,6 +28,10 @@ const BookState = props => {
 
     const [actividadeslibro, guardarActividadeslibro] = useState([]);
 
+    // state buscar bookuser
+    const [books, guardarBooks] = useState([]);
+
+
 
     // Fotos de la actividad
     const [photo, guardarPhoto] = useState([]);
@@ -36,18 +40,12 @@ const BookState = props => {
 
 
 
-    useEffect(() => {
-
-        // obtenerLibros();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
-
 
     // Retornar el usuario autenticado
-    const obtenerLibros = async () =>{
+    const obtenerLibros = async (usuario) =>{
 
         try {
-            const respuesta = await ClienteAxios.get('/api/books/');
+            const respuesta = await ClienteAxios.get('/api/books', { params: { usuario }});
             dispatch({
                 type: LIBRO_ACTUAL,
                 payload: respuesta.data.bookuser
@@ -63,11 +61,11 @@ const BookState = props => {
 
 
 
-    const obtenerActivity = async (usuario) =>{
+    const obtenerActivity = async (usuario, libro) =>{
         
         try {
-            const respuesta = await ClienteAxios.get('/api/activity', { params: { usuario }});
-            console.log(`RESPUESTA ACTIVITY ${JSON.stringify(respuesta.data.actividad)}`); 
+            const respuesta = await ClienteAxios.get('/api/activity', { params: { usuario, libro }});
+            // console.log(`RESPUESTA ACTIVITY ${JSON.stringify(respuesta.data.actividad)}`); 
             
 
             dispatch({ 
@@ -227,6 +225,14 @@ const BookState = props => {
         
     }
 
+    const obtenerBooksSoyVida = async () => {
+        try {
+            const resultado = await ClienteAxios.get('/api/booksoyvida');
+            guardarBooks(resultado.data.booksoyvida);
+        } catch (error) {
+            console.log(`Error: ${error}`);
+        }
+    }
 
     return ( 
         <BookContext.Provider
@@ -235,12 +241,14 @@ const BookState = props => {
                 actividades: state.actividades,
                 bookmain: state.bookmain,
                 obtenerLibros,
+                books: books,
                 actividadeslibro: actividadeslibro,
                 photo: photo,
                 photoInfo: photoInfo,
                 photoExiste: photoExiste,
                 activityRealizadas,
                 obtenerActivity,
+                obtenerBooksSoyVida,
                 seleccionarActividadUser,
                 cambiarMainLesson,
                 agregarImagen,
