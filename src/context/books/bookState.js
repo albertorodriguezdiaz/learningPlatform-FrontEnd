@@ -211,10 +211,13 @@ const BookState = props => {
             const respuesta = await ClienteAxios.get('/api/uploadimageinfo', { params: { usuario, actividad }});
             const resAct = respuesta.data.imageActivity;
             guardarPhotoInfo(resAct);
+            console.log('resAct');
             console.log(resAct);
             
-            resAct.length > 0
-               && guardarPhotoExiste(true)
+
+            resAct.length > 0 
+            ? guardarPhotoExiste(true)
+            : guardarPhotoExiste(false)
             
             
         } catch (error) {

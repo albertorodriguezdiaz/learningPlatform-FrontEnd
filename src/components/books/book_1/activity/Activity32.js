@@ -86,9 +86,14 @@ function dragElement(elmnt) {
 }
     
 
+
 const tituloActividad =`
 <h2>Observa la pirámide construida y escribe un comentario crítico sobre este orden social y cómo crees que este afecta la dignidad humana.</h2>
 `;
+const textoTextArea =`
+
+`;
+
      return ( 
          <Fragment>
              <HeaderActivity {...props} />
@@ -157,6 +162,7 @@ const tituloActividad =`
 
             <MainUploadTextOneField {...props} 
                 tituloActividad={tituloActividad}
+                textoTextArea={textoTextArea}
             />
          </Fragment>
      );

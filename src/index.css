@@ -1655,3 +1655,48 @@ p.infoPuntaje.ganaste{
   background: #ff7b98;
   color: #fff !important;
 }
+
+
+/* Toggle Navbar */
+
+#offcanvasNavbar{
+  padding: 20px;
+}
+
+#offcanvasNavbar a{
+  font-size: 25px;
+  font-weight: 700;
+  color: #4559b3;  
+  text-align: center;
+}
+
+.navbar-toggler.collapsed{
+  border: 1px solid rgb(0, 0, 0, .5);
+  border-radius: 5px;
+}
+
+#offcanvasNavbarLabel{
+  width: 100%;
+  text-align: center;
+}
+#offcanvasNavbarLabel img{
+  height: 100px;
+}
+
+#offcanvasNavbar .btn-primary{
+  width: 90%;
+  display: inline-block;
+  text-align: center;
+  border-radius: 7px;
+  padding: 10px 30px;
+  background: #4559b3;
+  color: #fff;
+  font-weight: 800;
+  box-shadow: inset 0px -4px 0px 0px rgb(0 0 0 / 10%);
+  margin: 10px;
+  font-size: 25px;
+}
+
+.btn-close{
+  font-size: 25px;
+}

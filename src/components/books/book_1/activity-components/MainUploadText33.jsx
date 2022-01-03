@@ -31,35 +31,35 @@ const MainUploadText33 = (props) => {
     
     useEffect(() => {
         obtenerImagenInfo(actividadUser.usuario, idActivity);
-
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     useEffect(() => {
-         
-        if (tituloActividad.length>0 && photoExiste===false) {
+        
+        if (photoExiste===true && photoInfo.length > 0) {
+            textoActividad();
+        }else{
             titleActividad(tituloActividad);
             textTextArea(textoTextArea);
         }
 
-        if (photoExiste===true) {
-            textoActividad();
-        }
-
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+             // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [photoExiste, photoInfo])
 
 
-
-
-    const titleActividad = (title)=>{
+    const titleActividad = ()=>{
         const titleActUpload = document.querySelector('#tituloActividadBox');
-        titleActUpload.innerHTML = title;
+        if (tituloActividad.length>0 && titleActUpload ) {
+             titleActUpload.innerHTML = tituloActividad;
+        }
+        
     }
 
-    const textTextArea = (textA)=>{
-        const titleActUpload = document.querySelector('#tituloActividadBox2');
-        titleActUpload.innerHTML = textA;
+    const textTextArea = ()=>{
+        const titleActUpload2 = document.querySelector('#tituloActividadBox2');
+        if (textoTextArea.length>0 && titleActUpload2) {
+            titleActUpload2.innerHTML = textoTextArea;
+        }
     }
     
 
@@ -69,6 +69,8 @@ const MainUploadText33 = (props) => {
         //     return e.actividad;
         const textoActUpload = document.querySelector('#textoActividadBox');
         textoActUpload.innerHTML = photoInfo[0].texto;
+        
+ 
     }
 
     // Lee los contenidos del input

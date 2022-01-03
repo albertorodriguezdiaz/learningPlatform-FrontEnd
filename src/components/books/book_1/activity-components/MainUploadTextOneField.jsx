@@ -59,8 +59,11 @@ const MainUploadTextOneField = (props) => {
         //     return e.actividad;
         // });
 
-        const textoActUpload = document.querySelector('#textoActividadBox');
-        textoActUpload.innerHTML = photoInfo[0].texto;
+        if(photoInfo.length>0){
+            const textoActUpload = document.querySelector('#textoActividadBox');
+            textoActUpload.innerHTML = photoInfo[0].texto;
+        }
+        
     }
     
 
