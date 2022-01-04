@@ -1,14 +1,18 @@
 import React from 'react';
 import LinksHome from './LinksHome';
+import TopBar from '../layout/TopBar';
+import { Container } from 'react-bootstrap';
 
 
 const HomeAdmin = () => {
     return (
 
-    <div>
-       
-        <h1>Home Admin</h1>
-        <LinksHome />
+    <div className='homebookBoxAdmin'>
+       <TopBar />
+        <Container >
+            <h2>Administrador SoyVida</h2>
+            <LinksHome />
+        </Container>
             
 
     </div>

@@ -27,7 +27,8 @@ const Notas = (props) => {
         
         
         useEffect(() => {  
-          obtenerActivity(userdata._id);  
+            const libroPrimero = '61a6f392d99e00fe045445e1';
+          obtenerActivity(userdata._id, libroPrimero);  
           // eslint-disable-next-line react-hooks/exhaustive-deps
           }, [render, usuario]) 
         
@@ -47,7 +48,7 @@ const Notas = (props) => {
             <h1 className='titleActivity'>Notas Libro</h1>
         </div>      
 
-            <div className='containerActivity'>
+            <div className='containerActivity tableNotas'>
             <Accordion defaultActiveKey="1">
             <Accordion.Item eventKey="0">
                 <Accordion.Header><i class="fas fa-angle-double-right colorVerde"></i> Periodo #1</Accordion.Header>

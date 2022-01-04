@@ -45,9 +45,7 @@ const NuevaCuenta = (props) => {
         }
         
         obtenerUsuariosByColegio(colegioFiltro);
-                
         obtenerColegios();
-
         
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[mensaje, autenticado, colegioFiltro])
@@ -71,7 +69,8 @@ const NuevaCuenta = (props) => {
             password.trim() === '' ||
             confirmarpassword.trim() === ''){
                 mostrarAlerta('Todos los campos son obligatorios', 'alerta-error');
-            }
+            return;
+        }
 
         // Password minimo de 6 caracteres
         if (password.length < 6) {
@@ -93,41 +92,43 @@ const NuevaCuenta = (props) => {
             registrarUsuario({
                 nombre,
                 email,
-                password,
                 colegio,
-                tipo
+                tipo,
+                password
             });
+            
 
         } else {
             // actualizar usuario existente
             actualizarUsuario(usuario);
             guardarSelectUser(false);
+
         }
 
-
+        guardarUsuario({
+            nombre: '',
+            email: '',
+            colegio: '',
+            tipo: '',
+            password: '',
+            confirmarpassword: ''
+        }
+        );
 
         
     }
 
 
-
-    // const obtenerUsuarios = async () => {
-    //     try {
-    //         const resultado = await ClienteAxios.get('/api/users');
-    //         getUsuarios(resultado.data.alumnos);
-    //     } catch (error) {
-    //         console.log(`Error: ${error}`);
-    //     }
-                        
-    // }
-    
-    
-    
+      
     const obtenerUsuariosByColegio = async (colegio) => {
         try {
-        
-            const resultado = await ClienteAxios.get('/api/users', { params: { colegio }});
-            getUsuarios(resultado.data.alumnos);
+            if (colegio) {
+                const resultado = await ClienteAxios.get('/api/users', { params: { colegio }});
+                getUsuarios(resultado.data.alumnos);
+            }else{
+                const resultado = await ClienteAxios.get('/api/users');
+                getUsuarios(resultado.data.alumnos);
+            }
             
         } catch (error) {
             console.log(`Error: ${error}`);
@@ -150,8 +151,10 @@ const NuevaCuenta = (props) => {
     const seleccionarUsuario = usuario =>{
         guardarSelectUser(true);
 
+        // Enviamos una copia del usuario a editar y le pasamos el password vacio
         guardarUsuario({
-            ...usuario
+            ...usuario,
+            password: ''
         })
 
     }
@@ -182,23 +185,11 @@ const NuevaCuenta = (props) => {
     }
 
 
-    // // Buscar nombre de ID de colegio
-    // const buscarIdColegio = () =>{
-
-    //     colegio.map((col)=>{
-    //         if(col._id===usuario._id){
-    //             console.log(usuario._id);
-    //         }
-    //      }                                    
-    //     )
-    // }
-
-
 
 
     return ( 
-        <div>
-            <TopBar />
+        <div className='homebookBoxAdmin'>
+        <TopBar />
             { alerta 
                     ? (
                         <div className={`alerta ${alerta.categoria}`}>{alerta.msg}</div>
@@ -207,15 +198,14 @@ const NuevaCuenta = (props) => {
             }
 
             <Container>
-                <Row>
-                    <Col lg="12">
-                    
-                <h1>Crear cuenta de usuario</h1>
+                <h2>Crear cuenta de usuario</h2>
 
                 <Form
                     onSubmit={onSubmit}
                 >
 
+            <Row>
+                <Col>
                     <div className="campo-form">
                         <label htmlFor="nombre">Nombre</label>
                         <input 
@@ -227,8 +217,8 @@ const NuevaCuenta = (props) => {
                             onChange={onChange}
                         />
                     </div>
-
- 
+                </Col>
+                <Col>
                     <div className="campo-form">
                         <label htmlFor="email">Email</label>
                         <input 
@@ -240,40 +230,56 @@ const NuevaCuenta = (props) => {
                             onChange={onChange}
                         />
                     </div>
-
+                </Col>
+            </Row>
+            <Row>
+                <Col>
                     <div className="campo-form">
                         <label htmlFor="colegio">Colegio</label>
-                        <select
-                            defaultValue={colegio}
-                            id="colegio"
-                            name="colegio"
-                            onChange={onChange}
-                        >
-                            <option>Seleccionar un Colegio</option>                            
-                            {
-                                colegios.map((colegio, key)=>
-                                    usuario.colegio===colegio._id
-                                       ? <option selected="selected" key={key} value={colegio._id}>{colegio.nombre}</option>
-                                       : <option key={key} value={colegio._id}>{colegio.nombre}</option>
-                                )
-                            }
-                        </select>
-                    </div>
 
+                        <div className="selectBox">
+                            <select
+                                defaultValue={colegio}
+                                id="colegio"
+                                name="colegio"
+                                onChange={onChange}
+                            >
+                        
+
+                            <option>Seleccionar un Colegio</option>                            
+                                {
+                                    colegios.map((colegio, key)=>
+                                        usuario.colegio===colegio._id
+                                        ? <option selected="selected" key={key} value={colegio._id}>{colegio.nombre}</option>
+                                        : <option key={key} value={colegio._id}>{colegio.nombre}</option>
+                                    )
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </Col>
+                <Col>
                     <div className="campo-form">
                         <label htmlFor="tipo">Tipo</label>
-                        <select
-                            defaultValue={tipo}
-                            id="tipo"
-                            name="tipo"
-                            onChange={onChange}
-                        >
-                            <option>Tipo de usuario</option>
-                            <option value="user">Alumno</option>
-                            <option value="editor">Docente</option>
-                        </select>
-                    </div>
 
+                        <div className="selectBox">
+                            <select
+                                defaultValue={tipo}
+                                id="tipo"
+                                name="tipo"
+                                onChange={onChange}
+                            >
+                                <option>Tipo de usuario</option>
+                                <option value="user">Alumno</option>
+                                <option value="editor">Docente</option>
+                            </select>
+                        </div>
+
+                    </div>
+                </Col>
+            </Row>
+            <Row>
+                <Col>
                     <div className="campo-form">
                         <label htmlFor="password">Contraseña</label>
                         <input 
@@ -285,7 +291,8 @@ const NuevaCuenta = (props) => {
                             onChange={onChange}
                         />
                     </div>
-
+                </Col>
+                <Col>
                     <div className="campo-form">
                         <label htmlFor="confirmarpassword">Confirmar Contraseña</label>
                         <input 
@@ -297,6 +304,9 @@ const NuevaCuenta = (props) => {
                             onChange={onChange}
                         />
                     </div>
+                </Col>
+            </Row>
+                    
 
                     <div className="campo-form">
                         <input
@@ -308,50 +318,45 @@ const NuevaCuenta = (props) => {
 
                 </Form>
 
-                <Link to={'/usuarios'}  className="enlace-cuenta text-center">
-                    Volver a lista de usuarios
-                </Link>
-
-                </Col>
-                </Row>
 
                 
-
-
-
                 {/* Formulario Filtro por Colegio */}
-                <Form >
+                <Form className='filtrosTop'>
                 
                 <Row>
                 <Col lg="6">
                     <div className="campo-form">
-                        <select
-                            defaultValue={colegio}
-                            id="colegioFiltro"
-                            name="colegioFiltro"
-                            onChange={onChange}
-                        >
-                            <option value="">Seleccionar un Colegio</option>
-                            {
-                                colegios.map((colegio, key)=>
-                                    <option key={key} value={colegio._id}>{colegio.nombre}</option>
-                                )
-                            }
-                        </select>
+                        <div className="selectBox">
+                            <select
+                                defaultValue={colegio}
+                                id="colegioFiltro"
+                                name="colegioFiltro"
+                                onChange={onChange}
+                            >
+                                <option value="">Seleccionar un Colegio</option>
+                                {
+                                    colegios.map((colegio, key)=>
+                                        <option key={key} value={colegio._id}>{colegio.nombre}</option>
+                                    )
+                                }
+                            </select>
+                        </div>
                     </div>
                 </Col>
                 <Col lg="6">
                     <div className="campo-form">
-                        <select
-                            defaultValue={tipo}
-                            id="tipoFiltro"
-                            name="tipoFiltro"
-                            onChange={onChange}
-                        >
-                            <option>Tipo de usuario</option>
-                            <option value="user">Alumno</option>
-                            <option value="editor">Docente</option>
-                        </select>
+                        <div className="selectBox">
+                            <select
+                                defaultValue={tipo}
+                                id="tipoFiltro"
+                                name="tipoFiltro"
+                                onChange={onChange}
+                            >
+                                <option>Tipo de usuario</option>
+                                <option value="user">Alumno</option>
+                                <option value="editor">Docente</option>
+                            </select>
+                        </div>
                     </div>
                 </Col>
                 
@@ -359,11 +364,7 @@ const NuevaCuenta = (props) => {
                 </Form>
 
 
-
-                
-                
-
-                <Table>
+                <Table striped bordered hover>
                     <thead>
                         <tr>
                             <th>#</th>
@@ -383,7 +384,15 @@ const NuevaCuenta = (props) => {
                                     <td>{key+1}</td>
                                     <td>{alumno.nombre}</td>
                                     <td>{alumno.email}</td>
-                                    <td>{alumno.colegio}</td>
+                                    <td>
+                                    {   
+                                        colegios.map( (colegio) =>
+                                        // Compara el Id de libros con el id de libros de usuarios para mostrar el nombre
+                                            colegio._id===alumno.colegio
+                                            && colegio.nombre
+                                        )
+                                    }
+                                    </td>
                                     <td>{alumno.tipo}</td>
                                     <td>
                                         <Button 

@@ -122,10 +122,9 @@ const obtenerColegios = async () => {
 
 
     return ( 
-        <div>
-            <TopBar />
-        
-        <Container>
+        <div className='homebookBoxAdmin'>
+       <TopBar />
+        <Container >
             <Row>
                 <Col lg="12">
 
@@ -160,7 +159,7 @@ const obtenerColegios = async () => {
 
             <Row>
                 <h2>Colegios</h2>
-                <Table>
+                <Table striped bordered hover>
                     <thead>
                         <tr>
                             <th>#</th>

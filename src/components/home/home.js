@@ -1,10 +1,8 @@
 import React, { useContext, useEffect } from 'react';
 import AuthContext from '../../context/autentication/authContext';
 import HomeDocente from '../docentes/HomeDocente';
-import TopBar from '../layout/TopBar';
 import HomeAdmin from '../admin/HomeAdmin';
 import HomeAlumno from '../alumnos/HomeAlumno';
-import { Container } from 'react-bootstrap';
 
 
 const Home = (props) => {
@@ -23,12 +21,9 @@ const Home = (props) => {
 
     return ( 
         <div>
-            <TopBar />
-            <Container>
                 { usertipo==='user' && <HomeAlumno {...props} usuario={userdata_id} />}
                 { usertipo==='admin' && <HomeAdmin {...props} /> }
                 { usertipo==='editor' && <HomeDocente {...props} /> }
-            </Container>
         </div>
      );
 }

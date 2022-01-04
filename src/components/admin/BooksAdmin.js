@@ -25,15 +25,16 @@ const BooksAdmin = () => {
 
     const [usuarios, guardarUsuario] = useState([]);
 
-
     useEffect(() => {
-
-        obtenerBooksSoyVida();
-        obtenerUsuariosByColegio(colegio);
         obtenerColegios();
         obtenerBookUser();
-           
+        obtenerBooksSoyVida();
     // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    useEffect(() => {
+        obtenerUsuariosByColegio(colegio);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [colegio]);
 
 
@@ -93,7 +94,6 @@ const agregarActivity = async bookuser => {
     try {
         const resultado = await ClienteAxios.post('/api/activity', bookuser);
         guardarBookUser(resultado.data);
-        console.log(resultado.data);
 
     } catch (error) {
         console.log(error);
@@ -186,64 +186,75 @@ const obtenerBooksSoyVida = async () => {
 
 
     return ( 
-        <div>
-            <TopBar />
+        <div className='homebookBoxAdmin'>
+       <TopBar />
         <Container>
+            
+            <h2>Añadir nuevo libro a usuario</h2>
 
-            <Row>
-            <Col>
             <Form
                 onSubmit={onSubmitBook}
-            >
+                >
+            <Row>
+                <Col>
+                
                     <div className="campo-form">
-                        <select
-                            defaultValue={colegio}
-                            id="colegio"
-                            name="colegio"
-                            onChange={onChangeBooks}
-                        >
-                            <option value="">Seleccionar un Colegio</option>
-                            {
-                                colegios.map((colegio, key)=>
-                                    <option key={key} value={colegio._id}>{colegio.nombre}</option>
-                                )
-                            }
-                        </select>
+                        <div className="selectBox">
+                            <select
+                                defaultValue={colegio}
+                                id="colegio"
+                                name="colegio"
+                                onChange={onChangeBooks}
+                            >
+                                <option value="">Seleccionar un Colegio</option>
+                                {
+                                    colegios.map((colegio, key)=>
+                                        <option key={key} value={colegio._id}>{colegio.nombre}</option>
+                                    )
+                                }
+                            </select>
+                        </div>
                     </div>
-
-
+                </Col>
+                <Col>
                     <div className="campo-form">
-                        <select
-                            defaultValue={usuario}
-                            id="usuario"
-                            name="usuario"
-                            onChange={onChangeBooks}
-                        >
-                            <option value="">Seleccionar un Colegio</option>
-                            {
-                                usuarios.map((usuario, key)=>
-                                    <option key={key} value={usuario._id}>{usuario.nombre}</option>
-                                )
-                            }
-                        </select>
+                        <div className="selectBox">
+                            <select
+                                defaultValue={usuario}
+                                id="usuario"
+                                name="usuario"
+                                onChange={onChangeBooks}
+                            >
+                                <option value="">Seleccionar un Estudiante</option>
+                                {
+                                    usuarios.map((usuario, key)=>
+                                        <option key={key} value={usuario._id}>{usuario.nombre}</option>
+                                    )
+                                }
+                            </select>
+                        </div>
                     </div>
-
+                </Col>
+                <Col>
                     <div className="campo-form">
-                        <select
-                            defaultValue={libro}
-                            id="libro"
-                            name="libro"
-                            onChange={onChangeBooks}
-                        >
-                            <option value="">Seleccionar un Libro</option>
-                            {
-                                books.map((book, key)=>
-                                    <option key={key} value={book._id}>{book.nombre}</option>
-                                )
-                            }
-                        </select>
+                        <div className="selectBox">
+                            <select
+                                defaultValue={libro}
+                                id="libro"
+                                name="libro"
+                                onChange={onChangeBooks}
+                            >
+                                <option value="">Seleccionar un Libro</option>
+                                {
+                                    books.map((book, key)=>
+                                        <option key={key} value={book._id}>{book.nombre}</option>
+                                    )
+                                }
+                            </select>
+                        </div>
                     </div>
-
+                </Col>
+            </Row>
                     <div className="d-grid gap-2">
                         <Button 
                             as="input" variant="primary" size="lg" 
@@ -253,15 +264,13 @@ const obtenerBooksSoyVida = async () => {
                     </div>
 
                 </Form>
-                </Col>
-            </Row>
             
 
 
             <Row>
             <Col>
                 <h2>books</h2>
-                <Table>
+                <Table striped bordered hover>
                     <thead>
                         <tr>
                             <th>#</th>
@@ -276,14 +285,13 @@ const obtenerBooksSoyVida = async () => {
 
                 {
 
-
-                    bookuserGet.map( (bookus, key) => 
+                        bookuserGet.map( (bookus, key) => 
                         <tr key={key}>
                             <td>{key+1}</td>
                             <td>
                             {   
                                 books.map( (book) =>
-                                // Compara el Id de libros con el id de libros de usuarios
+                                // Compara el Id de libros con el id de libros de usuarios para mostrar el nombre
                                     book._id===bookus.libro
                                     && book.nombre
                                 )
@@ -292,7 +300,7 @@ const obtenerBooksSoyVida = async () => {
                             <td>
                             {
                                 usuarios.map( (user) =>
-                                // Compara el Id de usurios con el id de usuarios con libros
+                                // Compara el Id de usurios con el id de usuarios con libros para mostrar el nombre
                                     user._id===bookus.usuario
                                     && user.nombre
                                 )

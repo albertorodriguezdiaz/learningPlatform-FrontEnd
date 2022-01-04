@@ -1,74 +1,57 @@
-import React, {useEffect } from 'react';
-import { CardGroup, Card } from 'react-bootstrap';
-import { run as runHolder } from 'holderjs/holder';
+import React from 'react';
+import {  Col, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
+import userImg from '../../resources/img/usuario.png'
+import activityImg from '../../resources/img/activity.png'
+import schoolImg from '../../resources/img/school.png'
+import bookImg from '../../resources/img/book.png'
+
 const LinksHome = () => {
-    useEffect(() => {        
-        runHolder('image-class-name');
-    });
+
+
     return ( 
-        <CardGroup>
-            <Card>
-            <Link to='/usuarios'>
-                    <Card.Img variant="top" src="holder.js/100px160" />
-                    <Card.Body>
-                    <Card.Title>Alumnos</Card.Title>
-                    <Card.Text>
-                        Acceso al la información de los estudiantes
-                    </Card.Text>
-                    </Card.Body>
-                    <Card.Footer>
-                    <small className="text-muted">LIngresar</small>
-                    </Card.Footer>
-            </Link>
-            </Card>
+        <div className="boxAdminIcon">
+            <Container>
+                <Row>
+                    <Col md={3}>
+                        <Link to='/usuarios'>
+                            <div className="iconBox">
+                                <img src={userImg} alt="SoyVida" />
+                                <h3>Alumnos</h3>
+                            </div>
+                        </Link>
+                    </Col>
+                    <Col md={3}>
+                        <Link to='/colegios'>
+                            <div className="iconBox">
+                                <img src={schoolImg} alt="SoyVida" />                            
+                                <h3>Colegios</h3>
+                            </div>
+                        </Link>
+                    </Col>
+                    <Col md={3}>
+                        <Link to='/libros'>
+                            <div className="iconBox">
+                                <img src={bookImg} alt="SoyVida" />
+                                <h3>Libros</h3>
+                            </div>
+                        </Link>
+                    </Col>
+                    <Col md={3}>
+                        <Link to='/usuariolibro'>
+                            <div className="iconBox">
+                                <img src={activityImg} alt="SoyVida" />
+                                <h3>Actividades Libro</h3>
+                            </div>
+                        </Link>
+                    </Col>
+                </Row>
+            </Container>
 
-            <Card>
-            <Link to='/colegios'>
-                    <Card.Img variant="top" src="holder.js/100px160" />
-                    <Card.Body>
-                    <Card.Title>Colegios</Card.Title>
-                    <Card.Text>
-                        Acceso al la información de los colegios inscritos
-                    </Card.Text>
-                    </Card.Body>
-                    <Card.Footer>
-                    <small className="text-muted">LIngresar</small>
-                    </Card.Footer>
-            </Link>
-            </Card>
+        </div>
 
-            <Card>
-            <Link to='/libros'>
-                    <Card.Img variant="top" src="holder.js/100px160" />
-                    <Card.Body>
-                    <Card.Title>Libros</Card.Title>
-                    <Card.Text>
-                        Acceso a la lista de libros ofrecidos por SoyVida
-                    </Card.Text>
-                    </Card.Body>
-                    <Card.Footer>
-                    <small className="text-muted">Ingresar</small>
-                    </Card.Footer>
-            </Link>
-            </Card>
-            <Card>
-            <Link to='/usuariolibro'>
-                    <Card.Img variant="top" src="holder.js/100px160" />
-                    <Card.Body>
-                    <Card.Title>Libros Usuario</Card.Title>
-                    <Card.Text>
-                        Añadir libros a los alumnos de soyvida
-                    </Card.Text>
-                    </Card.Body>
-                    <Card.Footer>
-                    <small className="text-muted">Ingresar</small>
-                    </Card.Footer>
-            </Link>
-            </Card>
-
-            </CardGroup>
+        
      );
 }
  

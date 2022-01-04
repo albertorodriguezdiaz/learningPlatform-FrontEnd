@@ -10,7 +10,6 @@ const AlumnosAdmin = () => {
     const [usuarios, getUsuarios] = useState([]);
 
     useEffect(() => {
-
         obtenerUsuarios();
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
@@ -39,9 +38,9 @@ const AlumnosAdmin = () => {
 
 
     return ( 
-        <div>
-            <TopBar />
-        <Container>
+    <div className='homebookBoxAdmin'>
+       <TopBar />
+        <Container >
             <Row>            
 
                 <h1>Admin Alumnos</h1>
@@ -49,7 +48,7 @@ const AlumnosAdmin = () => {
                     Crear nuevo usuario
                 </Link>
 
-                <Table>
+                <Table striped bordered hover>
                     <thead>
                         <tr>
                             <th>#</th>

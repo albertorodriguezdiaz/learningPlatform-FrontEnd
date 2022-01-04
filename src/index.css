@@ -136,6 +136,7 @@ p{
   margin-top: 20px;
 }
 
+
 .form-usuario {
     background-color: var(--gris2);
     height: 100vh;
@@ -975,13 +976,11 @@ audio{
   border-radius: 30px 30px 50px 50px;
   border: 2px solid rgb(204, 134, 60);
   text-align: center;
-  padding: 20px;
+  padding: 10px;
   background: rgb(253,230,131);
   background: linear-gradient(180deg, rgba(253,230,131,1) 6%, rgba(248,192,45,1) 44%, rgba(248,192,45,1) 100%);
   box-shadow: 2px 2px 1px rgb(255, 255, 255) inset, 0px 5px 2px 0px rgba(168, 84, 34, 0.5);
   color: #fff;
-  font-weight: 800;
-  font-size: 50px;
 }
 
 .boxPregunta{
@@ -1572,7 +1571,7 @@ p.infoPuntaje.ganaste{
   color: #fff !important;
 }
 
-.table-hover > tbody > tr:hover > *{
+.tableNotas .table-hover > tbody > tr:hover > *{
   background: #fff11f !important;
   color: #2d3d4a !important;
 
@@ -1614,6 +1613,12 @@ p.infoPuntaje.ganaste{
   margin-top: 35px;
   position: relative;
   color: #4559b3;
+}
+
+
+.form-usuario input::placeholder {
+  color: #fff ;
+  opacity: .7 ;
 }
 
 .iniciarLogin img{
@@ -1699,4 +1704,185 @@ p.infoPuntaje.ganaste{
 
 .btn-close{
   font-size: 25px;
+}
+
+
+/* Iconos HoomeBooks */
+
+
+.iconHomeBook{
+  transform: scale(1);
+  transition: .5s all;
+}
+.iconHomeBook:hover{
+  transform: scale(1.1);
+}
+.iconPrimero{
+  margin-left: 85px;
+  margin-top: 60px;
+}
+.iconSegundo{
+  margin-left: 102px;
+  margin-top: 332px;
+}
+.iconTercero{
+  margin-left: 115px;
+  margin-top: 630px;
+}
+
+
+
+.homeBook{
+  background: url(./resources/img/bg-homebook2.jpg);
+  background-color: #fff;
+  background-size: cover;
+  background-position: center center;
+  min-height: 100vh;
+}
+
+
+.homeBook .mapBook{
+  border: 8px solid #fff;
+  
+}
+
+/* Admin */
+.barAdmin .navbar{
+  margin-bottom: 65px;
+}
+
+.alerta, .alerta-error{
+  z-index: 99;
+}
+
+.homebookBoxAdmin{
+    background: #fff;
+    margin: 0 50px;
+    box-shadow: 0px 25px 35px rgba(6, 24, 73, 0.2);
+    border-radius: 10px;
+    position: relative;
+    padding-bottom: 50px;
+}
+
+.homebookBoxAdmin .container{
+  padding: 0 30px;
+}
+
+.homebookBoxAdmin h2{
+  margin-top: 70px;
+  margin-bottom: 30px;
+  color: #4559b3;;
+}
+
+.homebookBoxAdmin .navbar{
+  z-index: 1;
+  max-width: 100%;
+  margin: 0 auto;
+  border-bottom: 6px solid #ebebeb;
+  border-radius: 0px 0px 30px 30px;
+  padding: 10px 20px;
+  text-align: center;
+  background: rgb(27, 77, 143);
+  background: linear-gradient(180deg, rgb(255, 255, 255) 60%, rgb(247, 247, 247) 100%); 
+box-shadow: none;
+  margin-bottom: 15px;
+}
+
+.homebookBoxAdmin .navbar p{
+color: rgb(12, 59, 129);
+
+}
+
+.homebookBoxAdmin .row{
+  margin-bottom: 20px;
+}
+.homebookBoxAdmin table{
+  margin-top: 30px;
+  border: 2px solid #ffffff !important;
+  box-shadow: 0px 10px 20px rgba(40, 56, 87, 0.15);
+  caption-side: bottom;
+    border-collapse: collapse;
+
+  
+}
+.homebookBoxAdmin td{
+  border: 2px solid #ffffff ;
+  padding: 10px;
+  text-align: center;
+  vertical-align: middle;
+}
+.homebookBoxAdmin table thead th{
+  padding: 20px !important;
+  text-align: center;
+}
+
+.homebookBoxAdmin input, 
+.selectBox{
+  box-shadow: 0px 4px 12px rgb(0 0 0 / 10%);
+  border-radius: 10px;
+  padding: 10px 20px !important;
+  border: none;
+  max-width: 100%;
+}
+
+
+.homebookBoxAdmin select {
+  min-width: 320px;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+}
+
+.homebookBoxAdmin label{
+  font-weight: 700;
+  color: #4559b3;
+}
+
+.homebookBoxAdmin input[type=submit]{
+  display: inline-block;
+  text-align: center;
+  border-radius: 7px;
+  padding: 10px 30px;
+  max-width: 300px;
+  background: #4559b3;
+  color: #fff;
+  font-weight: 800;
+  box-shadow: inset 0px -4px 0px 0px rgb(0 0 0 / 10%);
+  margin: 10px;
+  font-size: 20px;
+  margin: 30px auto;
+
+}
+
+
+.homebookBoxAdmin .btn{
+  margin-top: 0px;
+  padding: 7px 20px;
+}
+
+.homebookBoxAdmin .filtrosTop{
+  margin-top: 50px;
+}
+
+
+.boxAdminIcon .iconBox{
+  box-shadow: 0px 10px 20px rgba(40, 56, 87, 0.15);
+  margin: 10px;
+  border-radius: 10px;
+  text-align: center;
+  padding: 50px 20px;
+  transition: .5s all;
+}
+
+.iconBox:hover{
+  transform: scale(1.1);
+}
+
+
+.boxAdminIcon img{
+  height: 70px;
+}
+.boxAdminIcon h3{
+  font-size: 20px;
+  font-weight: 700;
 }

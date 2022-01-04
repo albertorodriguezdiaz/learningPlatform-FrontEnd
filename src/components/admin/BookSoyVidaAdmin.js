@@ -122,25 +122,25 @@ const obtenerBooksSoyVida = async () => {
 
 
     return ( 
-        <div>
-            <TopBar />
-        <Container>
+        <div className='homebookBoxAdmin'>
+       <TopBar />
+        <Container >
             <Row>
                 <Col lg="12">
 
-                    <h2>Agregar Book SoyVida</h2>
+                    <h2>Agregar Libro SoyVida</h2>
                     <form
                         onSubmit={onSubmitBook}
                     >
-                        <input 
-                            type="text" 
-                            className="input-text"
-                            placeholder="Nombre Book Soy vida..."
-                            name="nombre"
-                            value={nombre || ''}
-                            onChange={onChangeBookSoyVida}
-                            
-                        />
+                            <label htmlFor="nombre">Nombre del Libro SoyVida</label>
+                            <input 
+                                type="text" 
+                                className="input-text"
+                                placeholder="Ingresar nuevo libro..."
+                                name="nombre"
+                                value={nombre || ''}
+                                onChange={onChangeBookSoyVida}
+                            />
                     <div className="d-grid gap-2">
                     <Button 
                         as="input" variant="primary" size="lg" 
@@ -157,14 +157,14 @@ const obtenerBooksSoyVida = async () => {
 
 
             <Row>
-                <h2>books</h2>
-                <Table>
+                <h2>Libros Soy Vida</h2>
+                <Table striped bordered hover>
                     <thead>
                         <tr>
                             <th>#</th>
                             <th>Nombre</th>
                             <th>Editar</th>
-                            <th>Eliminar</th>
+                            {/* <th>Eliminar</th> */}
                         </tr>
                     </thead>
 
@@ -183,15 +183,14 @@ const obtenerBooksSoyVida = async () => {
                                     >Editar
                                 </Button>
                             </td>
-                            <td>
+                            {/* <td>
                                 <Button 
                                     variant="danger"
                                     type="button"
                                     onClick={ () => eliminarBook(book._id)}
                                     >Eliminar
                                 </Button>
-
-                            </td>
+                            </td> */}
                         </tr>                            
                     )
                 }

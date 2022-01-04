@@ -61,7 +61,7 @@ const TopBar = (props) => {
                     </Offcanvas.Header>
                     <Offcanvas.Body>
                       <Nav className="justify-content-end flex-grow-1 pe-3 ">
-                        <Nav.Link href="/home">Home</Nav.Link>
+                        <Nav.Link href="/home">Inicio</Nav.Link>
                         <Nav.Link href="/notas">Notas</Nav.Link>
                         {/* <NavDropdown title="Dropdown" id="offcanvasNavbarDropdown">
                           <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
@@ -81,10 +81,14 @@ const TopBar = (props) => {
               </Navbar>
             }
 
+
+
+
             { usertipo==='admin' && 
-                <Navbar bg="dark" variant="dark" expand={false}>
+            <div className="barAdmin">
+                <Navbar bg="light" variant="light" expand={false}>
                 <Container fluid>
-                  <Navbar.Brand href="/home">SoyVida</Navbar.Brand>
+                  <Navbar.Brand href="/home"><img src={logoSoyVida} alt="SoyVida" /></Navbar.Brand>
                   <Navbar.Brand ><p>Hola {userdata.nombre}</p></Navbar.Brand>
                   <Navbar.Toggle aria-controls="offcanvasNavbar" />
                   <Navbar.Offcanvas
@@ -93,14 +97,14 @@ const TopBar = (props) => {
                     placement="end"
                   >
                     <Offcanvas.Header closeButton>
-                      <Offcanvas.Title id="offcanvasNavbarLabel">Soy Vida - Menú</Offcanvas.Title>
+                      <Offcanvas.Title id="offcanvasNavbarLabel"><img src={logoSoyVidaBig} alt="Logo" /></Offcanvas.Title>
                     </Offcanvas.Header>
                     <Offcanvas.Body>
                       <Nav className="justify-content-end flex-grow-1 pe-3 ">
-                        <Nav.Link href="/home">Voler al inicio</Nav.Link>
-                        <Nav.Link href="/usuarios">Administrar Alumnos</Nav.Link>
-                        <Nav.Link href="/colegios">Administrar Colegios</Nav.Link>
-                        <Nav.Link href="/usuariolibro">Añadir Libro a Alumno</Nav.Link>
+                        <Nav.Link href="/home">Inicio</Nav.Link>
+                        <Nav.Link href="/colegios">Colegios</Nav.Link>
+                        <Nav.Link href="/usuarios">Alumnos</Nav.Link>
+                        <Nav.Link href="/usuariolibro">Añadir Libro</Nav.Link>
                         <Nav.Link href="/libros">Libros SoyVida</Nav.Link>
                       </Nav>
                       <Button
@@ -112,6 +116,7 @@ const TopBar = (props) => {
                   </Navbar.Offcanvas>
                 </Container>
               </Navbar>
+            </div>
             }
 
             { usertipo==='editor' && 
@@ -130,7 +135,7 @@ const TopBar = (props) => {
                     </Offcanvas.Header>
                     <Offcanvas.Body>
                       <Nav className="justify-content-end flex-grow-1 pe-3 ">
-                        <Nav.Link href="#action1">Home</Nav.Link>
+                        <Nav.Link href="#action1">Inicio</Nav.Link>
                         <Nav.Link href="#action2">Link</Nav.Link>
                         <NavDropdown title="Dropdown" id="offcanvasNavbarDropdown">
                           <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
