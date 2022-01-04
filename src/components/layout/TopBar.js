@@ -106,6 +106,7 @@ const TopBar = (props) => {
                         <Nav.Link href="/usuarios">Alumnos</Nav.Link>
                         <Nav.Link href="/usuariolibro">Añadir Libro</Nav.Link>
                         <Nav.Link href="/libros">Libros SoyVida</Nav.Link>
+                        <Nav.Link href="/usuarionotas">Notas</Nav.Link>
                       </Nav>
                       <Button
                           className=""

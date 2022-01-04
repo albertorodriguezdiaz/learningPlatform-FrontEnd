@@ -14,15 +14,15 @@ const LinksHome = () => {
         <div className="boxAdminIcon">
             <Container>
                 <Row>
-                    <Col md={3}>
+                    <Col md={6}>
                         <Link to='/usuarios'>
                             <div className="iconBox">
                                 <img src={userImg} alt="SoyVida" />
-                                <h3>Alumnos</h3>
+                                <h3>Usuarios</h3>
                             </div>
                         </Link>
                     </Col>
-                    <Col md={3}>
+                    <Col md={6}>
                         <Link to='/colegios'>
                             <div className="iconBox">
                                 <img src={schoolImg} alt="SoyVida" />                            
@@ -30,15 +30,15 @@ const LinksHome = () => {
                             </div>
                         </Link>
                     </Col>
-                    <Col md={3}>
+                    <Col md={6}>
                         <Link to='/libros'>
                             <div className="iconBox">
                                 <img src={bookImg} alt="SoyVida" />
-                                <h3>Libros</h3>
+                                <h3>Libros SoyVida</h3>
                             </div>
                         </Link>
                     </Col>
-                    <Col md={3}>
+                    <Col md={6}>
                         <Link to='/usuariolibro'>
                             <div className="iconBox">
                                 <img src={activityImg} alt="SoyVida" />

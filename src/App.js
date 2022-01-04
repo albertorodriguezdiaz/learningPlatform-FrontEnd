@@ -24,6 +24,7 @@ import AlumnosAdmin from './components/admin/AlumnosAdmin';
 import ColegiosAdmin from './components/admin/colegios/ColegiosAdmin';
 import BookSoyVidaAdmin from './components/admin/BookSoyVidaAdmin'
 import BooksAdmin from './components/admin/BooksAdmin';
+import BooksNotas from './components/admin/BooksNotas';
 
 
 
@@ -46,11 +47,12 @@ function App() {
                   <Route exact path="/" component={Login} />
                   
                   <PrivateRoutes exact path="/home" component={Home} />
-                  <PrivateRoutes userLevel={'admin'} exact path="/usuarios" component={AlumnosAdmin} />
-                  <PrivateRoutes exact path="/nueva-cuenta" component={NuevaCuenta} />
+                  <PrivateRoutes userLevel={'admin'} exact path="/usuarios" component={NuevaCuenta} />
+                  {/* <PrivateRoutes exact path="/nueva-cuenta" component={NuevaCuenta} /> */}
                   <PrivateRoutes userLevel={'admin'} exact path="/colegios" component={ColegiosAdmin} />
                   <PrivateRoutes userLevel={'admin'} exact path="/libros" component={BookSoyVidaAdmin} />
                   <PrivateRoutes userLevel={'admin'} exact path="/usuariolibro" component={BooksAdmin} />
+                  <PrivateRoutes userLevel={'admin'} exact path="/usuarionotas" component={BooksNotas} />
 
                   <PrivateRoutes userLevel={'user'} exact path="/primero" component={HomeBook1} />
                   <PrivateRoutes userLevel={'user'} exact path="/notas" component={Notas} />

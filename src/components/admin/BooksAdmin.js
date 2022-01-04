@@ -9,7 +9,9 @@ const BooksAdmin = () => {
     const [selectbook, guardarSelectBook] = useState(false);
 
     // state para BookSoyvida
-    const [bookuser, guardarBookUser] = useState({});
+    const [bookuser, guardarBookUser] = useState({
+        libro:'', usuario: '', colegio: ''
+    });
     const {libro, usuario, colegio} = bookuser;
 
     // Obtener Libros de usuarios
@@ -27,30 +29,44 @@ const BooksAdmin = () => {
 
     useEffect(() => {
         obtenerColegios();
-        obtenerBookUser();
-        obtenerBooksSoyVida();
+        
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useEffect(() => {
+        obtenerBookUser();
+        obtenerBooksSoyVida();
         obtenerUsuariosByColegio(colegio);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [colegio]);
+    }, [libro, colegio, bookuser]);
 
 
+  
 
     // Lee los contenidos del input
     const onChangeBooks = (e) =>{
+
+        
         guardarBookUser({
             ...bookuser,
             [e.target.name] : e.target.value
         })
-    }
 
+    }
+    
     
    // Cuando el admin asigna un nuevo libro
    const onSubmitBook = e => {
     e.preventDefault();
+
+        // Validar que no haya campos vacios
+        if( libro.trim() === '' ||
+            colegio.trim() === '' ||
+            !usuario || usuario.trim() === ''){
+        console.log('Todos los campos son obligatorios', 'alerta-error');
+        return;
+    }
+
 
     // Validar si es edicion o es nuevo
     if (selectbook === false) {
@@ -63,13 +79,16 @@ const BooksAdmin = () => {
         actualizarBook(bookuser);
         guardarSelectBook(false);
     }
+
+    // Refrecar page
+    // window.location.reload();
     
     // Reiniciar el form
-    // guardarBookUser({
-    //     libro: '',
-    //     usuario: '',
-    //     colegio: ''
-    // })
+    guardarBookUser({
+        libro: '',
+        usuario: '',
+        colegio: ''
+    })
 
     
 }
@@ -104,8 +123,10 @@ const agregarActivity = async bookuser => {
 
 const obtenerBookUser = async () => {
     try {
-        const resultado = await ClienteAxios.get('/api/books');
+        const resultado = await ClienteAxios.get('/api/books', { params: { libro, colegio }});
         guardarBookUserGet(resultado.data.bookuser);
+        console.log('obtenerBookUser');
+        console.log(resultado.data.bookuser);
 
     } catch (error) {
         console.log(error);
@@ -162,17 +183,6 @@ const obtenerBooksSoyVida = async () => {
 
 
 
-
-    // Seleccionar booksoyvida para editar
-    // const seleccionarBook = booksoyvida =>{
-    //     guardarSelectBook(true);
-
-    //     guardarBookUser({
-    //         ...booksoyvida
-    //     })
-
-    // }
-
     // Editar o modificar booksoyvida
     const actualizarBook = async booksoyvida => {
         try {
@@ -190,7 +200,7 @@ const obtenerBooksSoyVida = async () => {
        <TopBar />
         <Container>
             
-            <h2>Añadir nuevo libro a usuario</h2>
+            <h2>Añadir Actividades del Libro</h2>
 
             <Form
                 onSubmit={onSubmitBook}
@@ -202,6 +212,7 @@ const obtenerBooksSoyVida = async () => {
                         <div className="selectBox">
                             <select
                                 defaultValue={colegio}
+                                value={colegio}
                                 id="colegio"
                                 name="colegio"
                                 onChange={onChangeBooks}
@@ -220,26 +231,8 @@ const obtenerBooksSoyVida = async () => {
                     <div className="campo-form">
                         <div className="selectBox">
                             <select
-                                defaultValue={usuario}
-                                id="usuario"
-                                name="usuario"
-                                onChange={onChangeBooks}
-                            >
-                                <option value="">Seleccionar un Estudiante</option>
-                                {
-                                    usuarios.map((usuario, key)=>
-                                        <option key={key} value={usuario._id}>{usuario.nombre}</option>
-                                    )
-                                }
-                            </select>
-                        </div>
-                    </div>
-                </Col>
-                <Col>
-                    <div className="campo-form">
-                        <div className="selectBox">
-                            <select
                                 defaultValue={libro}
+                                value={libro}
                                 id="libro"
                                 name="libro"
                                 onChange={onChangeBooks}
@@ -254,12 +247,32 @@ const obtenerBooksSoyVida = async () => {
                         </div>
                     </div>
                 </Col>
+                <Col>
+                    <div className="campo-form">
+                        <div className="selectBox">
+                            <select
+                                defaultValue={usuario}
+                                value={usuario}
+                                id="usuario"
+                                name="usuario"
+                                onChange={onChangeBooks}
+                            >
+                                <option value="">Seleccionar un Estudiante</option>
+                                {
+                                    usuarios.map((usuario, key)=>
+                                        <option key={key} value={usuario._id}>{usuario.nombre}</option>
+                                    )
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </Col>
             </Row>
                     <div className="d-grid gap-2">
                         <Button 
                             as="input" variant="primary" size="lg" 
                             type="submit" 
-                            value={ selectbook ? 'Editar Book SoyVida' : 'Agregar Book SoyVida' }>
+                            value={ selectbook ? 'Editar Actividades Libro' : 'Agregar Actividades Libro' }>
                         </Button>  
                     </div>
 
@@ -269,7 +282,7 @@ const obtenerBooksSoyVida = async () => {
 
             <Row>
             <Col>
-                <h2>books</h2>
+                <h2>Usuarios</h2>
                 <Table striped bordered hover>
                     <thead>
                         <tr>
@@ -283,10 +296,11 @@ const obtenerBooksSoyVida = async () => {
 
                     <tbody>
 
-                {
-
-                        bookuserGet.map( (bookus, key) => 
-                        <tr key={key}>
+                {   
+                    bookuserGet.map( (bookus, key) => 
+                    // (colegio && libro) &&
+                    
+                            <tr key={key}>
                             <td>{key+1}</td>
                             <td>
                             {   
@@ -323,7 +337,9 @@ const obtenerBooksSoyVida = async () => {
                                 </Button>
 
                             </td>
-                        </tr>                            
+                        </tr>   
+                        
+                                                 
                     )
                 }
 
