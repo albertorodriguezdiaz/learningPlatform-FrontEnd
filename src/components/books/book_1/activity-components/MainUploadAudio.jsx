@@ -12,7 +12,7 @@ const MainUploadAudio = (props) => {
 
     // Seleccionamos las actividades del usuario con y nos ubicamos en la pisicion [0]
     const{actividades, textoTextArea, tituloActividad} = props;
-    const actividadUser = actividades[0];
+    let actividadUser = actividades;
 
     const idactividad = parseInt(props.match.params.id);
     const idleccion = parseInt(props.match.params.leccion);
@@ -27,6 +27,7 @@ const MainUploadAudio = (props) => {
     const {texto} = textoact;
 
     useEffect(() => {
+        
         obtenerImagenInfo(actividadUser.usuario, idActivity);
          
         if (tituloActividad.length>0 && photoExiste===false) {

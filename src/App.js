@@ -36,7 +36,7 @@ if (token) {
 
 
 
-function App() {
+function App(props) {
   return (
         <AuthState>
           <BookState>
@@ -46,16 +46,17 @@ function App() {
                 <Switch>
                   <Route exact path="/" component={Login} />
                   
-                  <PrivateRoutes exact path="/home" component={Home} />
-                  <PrivateRoutes userLevel={'admin'} exact path="/usuarios" component={NuevaCuenta} />
+                  <PrivateRoutes userlevel={'admin'} exact path="/home" component={Home} {...props} />
+                  <PrivateRoutes userlevel={'admin'} exact path="/usuarios" component={NuevaCuenta} />
                   {/* <PrivateRoutes exact path="/nueva-cuenta" component={NuevaCuenta} /> */}
-                  <PrivateRoutes userLevel={'admin'} exact path="/colegios" component={ColegiosAdmin} />
-                  <PrivateRoutes userLevel={'admin'} exact path="/libros" component={BookSoyVidaAdmin} />
-                  <PrivateRoutes userLevel={'admin'} exact path="/usuariolibro" component={BooksAdmin} />
-                  <PrivateRoutes userLevel={'admin'} exact path="/usuarionotas" component={BooksNotas} />
+                  <PrivateRoutes userlevel={'admin'} exact path="/colegios" component={ColegiosAdmin} />
+                  <PrivateRoutes userlevel={'admin'} exact path="/libros" component={BookSoyVidaAdmin} />
+                  <PrivateRoutes userlevel={'admin'} exact path="/usuariolibro" component={BooksAdmin} />
+                  <PrivateRoutes userlevel={'user'} exact path="/usuarionotas" component={BooksNotas} />
+                  <PrivateRoutes userlevel={'user'} exact path="/notas" component={Notas} />
+                  <PrivateRoutes userlevel={'user'} exact path="/estadisticas" component={Notas} />
 
-                  <PrivateRoutes userLevel={'user'} exact path="/primero" component={HomeBook1} />
-                  <PrivateRoutes userLevel={'user'} exact path="/notas" component={Notas} />
+                  <PrivateRoutes userlevel={'user'} exact path="/primero" component={HomeBook1} />
                   
                   <Route path="*" component={NotFound} />
                 </Switch>

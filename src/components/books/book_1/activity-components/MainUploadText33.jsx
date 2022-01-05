@@ -13,7 +13,7 @@ const MainUploadText33 = (props) => {
 
     // Seleccionamos las actividades del usuario con y nos ubicamos en la pisicion [0]
     const{actividades, tituloActividad, textoTextArea} = props;
-    const actividadUser = actividades[0];
+    let actividadUser = actividades;
 
     const idactividad = parseInt(props.match.params.id);
     const idleccion = parseInt(props.match.params.leccion);
