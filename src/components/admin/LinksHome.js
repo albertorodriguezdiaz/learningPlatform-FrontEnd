@@ -6,6 +6,8 @@ import userImg from '../../resources/img/usuario.png'
 import activityImg from '../../resources/img/activity.png'
 import schoolImg from '../../resources/img/school.png'
 import bookImg from '../../resources/img/book.png'
+import estadisticasImg from '../../resources/img/results.png'
+import notaImg from '../../resources/img/exam.png'
 
 const LinksHome = () => {
 
@@ -14,7 +16,7 @@ const LinksHome = () => {
         <div className="boxAdminIcon">
             <Container>
                 <Row>
-                    <Col md={6}>
+                    <Col md={4}>
                         <Link to='/usuarios'>
                             <div className="iconBox">
                                 <img src={userImg} alt="SoyVida" />
@@ -22,7 +24,7 @@ const LinksHome = () => {
                             </div>
                         </Link>
                     </Col>
-                    <Col md={6}>
+                    <Col md={4}>
                         <Link to='/colegios'>
                             <div className="iconBox">
                                 <img src={schoolImg} alt="SoyVida" />                            
@@ -30,7 +32,7 @@ const LinksHome = () => {
                             </div>
                         </Link>
                     </Col>
-                    <Col md={6}>
+                    <Col md={4}>
                         <Link to='/libros'>
                             <div className="iconBox">
                                 <img src={bookImg} alt="SoyVida" />
@@ -38,11 +40,27 @@ const LinksHome = () => {
                             </div>
                         </Link>
                     </Col>
-                    <Col md={6}>
+                    <Col md={4}>
                         <Link to='/usuariolibro'>
                             <div className="iconBox">
                                 <img src={activityImg} alt="SoyVida" />
                                 <h3>Actividades Libro</h3>
+                            </div>
+                        </Link>
+                    </Col>
+                    <Col md={4}>
+                        <Link to='/usuarionotas'>
+                            <div className="iconBox">
+                                <img src={notaImg} alt="SoyVida" />
+                                <h3>Notas Usuarios</h3>
+                            </div>
+                        </Link>
+                    </Col>
+                    <Col md={4}>
+                        <Link to='/usuariolibro'>
+                            <div className="iconBox">
+                                <img src={estadisticasImg} alt="SoyVida" />
+                                <h3>Estadística</h3>
                             </div>
                         </Link>
                     </Col>

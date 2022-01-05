@@ -2,6 +2,8 @@ import React,{useState, useEffect} from 'react'
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import ClienteAxios from 'axios';
 import TopBar from '../layout/TopBar';
+import { BrowserRouter as Router, Link, Route  } from 'react-router-dom';
+import AlumnoNotas from './AlumnoNotas';
 
 
 
@@ -100,7 +102,7 @@ const BookNotas = (props) => {
 
     return ( 
 
-    <div className='homebookBoxAdmin'>
+    <div className='homebookBoxAdmin notasAdminPage'>
        <TopBar />
         <Container>      
             <h1>Notas</h1>
@@ -161,26 +163,55 @@ const BookNotas = (props) => {
 
         </Container>
 
+        <Router>
         <Container>
             <Row>
-                <Col md={6}>
+                
+                <Col md={2}>
+
+                <p >Selecciona un ALumno</p>
+                <ul>
                 {   
                     bookuserGet.map((book, key)=>
                         usuarios.map(us =>
-                            us._id===book.usuario &&
-                                <div key={key}>{us.nombre}</div>
+                        us._id===book.usuario &&
+                            books.map(bo =>
+                            bo._id===book.libro &&
+                            <Link 
+                                key={key}  
+                                to={{
+                                    pathname:`/alumno/notas/${us.nombre}-${bo.nombre}`,
+                                    query:{nombre: us.nombre, id: us._id, libro: bo._id, libroNombre: bo.nombre}
+                                }}
+                            >                          
+                                <li>{us.nombre} </li>
+                            </Link>
+                            )
                         )
                     )
                  }
+                 </ul>
+
                 </Col>
-                <Col md={6}>
-                    Notas Usuario
+
+                <Col md={10} className='notasAdmin'>
+                    <Route path={"/alumno/notas/:id"} component={AlumnoNotas}>
+                        <AlumnoNotas {...props}  />
+                    </Route>
                 </Col>
+
             </Row>
         </Container>
+        </Router>
     </div>
 
      );
 }
  
+
+
+
+
+
+
 export default BookNotas;

@@ -8,7 +8,9 @@ import BookContext from '../../context/books/bookContex';
 
 const Notas = (props) => {
 
-  
+        const {idUsuario, idLibro} = props;
+        const libroPrimero = '61a6f392d99e00fe045445e1';
+
         // Extraer la informacion de autenticacion
         const authContext = useContext(AuthContext);
         const {userdata, usuario, usuarioAutenticado } = authContext;
@@ -27,10 +29,14 @@ const Notas = (props) => {
         
         
         useEffect(() => {  
-            const libroPrimero = '61a6f392d99e00fe045445e1';
-          obtenerActivity(userdata._id, libroPrimero);  
+            if (idUsuario && idLibro) {
+                obtenerActivity(idUsuario, idLibro); 
+            }else{
+                obtenerActivity(userdata._id, libroPrimero);  
+            }
+          
           // eslint-disable-next-line react-hooks/exhaustive-deps
-          }, [render, usuario]) 
+          }, [render, props]) 
         
           
           useEffect(() => {
@@ -40,7 +46,9 @@ const Notas = (props) => {
           // eslint-disable-next-line react-hooks/exhaustive-deps
           }, [actividades]) 
    
+
     return ( 
+        
     <div className='notasMain'>
         <TopBar />
         <Container className='marginTop150 width700'>      
