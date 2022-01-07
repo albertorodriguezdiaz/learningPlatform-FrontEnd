@@ -2016,3 +2016,29 @@ color: rgb(12, 59, 129);
 .notasAdminPage input, .notasAdminPage .selectBox{
   margin: 0 auto;
 }
+
+
+/* Act 29 */
+
+.containerCanvas{
+  position: relative;
+  width: 775px;
+  margin: 0 auto;
+}
+.containerCanvas canvas{
+  border: 1px solid #000;
+  margin: 0;
+
+}
+.containerCanvas .imgMeta{
+  position: absolute;
+  right: 0;
+  margin-top: 200px;
+  margin-right: -110px;
+}
+
+.imgPopUpWin{
+  position: absolute;
+  top: 180px;
+  left: 150px;
+}
