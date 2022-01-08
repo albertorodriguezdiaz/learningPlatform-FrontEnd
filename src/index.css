@@ -2042,3 +2042,23 @@ color: rgb(12, 59, 129);
   top: 180px;
   left: 150px;
 }
+
+.centerActivity{
+  text-align: center;
+}
+
+.centerActivity p{
+  font-size: 20px;
+  color: #0064ff;
+  font-weight: 700;
+}
+
+.centerActivity .btn{
+  font-size: 18px;
+  font-weight: 700;
+}
+
+#contained-modal-title-vcenter{
+  text-align: center !important;
+  font-size: 20px;
+}
