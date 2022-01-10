@@ -1,26 +1,28 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Table, Col, Container, Row, Button, Form } from 'react-bootstrap';
-import ClienteAxios from 'axios';
 import AlertaContext from '../../context/alerts/alertContext';
 import AuthContext from '../../context/autentication/authContext';
 import TopBar from '../layout/TopBar';
 
+import BookContext from '../../context/books/bookContex';
+
 const NuevaCuenta = (props) => {
+
+    // Extraer la informacion de autenticacion
+    const bookContext = useContext(BookContext);
+    const { colegios, usuariosByColegio, colegiosRefresh, obtenerUsuariosByColegio,
+        actualizarUsuario, eliminarUsuario, obtenerColegios} = bookContext;
 
     // Extraer los valores del context
     const alertaContext = useContext(AlertaContext);
     const { alerta, mostrarAlerta } = alertaContext;
 
     const authContext = useContext(AuthContext);
-    const { mensaje, autenticado, registrarUsuario } = authContext;
+    const { mensaje, autenticado, registrarUsuario, userdata } = authContext;
 
-    const [usuarios, getUsuarios] = useState([]);
-
-    const [colegios, guardarColegios] = useState([]);
 
     // Seleccion Usuario Para editar
     const [selectUser, guardarSelectUser] = useState(false);
-
 
 
     // State para iniciar Sesion
@@ -43,12 +45,19 @@ const NuevaCuenta = (props) => {
             mostrarAlerta(mensaje.msg, mensaje.categoria)
         }
         
-        obtenerUsuariosByColegio(colegioFiltro);
         obtenerColegios();
         
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[mensaje, autenticado, colegioFiltro])
 
+
+    useEffect( () =>{
+        obtenerUsuariosByColegio(colegioFiltro);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[colegiosRefresh, userdata])
+
+
+    
 
     const onChange = (e) =>{
         guardarUsuario({
@@ -118,34 +127,6 @@ const NuevaCuenta = (props) => {
     }
 
 
-      
-    const obtenerUsuariosByColegio = async (colegio) => {
-        try {
-            if (colegio) {
-                const resultado = await ClienteAxios.get('/api/users', { params: { colegio }});
-                getUsuarios(resultado.data.alumnos);
-            }else{
-                const resultado = await ClienteAxios.get('/api/users');
-                getUsuarios(resultado.data.alumnos);
-            }
-            
-        } catch (error) {
-            console.log(`Error: ${error}`);
-        }
-                        
-    }
-
-    const obtenerColegios = async () => {
-        try {
-            const resultado = await ClienteAxios.get('/api/schools');
-            guardarColegios(resultado.data.colegios);
-        } catch (error) {
-            console.log(`Error: ${error}`);
-        }
-    }
-
-
-
     // Seleccionar usuario para editar
     const seleccionarUsuario = usuario =>{
         guardarSelectUser(true);
@@ -155,31 +136,6 @@ const NuevaCuenta = (props) => {
             ...usuario,
             password: ''
         })
-
-    }
-
-    // Editar o modificar usuario
-    const actualizarUsuario = async usuario => {
-        
-        try {
-            await ClienteAxios.put(`/api/users/${usuario._id}`, usuario);
-            obtenerUsuariosByColegio();
-        } catch (error) {
-            console.log(`Error: ${error}`);
-        }
-    }
-
-        
-
-    // Eliminar proyecto
-    const eliminarUsuario = async usuarioId =>{
-        try {
-            await ClienteAxios.delete(`/api/users/${usuarioId}`);
-            obtenerUsuariosByColegio(colegioFiltro);
-            
-        } catch (error) {
-            console.log(`Error: ${error}`);
-        }
 
     }
 
@@ -378,7 +334,7 @@ const NuevaCuenta = (props) => {
 
                     <tbody>
                         {
-                            usuarios.map( (alumno, key) => 
+                            usuariosByColegio.map( (alumno, key) => 
                             <tr key={key}>
                                     <td>{key+1}</td>
                                     <td>{alumno.nombre}</td>
@@ -386,7 +342,7 @@ const NuevaCuenta = (props) => {
                                     <td>
                                     {   
                                         colegios.map( (colegio) =>
-                                        // Compara el Id de libros con el id de libros de usuarios para mostrar el nombre
+                                        // Compara el Id de libros con el id de libros de usuariosByColegio para mostrar el nombre
                                             colegio._id===alumno.colegio
                                             && colegio.nombre
                                         )

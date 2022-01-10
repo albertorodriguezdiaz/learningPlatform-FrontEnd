@@ -35,6 +35,19 @@ const BookState = props => {
     const [colegiosRefresh, guardarColegiosRefresh] = useState([]);
 
 
+    const [usuariosByColegio, setUsuariosByColegio] = useState([]);
+
+
+    const [bookuserGet, guardarBookUserGet] = useState([]);
+
+
+    // state para BookSoyvida
+    const [bookusersv, guardarBookUser] = useState({
+        libro:'', usuario: '', colegio: ''
+    });
+
+
+
 
     // Fotos de la actividad
     const [photo, guardarPhoto] = useState([]);
@@ -241,6 +254,19 @@ const BookState = props => {
     }
 
 
+    const agregarBook = async booksoyvida => {
+        try {
+            await ClienteAxios.post('/api/booksoyvida', booksoyvida);
+    
+        } catch (error) {
+            console.log(error);
+        }
+    
+        obtenerBooksSoyVida();
+    }
+    
+
+
 
     const obtenerColegios = async () => {
         console.log('resultado.data.colegios');
@@ -290,6 +316,114 @@ const BookState = props => {
     }
 
 
+    const obtenerUsuariosByColegio = async (colegio) => {
+        try {
+            if (colegio) {
+                const resultado = await ClienteAxios.get('/api/users', { params: { colegio }});
+                setUsuariosByColegio(resultado.data.alumnos);
+            }else{
+                const resultado = await ClienteAxios.get('/api/users');
+                setUsuariosByColegio(resultado.data.alumnos);
+            }
+            
+        } catch (error) {
+            console.log(`Error: ${error}`);
+        }
+                        
+    }
+
+    
+    // Editar o modificar usuario
+    const actualizarUsuario = async usuario => {
+        
+        try {
+            const resultado = await ClienteAxios.put(`/api/users/${usuario._id}`, usuario);
+            guardarColegiosRefresh(resultado.data);
+        } catch (error) {
+            console.log(`Error: ${error}`);
+        }
+    }
+
+        
+
+    // Eliminar proyecto
+    const eliminarUsuario = async usuarioId =>{
+        try {
+            const resultado = await ClienteAxios.delete(`/api/users/${usuarioId}`);
+            guardarColegiosRefresh(resultado.data);
+            
+        } catch (error) {
+            console.log(`Error: ${error}`);
+        }
+
+    }
+
+
+
+
+    // actividades
+    
+
+
+const agregarBookUser = async bookuser => {
+    try {
+        const resultado = await ClienteAxios.post('/api/books', bookuser);
+        guardarBookUser(resultado.data);
+
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
+const agregarActivity = async bookuser => {
+    try {
+        const resultado = await ClienteAxios.post('/api/activity', bookuser);
+        guardarBookUser(resultado.data);
+
+    } catch (error) {
+        console.log(error);
+    }
+
+}
+
+
+const obtenerBookUser = async (libro, colegio) => {
+    try {
+        const resultado = await ClienteAxios.get('/api/books', { params: { libro, colegio }});
+        guardarBookUserGet(resultado.data.bookuser);
+
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
+
+    // Eliminar book
+    // const eliminarBook = async booksoyvidaId =>{
+    //     try {
+    //         await ClienteAxios.delete(`/api/booksoyvida/${booksoyvidaId}`);
+    //         obtenerBooksSoyVida();
+            
+    //     } catch (error) {
+    //         console.log(`Error: ${error}`);
+    //     }
+
+    // }
+
+
+
+    // Editar o modificar booksoyvida
+    const actualizarBook = async booksoyvida => {
+        try {
+            await ClienteAxios.put(`/api/booksoyvida/${booksoyvida._id}`, booksoyvida);
+        } catch (error) {
+            console.log(`Error: ${error}`);
+        }
+    }
+
+
 
     return ( 
         <BookContext.Provider
@@ -302,6 +436,9 @@ const BookState = props => {
                 colegios: colegios,
                 actividadeslibro: actividadeslibro,
                 photo: photo,
+                bookuserGet: bookuserGet,
+                bookusersv: bookusersv,
+                usuariosByColegio: usuariosByColegio,
                 colegiosRefresh: colegiosRefresh,
                 photoInfo: photoInfo,
                 photoExiste: photoExiste,
@@ -316,7 +453,16 @@ const BookState = props => {
                 agregarImagenInfo,
                 agregarColegio,
                 actualizarColegio,
-                eliminarColegio
+                eliminarColegio,
+                actualizarUsuario,
+                eliminarUsuario,
+                obtenerUsuariosByColegio,
+                agregarBook,
+                actualizarBook,
+                agregarActivity,
+                agregarBookUser,
+                guardarBookUser,
+                obtenerBookUser
             }}
         >
             {props.children}

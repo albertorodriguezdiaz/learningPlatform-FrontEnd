@@ -42,6 +42,7 @@ const AuthState = props => {
             });
             // Obtener usuario
             // usuarioAutenticado();
+            getUserdata(respuesta.data);
             
 
         } catch (error) {

@@ -1,10 +1,15 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import ClienteAxios from 'axios';
 import { Container, Row, Col, Table, Button } from 'react-bootstrap';
 import TopBar from '../layout/TopBar';
+import BookContext from '../../context/books/bookContex';
 
 const BookSoyVidaAdmin = () => {
     
+    // Extraer la informacion de autenticacion
+    const bookContext = useContext(BookContext);
+    const { books, obtenerBooksSoyVida, agregarBook} = bookContext;
+
     // Seleccion BookSoyvida Para editar
     const [selectbook, guardarSelectBook] = useState(false);
 
@@ -13,8 +18,6 @@ const BookSoyVidaAdmin = () => {
         nombre: '',
     });
 
-    // state buscar BookSoyvida
-    const [books, guardarBooks] = useState([]);
 
     // Extraer nombre de book BookSoyvida
     const {nombre} = booksoyvida;
@@ -59,30 +62,11 @@ const BookSoyVidaAdmin = () => {
 }
 
 
-const agregarBook = async booksoyvida => {
-    try {
-        const resultado = await ClienteAxios.post('/api/booksoyvida', booksoyvida);
-        guardarBooksoyvida(resultado.data);
-
-    } catch (error) {
-        console.log(error);
-    }
-
-    obtenerBooksSoyVida();
-}
 
 
 
+      
 
-const obtenerBooksSoyVida = async () => {
-    try {
-        const resultado = await ClienteAxios.get('/api/booksoyvida');
-        guardarBooks(resultado.data.booksoyvida);
-    } catch (error) {
-        console.log(`Error: ${error}`);
-    }
-                    
-}
 
 
     // Eliminar proyecto

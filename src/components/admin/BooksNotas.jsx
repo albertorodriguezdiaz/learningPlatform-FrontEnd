@@ -1,32 +1,23 @@
-import React,{useState, useEffect} from 'react'
+import React,{useState, useEffect, useContext} from 'react'
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
-import ClienteAxios from 'axios';
 import TopBar from '../layout/TopBar';
 import { BrowserRouter as Router, Link, Route  } from 'react-router-dom';
 import AlumnoNotas from './AlumnoNotas';
+import BookContext from '../../context/books/bookContex';
 
 
 
 
 const BookNotas = (props) => {
 
+    // Extraer la informacion de autenticacion
+    const bookContext = useContext(BookContext);
+    const { obtenerBookUser, books, colegios, obtenerColegios, 
+            obtenerUsuariosByColegio, obtenerBooksSoyVida, usuariosByColegio, bookuserGet } = bookContext;
 
     // state para BookSoyvida
     const [bookuser, guardarBookUser] = useState({});
     const {libro, colegio} = bookuser;
-
-    // Obtener Libros de usuarios
-    const [bookuserGet, guardarBookUserGet] = useState([]);
-
-
-    // state buscar bookuser
-    const [books, guardarBooks] = useState([]);
-
-
-    const [colegios, guardarColegios] = useState([]);
-
-
-    const [usuarios, guardarUsuario] = useState([]);
 
 
 
@@ -36,8 +27,9 @@ const BookNotas = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+
     useEffect(() => {
-        obtenerBookUser();
+        obtenerBookUser(libro, colegio);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [colegio, libro]);
 
@@ -52,48 +44,6 @@ const BookNotas = (props) => {
     }
 
         
-
-    const obtenerBookUser = async () => {
-        try {
-            const resultado = await ClienteAxios.get('/api/books', { params: { libro, colegio }});
-            guardarBookUserGet(resultado.data.bookuser);
-    
-        } catch (error) {
-            console.log(error);
-        }
-    }
-    
-
-    const obtenerBooksSoyVida = async () => {
-        try {
-            const resultado = await ClienteAxios.get('/api/booksoyvida');
-            guardarBooks(resultado.data.booksoyvida);
-        } catch (error) {
-            console.log(`Error: ${error}`);
-        }
-    }
-
-    const obtenerUsuariosByColegio = async (colegio) => {
-        try {
-            
-            const resultado = await ClienteAxios.get('/api/users', { params: { colegio }});
-            guardarUsuario(resultado.data.alumnos);
-            
-        } catch (error) {
-            console.log(`Error: ${error}`);
-        }
-                        
-    }
-
-    const obtenerColegios = async () => {
-        try {
-            const resultado = await ClienteAxios.get('/api/schools');
-            guardarColegios(resultado.data.colegios);
-        } catch (error) {
-            console.log(`Error: ${error}`);
-        }
-    }
-
 
     const onSubmitNotas = (e)=>{
         e.preventDefault();
@@ -169,11 +119,11 @@ const BookNotas = (props) => {
                 
                 <Col md={2}>
 
-                <p >Selecciona un ALumno</p>
+                <p >Selecciona un Alumno</p>
                 <ul>
                 {   
                     bookuserGet.map((book, key)=>
-                        usuarios.map(us =>
+                        usuariosByColegio.map(us =>
                         us._id===book.usuario &&
                             books.map(bo =>
                             bo._id===book.libro &&

@@ -5,11 +5,6 @@ import Notas from '../alumnos/Notas';
 const AlumnoNotas = (props, route ) => {
     const {nombre, id, libro, libroNombre} = props.location.query;
     
-useEffect(() => {
-    
-// eslint-disable-next-line react-hooks/exhaustive-deps
-}, [nombre])
-
     return ( 
         <div>
             <h2>{nombre}</h2>

@@ -1,31 +1,24 @@
-import React, {useState, useEffect} from 'react';
-import ClienteAxios from 'axios';
+import React, {useState, useEffect, useContext} from 'react';
 import { Container, Row, Col, Table, Button, Form } from 'react-bootstrap';
 import TopBar from '../layout/TopBar';
+import BookContext from '../../context/books/bookContex';
+
 
 const BooksAdmin = () => {
+
+    // Extraer la informacion de autenticacion
+    const bookContext = useContext(BookContext);
+    const { usuariosByColegio, bookusersv, books, colegios, obtenerColegios, bookuserGet, 
+            obtenerUsuariosByColegio, actualizarBook, obtenerBooksSoyVida,  
+            obtenerBookUser, agregarBookUser, agregarActivity, guardarBookUser } = bookContext;
     
     // Seleccion BookSoyvida Para editar
     const [selectbook, guardarSelectBook] = useState(false);
 
-    // state para BookSoyvida
-    const [bookuser, guardarBookUser] = useState({
-        libro:'', usuario: '', colegio: ''
-    });
-    const {libro, usuario, colegio} = bookuser;
 
-    // Obtener Libros de usuarios
-    const [bookuserGet, guardarBookUserGet] = useState([]);
+    const {libro, usuario, colegio} = bookusersv;
 
 
-    // state buscar bookuser
-    const [books, guardarBooks] = useState([]);
-
-
-    const [colegios, guardarColegios] = useState([]);
-
-
-    const [usuarios, guardarUsuario] = useState([]);
 
     useEffect(() => {
         obtenerColegios();
@@ -34,11 +27,11 @@ const BooksAdmin = () => {
     }, []);
 
     useEffect(() => {
-        obtenerBookUser();
+        obtenerBookUser(libro, colegio);
         obtenerBooksSoyVida();
         obtenerUsuariosByColegio(colegio);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [libro, colegio, bookuser]);
+    }, [libro, colegio, bookusersv]);
 
 
   
@@ -48,7 +41,7 @@ const BooksAdmin = () => {
 
         
         guardarBookUser({
-            ...bookuser,
+            ...bookusersv,
             [e.target.name] : e.target.value
         })
 
@@ -71,12 +64,12 @@ const BooksAdmin = () => {
     // Validar si es edicion o es nuevo
     if (selectbook === false) {
         // agregar el nuevo libro al usuario
-        agregarBookUser(bookuser);
-        agregarActivity(bookuser);
+        agregarBookUser(bookusersv);
+        agregarActivity(bookusersv);
 
     } else {
         // actualizar bookuser existente
-        actualizarBook(bookuser);
+        actualizarBook(bookusersv);
         guardarSelectBook(false);
     }
 
@@ -92,106 +85,6 @@ const BooksAdmin = () => {
 
     
 }
-
-
-
-
-const agregarBookUser = async bookuser => {
-    try {
-        const resultado = await ClienteAxios.post('/api/books', bookuser);
-        guardarBookUser(resultado.data);
-
-    } catch (error) {
-        console.log(error);
-    }
-
-    obtenerBookUser();
-}
-
-
-const agregarActivity = async bookuser => {
-    try {
-        const resultado = await ClienteAxios.post('/api/activity', bookuser);
-        guardarBookUser(resultado.data);
-
-    } catch (error) {
-        console.log(error);
-    }
-
-}
-
-
-const obtenerBookUser = async () => {
-    try {
-        const resultado = await ClienteAxios.get('/api/books', { params: { libro, colegio }});
-        guardarBookUserGet(resultado.data.bookuser);
-        console.log('obtenerBookUser');
-        console.log(resultado.data.bookuser);
-
-    } catch (error) {
-        console.log(error);
-    }
-}
-
-
-
-
-const obtenerBooksSoyVida = async () => {
-    try {
-        const resultado = await ClienteAxios.get('/api/booksoyvida');
-        guardarBooks(resultado.data.booksoyvida);
-    } catch (error) {
-        console.log(`Error: ${error}`);
-    }
-}
-
-
-    // Eliminar book
-    // const eliminarBook = async booksoyvidaId =>{
-    //     try {
-    //         await ClienteAxios.delete(`/api/booksoyvida/${booksoyvidaId}`);
-    //         obtenerBooksSoyVida();
-            
-    //     } catch (error) {
-    //         console.log(`Error: ${error}`);
-    //     }
-
-    // }
-
-
-    const obtenerUsuariosByColegio = async (colegio) => {
-        try {
-            
-            const resultado = await ClienteAxios.get('/api/users', { params: { colegio }});
-            guardarUsuario(resultado.data.alumnos);
-            
-        } catch (error) {
-            console.log(`Error: ${error}`);
-        }
-                        
-    }
-
-    const obtenerColegios = async () => {
-        try {
-            const resultado = await ClienteAxios.get('/api/schools');
-            guardarColegios(resultado.data.colegios);
-        } catch (error) {
-            console.log(`Error: ${error}`);
-        }
-    }
-
-
-
-
-    // Editar o modificar booksoyvida
-    const actualizarBook = async booksoyvida => {
-        try {
-            await ClienteAxios.put(`/api/booksoyvida/${booksoyvida._id}`, booksoyvida);
-            obtenerBooksSoyVida();
-        } catch (error) {
-            console.log(`Error: ${error}`);
-        }
-    }
 
 
 
@@ -259,7 +152,7 @@ const obtenerBooksSoyVida = async () => {
                             >
                                 <option value="">Seleccionar un Estudiante</option>
                                 {
-                                    usuarios.map((usuario, key)=>
+                                    usuariosByColegio.map((usuario, key)=>
                                         <option key={key} value={usuario._id}>{usuario.nombre}</option>
                                     )
                                 }
@@ -313,7 +206,7 @@ const obtenerBooksSoyVida = async () => {
                             </td>
                             <td>
                             {
-                                usuarios.map( (user) =>
+                                usuariosByColegio.map( (user) =>
                                 // Compara el Id de usurios con el id de usuarios con libros para mostrar el nombre
                                     user._id===bookus.usuario
                                     && user.nombre

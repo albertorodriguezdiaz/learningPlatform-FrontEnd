@@ -13,7 +13,7 @@ const Notas = (props) => {
 
         // Extraer la informacion de autenticacion
         const authContext = useContext(AuthContext);
-        const {userdata, usuarioAutenticado } = authContext;
+        const {userdata, usuarioAutenticado, usuario } = authContext;
         
         const [render, setRender] = useState(false);
         
@@ -29,14 +29,18 @@ const Notas = (props) => {
         
         
         useEffect(() => {  
-            if (idUsuario && idLibro) {
-                obtenerActivity(idUsuario, idLibro); 
-            }else{
+            if (!idUsuario && !idLibro) {
                 obtenerActivity(userdata._id, libroPrimero);  
             }
-          
           // eslint-disable-next-line react-hooks/exhaustive-deps
-          }, [render, props]) 
+          }, [usuario]) 
+        
+        useEffect(() => {  
+            if (idLibro) {
+                obtenerActivity(idUsuario, idLibro); 
+            }
+          // eslint-disable-next-line react-hooks/exhaustive-deps
+          }, [idLibro, idUsuario]) 
         
           
           useEffect(() => {
