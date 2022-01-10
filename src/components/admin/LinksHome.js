@@ -9,7 +9,7 @@ import bookImg from '../../resources/img/book.png'
 import estadisticasImg from '../../resources/img/results.png'
 import notaImg from '../../resources/img/exam.png'
 
-const LinksHome = () => {
+const LinksHome = (props) => {
 
 
     return ( 

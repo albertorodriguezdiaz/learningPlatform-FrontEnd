@@ -20,7 +20,6 @@ import Notas from './components/alumnos/Notas';
 
 
 // Admin
-import AlumnosAdmin from './components/admin/AlumnosAdmin';
 import ColegiosAdmin from './components/admin/colegios/ColegiosAdmin';
 import BookSoyVidaAdmin from './components/admin/BookSoyVidaAdmin'
 import BooksAdmin from './components/admin/BooksAdmin';
@@ -46,17 +45,17 @@ function App(props) {
                 <Switch>
                   <Route exact path="/" component={Login} />
                   
-                  <PrivateRoutes userlevel={'admin'} exact path="/home" component={Home} {...props} />
-                  <PrivateRoutes userlevel={'admin'} exact path="/usuarios" component={NuevaCuenta} />
+                  <PrivateRoutes exact path="/home" component={Home} {...props} />
+                  <PrivateRoutes exact path="/usuarios" component={NuevaCuenta} />
                   {/* <PrivateRoutes exact path="/nueva-cuenta" component={NuevaCuenta} /> */}
-                  <PrivateRoutes userlevel={'admin'} exact path="/colegios" component={ColegiosAdmin} />
-                  <PrivateRoutes userlevel={'admin'} exact path="/libros" component={BookSoyVidaAdmin} />
-                  <PrivateRoutes userlevel={'admin'} exact path="/usuariolibro" component={BooksAdmin} />
-                  <PrivateRoutes userlevel={'user'} exact path="/usuarionotas" component={BooksNotas} />
-                  <PrivateRoutes userlevel={'user'} exact path="/notas" component={Notas} />
-                  <PrivateRoutes userlevel={'user'} exact path="/estadisticas" component={Notas} />
+                  <PrivateRoutes exact path="/colegios" component={ColegiosAdmin} {...props} />
+                  <PrivateRoutes exact path="/libros" component={BookSoyVidaAdmin} {...props} />
+                  <PrivateRoutes exact path="/usuariolibro" component={BooksAdmin} {...props} />
+                  <PrivateRoutes exact path="/usuarionotas" component={BooksNotas} {...props} />
+                  <PrivateRoutes exact path="/notas" component={Notas} />
+                  <PrivateRoutes exact path="/estadisticas" component={Notas} {...props} />
 
-                  <PrivateRoutes userlevel={'user'} exact path="/primero" component={HomeBook1} />
+                  <PrivateRoutes exact path="/primero" component={HomeBook1} />
                   
                   <Route path="*" component={NotFound} />
                 </Switch>

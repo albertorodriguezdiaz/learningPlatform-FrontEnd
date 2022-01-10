@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect, useState } from 'react';
+import React, { useReducer, useState } from 'react';
 // import AuthContext from '../autentication/authContext';
 import ClienteAxios from '../../config/axios';
 import BookReducer from './bookReducer';
@@ -30,6 +30,9 @@ const BookState = props => {
 
     // state buscar bookuser
     const [books, guardarBooks] = useState([]);
+
+    const [colegios, guardarColegios] = useState([]);
+    const [colegiosRefresh, guardarColegiosRefresh] = useState([]);
 
 
 
@@ -237,6 +240,57 @@ const BookState = props => {
         }
     }
 
+
+
+    const obtenerColegios = async () => {
+        console.log('resultado.data.colegios');
+        try {
+            const resultado = await ClienteAxios.get('/api/schools');
+            guardarColegios(resultado.data.colegios);
+            console.log('resultado.data.colegios', resultado.data.colegios);
+        } catch (error) {
+            console.log(`Error: ${error}`);
+        }
+                        
+    }
+
+
+    
+    const agregarColegio = async colegio => {
+        try {
+            const resultado =  await ClienteAxios.post('/api/schools', colegio);
+            guardarColegiosRefresh(resultado.data)
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    // Editar o modificar Colegio
+    const actualizarColegio = async colegio => {
+        try {
+            const resultado = await ClienteAxios.put(`/api/schools/${colegio._id}`, colegio);
+            guardarColegiosRefresh(resultado.data)
+        } catch (error) {
+            console.log(`Error: ${error}`);
+        }
+    }
+
+
+
+    // Eliminar proyecto
+    const eliminarColegio = async colegioId =>{
+        try {
+            const resultado = await ClienteAxios.delete(`/api/schools/${colegioId}`);
+            guardarColegiosRefresh(resultado.data)
+
+        } catch (error) {
+            console.log(`Error: ${error}`);
+        }
+
+    }
+
+
+
     return ( 
         <BookContext.Provider
             value={{
@@ -245,18 +299,24 @@ const BookState = props => {
                 bookmain: state.bookmain,
                 obtenerLibros,
                 books: books,
+                colegios: colegios,
                 actividadeslibro: actividadeslibro,
                 photo: photo,
+                colegiosRefresh: colegiosRefresh,
                 photoInfo: photoInfo,
                 photoExiste: photoExiste,
                 activityRealizadas,
                 obtenerActivity,
                 obtenerBooksSoyVida,
+                obtenerColegios,
                 seleccionarActividadUser,
                 cambiarMainLesson,
                 agregarImagen,
                 obtenerImagenInfo,
-                agregarImagenInfo
+                agregarImagenInfo,
+                agregarColegio,
+                actualizarColegio,
+                eliminarColegio
             }}
         >
             {props.children}

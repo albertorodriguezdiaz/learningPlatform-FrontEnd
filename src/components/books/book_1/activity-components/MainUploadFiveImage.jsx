@@ -89,7 +89,8 @@ const MainUploadFiveImage = (props) => {
             console.log(fotosJSON);
         }
     }
-
+    
+    console.log(addTitleAndPhoto);
 
     const titleActividad = (title)=>{
         const titleActUpload = document.querySelector('#tituloActividadBox');
@@ -131,7 +132,7 @@ const MainUploadFiveImage = (props) => {
     const onSubmitUploadImageInfo = (e) =>{ 
         e.preventDefault();
         agregarImagenInfo(textoact, idActivity, actividadUser);
-        // guardarMostrarBoton(true);
+        guardarMostrarBoton(true);
     }
     
 

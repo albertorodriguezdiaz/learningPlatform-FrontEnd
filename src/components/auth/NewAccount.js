@@ -1,6 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Table, Col, Container, Row, Button, Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 import ClienteAxios from 'axios';
 import AlertaContext from '../../context/alerts/alertContext';
 import AuthContext from '../../context/autentication/authContext';

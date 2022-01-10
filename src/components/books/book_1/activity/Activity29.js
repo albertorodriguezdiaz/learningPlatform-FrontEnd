@@ -26,6 +26,7 @@ let map='';
 useEffect(() => {
     juegoAct29();
     cargar();
+// eslint-disable-next-line react-hooks/exhaustive-deps
 }, [])
 
 useEffect(() => {
@@ -161,21 +162,30 @@ let collBox = [];
 let mapLength = map[0].length;
 let mapHeight = map.length;
 
-// Imagenes
-let ladrillo = new Image();
-ladrillo.src = ladrilloImg;
 
-let grama = new Image();
-grama.src = gramaImg;
+let ladrillo, grama, roca, jesus, playerimg;
 
-let roca = new Image();
-roca.src = rocaImg;
 
-let jesus = new Image();
-jesus.src = jesusImg;
+function cargarImagenes(){
+    // Imagenes
+    ladrillo = new Image();
+    ladrillo.src = ladrilloImg;
 
-let playerimg = new Image();
-playerimg.src = playerImg
+    grama = new Image();
+    grama.src = gramaImg;
+
+    roca = new Image();
+    roca.src = rocaImg;
+
+    jesus = new Image();
+    jesus.src = jesusImg;
+
+    playerimg = new Image();
+    playerimg.src = playerImg
+}
+
+
+
 
 
 // Dibujamos el Mapa
@@ -292,6 +302,7 @@ window.onkeydown = function(e){
 
 
 function load(){
+    cargarImagenes();
     drawMap(map);
     let t = tileSize;
     if (mapaRoca===0) { drawPlayer(0,t*21); player.x = 0; player.y = t*21;}
@@ -301,7 +312,6 @@ function load(){
     if (mapaRoca===4) { drawPlayer(t*17,t*13); player.x = t*17; player.y = t*13;}
     if (mapaRoca===5) { drawPlayer(t*25,t*8); player.x = t*25; player.y = t*8;}
     checkColl();
-    
 }
 
 // Mostrar el juego

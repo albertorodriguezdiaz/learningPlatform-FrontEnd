@@ -86,16 +86,16 @@ const obtenerBooksSoyVida = async () => {
 
 
     // Eliminar proyecto
-    const eliminarBook = async booksoyvidaId =>{
-        try {
-            await ClienteAxios.delete(`/api/booksoyvida/${booksoyvidaId}`);
-            obtenerBooksSoyVida();
+    // const eliminarBook = async booksoyvidaId =>{
+    //     try {
+    //         await ClienteAxios.delete(`/api/booksoyvida/${booksoyvidaId}`);
+    //         obtenerBooksSoyVida();
             
-        } catch (error) {
-            console.log(`Error: ${error}`);
-        }
+    //     } catch (error) {
+    //         console.log(`Error: ${error}`);
+    //     }
 
-    }
+    // }
 
 
 

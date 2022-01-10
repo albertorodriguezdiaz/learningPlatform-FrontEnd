@@ -1,7 +1,7 @@
 import React, { useState, useContext, useRef, useEffect} from 'react';
 import BookContext from '../../context/books/bookContex';
 import { Link } from 'react-router-dom';
-import { Row, Col, Container } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import { gsap } from "gsap";
 import TopBar from '../layout/TopBar';
 

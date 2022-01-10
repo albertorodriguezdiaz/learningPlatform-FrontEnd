@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, {useEffect} from 'react';
+import React from 'react';
 import { withRouter } from 'react-router-dom';
 import Activity1 from './activity/Activity1';
 import Activity2 from './activity/Activity2';

@@ -4,7 +4,7 @@ import TopBar from '../layout/TopBar';
 import { Container } from 'react-bootstrap';
 
 
-const HomeAdmin = () => {
+const HomeAdmin = (props) => {
     return (
 
     <div className='homebookBoxAdmin'>

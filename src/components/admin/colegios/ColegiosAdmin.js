@@ -1,10 +1,16 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import ClienteAxios from 'axios';
 import { Container, Row, Col, Table, Button } from 'react-bootstrap';
 import TopBar from '../../layout/TopBar';
+import BookContext from '../../../context/books/bookContex';
 
-const ColegiosAdmin = () => {
-    
+const ColegiosAdmin = (props) => {
+
+      // Extraer la informacion de autenticacion
+    const bookContext = useContext(BookContext);
+    const { colegios, obtenerColegios, agregarColegio, 
+            actualizarColegio, eliminarColegio, colegiosRefresh} = bookContext;
+        
     // Seleccion Colegio Para editar
     const [selectcol, guardarSelectcol] = useState(false);
 
@@ -12,19 +18,15 @@ const ColegiosAdmin = () => {
     const [colegio, guardarColegio] = useState({
         nombre: '',
     });
-
-    // state buscar colegios
-    const [colegios, guardarColegios] = useState([]);
-
+    
     // Extraer nombre de colegio
     const {nombre} = colegio;
 
 
     useEffect(() => {
-
         obtenerColegios();
-           
-    }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [colegiosRefresh]);
 
 
     // Lee los contenidos del input
@@ -59,44 +61,6 @@ const ColegiosAdmin = () => {
 }
 
 
-const agregarColegio = async colegio => {
-    try {
-        const resultado = await ClienteAxios.post('/api/schools', colegio);
-        guardarColegio(resultado.data);
-
-    } catch (error) {
-        console.log(error);
-    }
-
-    obtenerColegios();
-}
-
-
-
-
-const obtenerColegios = async () => {
-    try {
-        const resultado = await ClienteAxios.get('/api/schools');
-        guardarColegios(resultado.data.colegios);
-    } catch (error) {
-        console.log(`Error: ${error}`);
-    }
-                    
-}
-
-
-    // Eliminar proyecto
-    const eliminarColegio = async colegioId =>{
-        try {
-            await ClienteAxios.delete(`/api/schools/${colegioId}`);
-            obtenerColegios();
-            
-        } catch (error) {
-            console.log(`Error: ${error}`);
-        }
-
-    }
-
 
 
     // Seleccionar colegio para editar
@@ -109,15 +73,6 @@ const obtenerColegios = async () => {
 
     }
 
-    // Editar o modificar Colegio
-    const actualizarColegio = async colegio => {
-        try {
-            await ClienteAxios.put(`/api/schools/${colegio._id}`, colegio);
-            obtenerColegios();
-        } catch (error) {
-            console.log(`Error: ${error}`);
-        }
-    }
 
 
 
@@ -171,31 +126,33 @@ const obtenerColegios = async () => {
 
                     <tbody>
 
-                {
-                    colegios.map( (colegio, key) => 
-                        <tr key={key}>
-                            <td>{key+1}</td>
-                            <td>{colegio.nombre}</td>
-                            <td>
-                                <Button 
-                                    variant="outline-primary"
-                                    type="button"
-                                    onClick={ () => seleccionarColegio(colegio)}
-                                    >Editar
-                                </Button>
-                            </td>
-                            <td>
-                                <Button 
-                                    variant="danger"
-                                    type="button"
-                                    onClick={ () => eliminarColegio(colegio._id)}
-                                    >Eliminar
-                                </Button>
 
-                            </td>
-                        </tr>                            
-                    )
-                }
+
+                    { colegios &&
+                        colegios.map( (colegio, key) => 
+                            <tr key={key}>
+                                <td>{key+1}</td>
+                                <td>{colegio.nombre}</td>
+                                <td>
+                                    <Button 
+                                        variant="outline-primary"
+                                        type="button"
+                                        onClick={ () => seleccionarColegio(colegio)}
+                                        >Editar
+                                    </Button>
+                                </td>
+                                <td>
+                                    <Button 
+                                        variant="danger"
+                                        type="button"
+                                        onClick={ () => eliminarColegio(colegio._id)}
+                                        >Eliminar
+                                    </Button>
+
+                                </td>
+                            </tr>                            
+                        )
+                    }
 
                     </tbody>
                 </Table>

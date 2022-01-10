@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import { Container, Navbar, Offcanvas, Nav, NavDropdown, Form, FormControl, Button, Row, Col } from 'react-bootstrap';
+import { Container, Navbar, Offcanvas, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
 import AuthContext from '../../context/autentication/authContext';
 import logoSoyVida from '../../resources/img/logo-soyvida.png'
 import logoSoyVidaBig from '../../resources/img/logo-soyvida-login.png'

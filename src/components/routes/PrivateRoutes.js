@@ -8,7 +8,7 @@ const RutaPrivada = ({ component: Component, ...props}) => {
 
     // const {userlevel} = props;
     const authContext = useContext(AuthContext);
-    const { autenticado, cargando, usuarioAutenticado, usuario } = authContext;
+    const { autenticado, cargando, usuarioAutenticado } = authContext;
 
     useEffect( () => {
         usuarioAutenticado();
@@ -16,8 +16,6 @@ const RutaPrivada = ({ component: Component, ...props}) => {
     },[])
 
 
- 
-// && !userlevel===usuario.tipo
     return ( 
         
         <Route 

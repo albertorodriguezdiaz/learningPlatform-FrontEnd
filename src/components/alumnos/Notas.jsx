@@ -13,7 +13,7 @@ const Notas = (props) => {
 
         // Extraer la informacion de autenticacion
         const authContext = useContext(AuthContext);
-        const {userdata, usuario, usuarioAutenticado } = authContext;
+        const {userdata, usuarioAutenticado } = authContext;
         
         const [render, setRender] = useState(false);
         
