@@ -1,0 +1,81 @@
+
+
+
+
+.caja-colocar img{
+    width: 100%;
+}
+.caja-colocar{
+    width: 100%;
+    display: flex;
+}
+
+.objArrastrableAct2{
+    margin: 10px;
+    text-align: center;
+    background-color: #fff;
+    border: 5px solid #fff;
+    border-radius: 10px;
+    padding: 10px 10px;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.15);
+
+    width: 185px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    cursor: move;
+    transition: all 0.2s;
+    display: inline-block;
+}
+
+  .objArrastrableAct2:hover {
+    background-color: rgb(5, 17, 87);
+    color: #fff;
+    opacity: 1;
+  }
+
+
+.objColocable span {
+  font-size: 1.25rem;
+  pointer-events: none; /* The element is never the target of pointer events */
+}
+
+/* Drag and Drop Related Styling */
+
+.objColocable.objColocable-Hover{
+  border-width: 5px;
+  transform: scale(1.1);
+}
+.objColocable.objColocableValido {
+  border-style: solid;
+  color: #fff;
+}
+.objColocable.objColocableValido span {
+  font-size: 0.75rem;
+  margin-top: -0.5rem;
+}
+.objColocable.objColocableValido i {
+  pointer-events: none;
+}
+.objArrastrableAct2.objArrastrableAct2Valido {
+  user-select: none;
+  opacity: 0.1;
+  cursor: default;
+}
+.bg100.objArrastrableAct2.objArrastrableAct2Valido {
+  user-select: none;
+  opacity: 1;
+  cursor: default;
+}
+.objArrastrableAct2.objArrastrableAct2Valido:hover {
+  opacity: 0.1;
+}
+
+
+@media (max-width: 600px) {
+  html { font-size: 14px; }
+  .figuras-arrastrables { margin: 1.5rem; }
+}
+
+

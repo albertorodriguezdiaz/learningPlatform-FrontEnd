@@ -16,6 +16,7 @@ import NotFound from './components/layout/NotFound';
 
 // Alumnos
 import HomeBook1 from './components/books/book_1/HomeBook1';
+import HomeBook2 from './components/books/book_2/HomeBook2';
 import Notas from './components/alumnos/Notas';
 
 
@@ -56,6 +57,7 @@ function App(props) {
                   <PrivateRoutes exact path="/estadisticas" component={Notas} {...props} />
 
                   <PrivateRoutes exact path="/primero" component={HomeBook1} />
+                  <PrivateRoutes exact path="/segundo" component={HomeBook2} />
                   
                   <Route path="*" component={NotFound} />
                 </Switch>

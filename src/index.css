@@ -2062,3 +2062,11 @@ color: rgb(12, 59, 129);
   text-align: center !important;
   font-size: 20px;
 }
+
+
+#canvasAct29{
+  width: 900px;
+  height: 600px;
+  border: 1px solid #000;
+  margin-top: 50px;
+}

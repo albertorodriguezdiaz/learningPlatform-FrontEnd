@@ -1,0 +1,143 @@
+
+
+  
+  .figuras-arrastrablesAct8 ul li{
+      width: auto;
+      height: auto;
+      float: left;
+  }
+  
+  
+  .objArrastrableAct8 img{
+      width: auto !important;
+      height: auto !important;
+  }
+  .objArrastrableAct8{
+      margin: 10px;
+      text-align: center;
+      background-color: #fff;
+      border: 5px solid #fff;
+      border-radius: 10px;
+      box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.15);
+      font-size: 16px;
+      cursor: move;
+      transition: all 0.2s;
+  }
+  
+    .objArrastrableAct8:hover {
+      background-color: rgb(5, 17, 87);
+      color: #fff;
+      opacity: 1;
+    }
+  
+  .objColocableAct8{
+    font-size: 1px;
+    background-color: none;
+    /* border: 2px dashed #fff; */
+    transition: border-width 0.2s, transform 0.2s, background-color 0.4s;
+  
+  }
+
+  .objColocableAct8 span {
+    pointer-events: none; /* The element is never the target of pointer events */
+  }
+  
+  /* Drag and Drop Related Styling */
+  
+  .objColocableAct8.objColocableAct8-Hover{
+    border: 3px dashed #fff;
+    transform: scale(1.1);
+  }
+
+  .objArrastrableAct8.objArrastrableAct8Valido {
+    user-select: none;
+    opacity: 0.1;
+    cursor: default;
+  }
+
+
+  .imgCiudad{
+      width: 1000px;
+      margin: 0 auto;
+      position: relative;
+  }
+  
+   
+ .objColocableAct8{
+     position: absolute;
+     width: 120px;
+     height: 100px;
+     bottom: 0;
+     left: 0;
+     /* border: 1px solid #fff; */
+ }
+
+ .caja-colocarAct8 #img1Box{
+    width: 81px;
+    height: 249px;
+    left: 906px;
+    bottom: 0px;
+ }
+ .caja-colocarAct8 #img2Box{
+    width: 30px;
+    height: 76px;
+    left: 134px;
+    bottom: 136px;
+ }
+ .caja-colocarAct8 #img3Box{
+    width: 108px;
+    height: 192px;
+    left: 34px;
+    bottom: 26px;
+ }
+ .caja-colocarAct8 #img4Box{
+    width: 90px;
+    height: 153px;
+    left: 250px;
+    bottom: 35px;
+ }
+ .caja-colocarAct8 #img5Box{
+    width: 86px;
+    height: 119px;
+    left: 165px;
+    bottom: 90px;
+ }
+ .caja-colocarAct8 #img6Box{
+    width: 47px;
+    height: 158px;
+    left: 449px;
+    bottom: 23px;
+ }
+ .caja-colocarAct8 #img7Box{
+    width: 120px;
+    height: 166px;
+    left: 507px;
+    bottom: 0px;
+ }
+ .caja-colocarAct8 #img8Box{
+    width: 97px;
+    height: 142px;
+    left: 594px;
+    bottom: 82px;
+ }
+ .caja-colocarAct8 #img9Box{
+    width: 47px;
+    height: 105px;
+    left: 691px;
+    bottom: 107px;
+ }
+ .caja-colocarAct8 #img10Box{
+    width: 97px;
+    height: 142px;
+    left: 746px;
+    bottom: 70px;
+ }
+
+ .botonEnconder{
+    display: none;
+  }
+  .botonEnconder.botonMostrar{
+    display: block !important;
+  }
+
+

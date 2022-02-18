@@ -1,0 +1,91 @@
+table.crucigrama{
+    position: relative;
+    width: 480px;
+    margin: 0 auto;
+    border: 1px solid #0064ff;
+}
+
+table.crucigrama td{
+    position: relative;
+}
+.crucigrama input{
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    border: 2px solid #0064ff;
+}
+
+
+.casilla {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+}
+
+.crucigrama td,
+.crucigrama th {
+    padding: 0px;
+}
+
+.bgCammpo{
+    background-color: #0064ff;
+    position: relative;
+}
+
+p.numFila{
+    z-index: 9;
+    position: absolute;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    top: 0;
+    left: 5px;
+}
+
+.botonBlue{
+    width: 250px;
+    position: relative;
+    border: 0;
+    text-align: center;
+    border-radius: 7px;
+    padding: 10px 30px;
+    background: #0064ff;
+    color: #fff;
+    font-weight: 700;
+    box-shadow: inset 0px -4px 0px 0px rgb(0 0 0 / 10%);
+    margin: 0 auto;
+    /* margin-top: 50px; */
+    margin: 10px;
+}
+
+.colorAmarillo{
+    background: #f7de00;
+    color: #4559b3;
+}
+.colorRosado{
+    background: #f16684
+}
+.colorVerde{
+    background: #0eca9b
+}
+
+
+.tablaCricigrama{
+    text-align: left;
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+
+
+.tablaCricigrama .boxPregunta{
+    background: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    box-shadow: 10px 10px 10px rgba(0,0,0,.1);
+}
+
+.preguntasCruc h3{
+    font-size: 30px;
+}

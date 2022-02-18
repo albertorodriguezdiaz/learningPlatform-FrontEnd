@@ -1,0 +1,120 @@
+
+
+
+  
+  .caja-colocarAct23{
+      position: relative;
+      width: 1000px;
+      margin: 0 auto;
+    }
+    .caja-colocarAct23 img{
+        z-index: 1;
+        width: 1000px;
+        position: relative;
+    }
+ 
+  .objArrastrableAct23{
+      margin: 10px 0;
+      text-align: center;
+      background-color: #fff;
+      border: 5px solid #fff;
+      border-radius: 10px;
+      padding: 5px;
+      box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.15);
+
+      font-size: 1px;
+      color: #fff;
+      cursor: move;
+      display: inline-block;
+      transition: all 0.2s;
+  }
+  
+    .objArrastrableAct23:hover {
+      border: 5px solid rgb(5, 17, 87);
+      transform: scale(1.1,1.1);
+      background: rgb(5, 17, 87);;
+    }
+  
+  
+
+    img.objArrastrableAct23 {
+      max-width: 100px;
+      padding: 0;
+      margin: 10px 0;
+      user-select: none;
+  }
+
+  
+  /* Drag and Drop Related Styling */
+  
+  .objColocableAct23.objColocableAct23-Hover{
+    border-width: 8px;
+    transform: scale(1.1);
+  }
+  .objColocableAct23.objColocableAct23Valido {
+    border-style: solid;
+    color: #fff;
+  }
+  .objColocableAct23.objColocableAct23Valido span {
+    font-size: 0.75rem;
+    margin-top: -0.5rem;
+  }
+  .objColocableAct23.objColocableAct23Valido i {
+    pointer-events: none;
+  }
+  .objArrastrableAct23.objArrastrableAct23Valido {
+    user-select: none;
+    opacity: 0.1;
+    cursor: default;
+  }
+  .bg100.objArrastrableAct23.objArrastrableAct23Valido {
+    user-select: none;
+    opacity: 1;
+    cursor: default;
+  }
+  .objArrastrableAct23.objArrastrableAct23Valido:hover {
+    opacity: 0.1;
+  }
+  
+ 
+
+  .objColocableAct23{
+    z-index: 99;
+    width: 122px;
+    height: 122px;
+    border: 2px solid #fff;
+    position: absolute;
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+    transition: all 0.2s;
+}
+
+.objAct23-1{
+    top: 133px;
+    left: 28px;
+}
+.objAct23-2{
+    top: 229px;
+    left: 155px;
+}
+.objAct23-3{
+    top: 170px;
+    left: 305px;
+}
+.objAct23-4{
+    top: 272px;
+    left: 445px;
+}
+.objAct23-5{
+    top: 221px;
+    left: 581px;
+}
+.objAct23-6{
+    top: 148px;
+    left: 717px;
+}
+.objAct23-7{
+    top: 236px;
+    left: 839px;
+}
