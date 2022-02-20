@@ -12,6 +12,9 @@
 /build
 build.zip
 
+# resources
+/resources
+
 # misc
 .DS_Store
 *.env
