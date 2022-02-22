@@ -43,6 +43,7 @@ const ButtonUpdate = (props) => {
 
         // Movemos el scroll de la pagina arriba
         window.scrollTo(0, 0)
+        
         seleccionarActividadUser(objActividad, userdata);
         setEnviarActividad(true);
     }
@@ -65,7 +66,6 @@ const ButtonUpdate = (props) => {
                             value="Enviar Actividad">
                         </Button> 
                     </Form>
-
 
                  </div>
 

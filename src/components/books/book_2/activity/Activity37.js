@@ -1,7 +1,7 @@
 import React from 'react';
 import ButtonUpdate from '../activity-components/ButtonUpdate';
 import HeaderActivity from '../activity-components/HeaderActivity';
-import AudioActividad37 from '../../../../resources/audio/actividad-37.mp3'
+import AudioActividad37 from '../../../../resources/audio/libro2/actividad-37.mp3'
 
 
 const Activity37 = (props) => {
@@ -11,7 +11,7 @@ const Activity37 = (props) => {
              <HeaderActivity {...props} />
 
             <div className="containerActivity1">
-                <h2>Escucha el pasaje en audio de Salmo Hechos 4:23-31</h2>
+                <h2>Escucha el audio del pasaje de Hechos 16:1-5</h2>
                 <audio controls="controls">
                 <source src={AudioActividad37} type="audio/mpeg" />
                 Your browser does not support the audio element.

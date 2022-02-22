@@ -122,8 +122,7 @@ function soltandoObjArrastrable(event) {
     draggableElement.classList.add("objArrastrableValido");
     draggableElement.setAttribute("draggable", "false");
 
-    
-
+  
 
     event.target.insertAdjacentHTML("afterbegin", `${letraMostrar[0]}`);
 
