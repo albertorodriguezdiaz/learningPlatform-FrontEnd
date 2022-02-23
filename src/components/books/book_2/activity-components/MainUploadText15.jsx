@@ -1,5 +1,5 @@
 import React,{useEffect, useContext, useState} from 'react';
-import ButtonUpdate from '../activity-components/ButtonUpdate';
+import ButtonUpdate from './ButtonUpdate';
 import HeaderActivity from './HeaderActivity';
 import BookContext from '../../../../context/books/bookContex';
 import { Button, Table } from 'react-bootstrap';
@@ -22,12 +22,13 @@ const MainUploadText33 = (props) => {
     const [mostrarBoton, guardarMostrarBoton] = useState(false)
 
     const [textoact, guardarTextoAct] = useState({
+        texto3: '',
         texto2: '',
         texto1: '',
         video: ''
     });
 
-    let {texto1, texto2, video} = textoact;
+    let {texto1, texto2, texto3 ,  video} = textoact;
     
     useEffect(() => {
         obtenerImagenInfo(actividadUser.usuario, idActivity);
@@ -89,14 +90,14 @@ const MainUploadText33 = (props) => {
 
 
         let textoAll = {texto: `
-            <h3>¿Qué observaste en el video?</h3>
+            <h3>El mandamiento que más me cuesta</h3>
             <p>${texto1}</p>
 
-            <h3>¿Cómo crees que debemos mirar o tratar a los demás sabiendo que también tienen dignidad?</h3>
+            <h3>¿Cómo lo podré en práctica?</h3>
             <p>${texto2}</p>
 
-            <h3>Enlace Video:</h3>
-            <p>${video}</p>
+            <h3>¿Qué sucedió cuando lo hice?</h3>
+            <p>${texto3}</p>
         `}; 
 
         agregarImagenInfo(textoAll, idActivity, actividadUser);
@@ -124,8 +125,9 @@ const MainUploadText33 = (props) => {
                         <Table striped bordered hover className='tableTextArea'>
                             <thead>
                                 <tr>
-                                    <td>¿Qué observaste en el video?</td>
-                                    <td>¿Cómo crees que debemos mirar o tratar a los demás sabiendo que también tienen dignidad?</td>
+                                    <td>El mandamiento que más me cuesta</td>
+                                    <td>¿Cómo lo podré en práctica?</td>
+                                    <td>¿Qué sucedió cuando lo hice?</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -152,22 +154,24 @@ const MainUploadText33 = (props) => {
                                         >
                                         </textarea>
                                     </td>
+                                    <td>
+                                        <textarea 
+                                            className="inputW100"
+                                            placeholder="Espacio para escribir"
+                                            name="texto3"
+                                            id="texto3"
+                                            value={texto3}
+                                            onChange={onChangePhotoTexto}
+                                        >
+                                        </textarea>
+                                    </td>
                                 </tr>
                             </tbody>
                         </Table>
 
 
                         <div id='tituloActividadBox2'></div>
-                            <textarea 
-                                className="inputW100"
-                                placeholder="Link del video aquí"
-                                name="video"
-                                id="video"
-                                value={video}
-                                onChange={onChangePhotoTexto}
-                            >
-                            </textarea>
-                    
+                           
                     
 
                         <div className="d-grid gap-2">

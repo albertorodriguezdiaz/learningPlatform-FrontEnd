@@ -24,7 +24,7 @@ const LessonHome = (props) => {
 
         
             <div className='volverInicio'>                 
-                <a href='/primero'>
+                <a href='/segundo'>
                     <div className='iconHome'>
                         <i className="fas fa-house-user"></i> 
                     </div>

@@ -25,7 +25,7 @@ const ConfettiCongratulation = (props) => {
     }
 
     const handleClick = () =>{
-        window.location.href = "/primero";
+        window.location.href = "/segundo";
     }
 
     const playSound = () =>{

@@ -1,21 +1,22 @@
 import React from 'react';
-import MainUploadImage from '../activity-components/MainUploadImage'
-import NewsAct45 from '../../../../resources/img/act45/news-act45.png'
+import MainUploadAudio from '../activity-components/MainUploadAudio'
 
 
 
 const Activity45 = (props) => {
    
    const tituloActividad =`
-    <h2>Pide a tu acudiente que lean en familia la siguiente noticia. Al final   encontrarán unas peticiones de oración, las cuales se pueden repartir y orar por ellas. </h2>
-    <h2>Realiza una mapa de India y tomate una foto con tu familia luego de haber orado por la situación de los perseguidos en ese país y súbela a la plataforma.</h2>
-    
-    <img src=${NewsAct45} alt="News" />
-    
-    <h2>Peticiones de oración<h2>
-    <p>•	Ora para que los cristianos no se desanimen, sino que tengan la gracia de continuar sirviendo a Dios a pesar de la persecución, y estén llenos de esperanza.<p>
-    <p>•	Pide que no se sientan tentados a renunciar a su fe en busca de una vida más fácil.<p>
-    <p>•	Intercede para que el gobierno haga todo lo posible para proteger a las comunidades de la violencia futura.<p>
+    <h2>Haz una de las siguientes preguntas a alguien de tu iglesia; graba su respuesta en audio o vídeo y sube la evidencia aquí. </h2>
+
+    <p>- ¿Qué es lo que más le gusta de hacer parte de su iglesia?</p>
+    <p>- ¿Qué cosas disfruta en compañía de otras personas de su iglesia?</p>
+    <p>- ¿En qué aspectos debe mejorar la iglesia a la que pertenece?</p>
+    <p>- ¿Cómo llegó a ser parte de esa comunidad cristiana?</p>
+    <p>- ¿De qué manera especificas sirve en su iglesia?</p>
+    <p>- ¿Qué cosas no le gustan de su iglesia?</p>
+    <p>- ¿Cómo celebran los cultos en su iglesia?</p>
+    <p>- ¿De qué manera su iglesia atiende algunas necesidades como la enfermedad de algún miembro?</p>
+    <p>- ¿Qué consejos nos da para poder disfrutar de una comunidad de fe?</p>
 
     `;
    const textoTextArea =`
@@ -24,7 +25,7 @@ const Activity45 = (props) => {
 
      return ( 
             <div>
-                <MainUploadImage {...props} 
+                <MainUploadAudio {...props} 
                 textoTextArea={textoTextArea}
                 tituloActividad={tituloActividad}
                 />

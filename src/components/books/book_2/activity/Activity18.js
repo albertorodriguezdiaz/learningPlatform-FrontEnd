@@ -1,19 +1,27 @@
 import React from 'react';
-import MainUploadText from '../activity-components/MainUploadText'
-import newsAct18 from '../../../../resources/img/act18/news-actividad18.png';
+import MainUploadImage from '../activity-components/MainUploadImage'
 
 const Activity18 = (props) => {
    
    const tituloActividad =`
-    <h2>Con la ayuda de tu familia:</h2>
-    <h3>Lean la siguiente noticia y respondan las preguntas a continuación</h3>
-    <img src=${newsAct18} alt="newsAct18" />
+      <h2>Ten un acto de amor con tus amigos o con tu amigo más cercano, puede ser:</h2>
+      <ul>
+         <li>Una invitación a comer un helado.</li>
+         <li>Una invitación a cenar a tu casa.</li>
+         <li>Hacerle un regalo sin que lo espere.</li>
+         <li>Tener una video llamada con él/ella.</li>
+         <li>Entre otros…</li>
+      </ul>
+      <h2>Debes tomar una foto del momento y subirla aquí como evidencia. </h2>
    `;
-
+   const textoTextArea =`
+      Describe cómo te fue:
+   `;
 
      return ( 
         <div>
-        <MainUploadText {...props} 
+        <MainUploadImage {...props}
+         textoTextArea={textoTextArea}
          tituloActividad={tituloActividad}
         />
         </div>

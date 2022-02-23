@@ -1,19 +1,28 @@
-import React from 'react';
-import MainUploadVideo from '../activity-components/MainUploadVideo'
+import React, { Fragment } from 'react';
+import MainUploadImage from '../activity-components/MainUploadImage'
 
 
 const Activity39 = (props) => {
    
    const tituloActividad =`
-    <h3>Como una forma de poner en práctica lo aprendido, organiza junto a tu familia una pequeña reunión de oración en tu casa (virtual o presencial). Pueden invitar a sus amigos y vecinos. Debe ser algo corto y ameno, pueden compartir una pequeña merienda y orar por las necesidades de todos los presentes. Graben un pequeño video del momento y súbanlo aquí como evidencia. </h3>
+    <h2>Escoge un amigo de los que ubicaste en la pirámide, alguno al que le quieras ayudar a que él hable de Jesús a otros. Reúnete con él y piensen juntos cómo pueden hablar de Jesús a otros, traten de idear algo bastante creativo (puede ser una postal, una carta, un video, una charla, entre otros). Busquen un familiar o un amigo, y hablen de Jesús mediante la forma que decidieron usar. </h2>
+    Toma una foto o evidencia del momento en que hablaron de Jesús a la otra persona. 
     `;
 
+    const textoTextArea =`
+    Espacio para escribir algún comentario de la actividad realizada
+    `;
+
+
      return ( 
-            <div>
-                <MainUploadVideo {...props} 
+        <Fragment>
+        <div>
+            <MainUploadImage {...props} 
                 tituloActividad={tituloActividad}
-                />
-            </div>
+                textoTextArea={textoTextArea}
+            />
+        </div>
+        </Fragment>
      );
 }
  
